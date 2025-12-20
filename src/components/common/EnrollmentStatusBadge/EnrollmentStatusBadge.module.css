@@ -1,0 +1,35 @@
+.badge {
+    display: inline-flex;
+    align-items: center;
+    padding: 4px 12px;
+    border-radius: 12px;
+    font-size: 12px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.pending {
+    background-color: #fff7e6;
+    color: #fa8c16;
+}
+
+.active {
+    background-color: #e6f7ff;
+    color: #1890ff;
+}
+
+.completed {
+    background-color: #f6ffed;
+    color: #52c41a;
+}
+
+.cancelled {
+    background-color: #fff1f0;
+    color: #ff4d4f;
+}
+
+.default {
+    background-color: #f0f0f0;
+    color: #666;
+}

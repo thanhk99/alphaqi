@@ -1,0 +1,40 @@
+.featuresSection {
+    padding: 100px 0;
+    background: white;
+}
+
+.sectionTitle {
+    font-size: 2.5rem;
+    font-weight: 700;
+    margin-bottom: 40px;
+    color: #1f1f1f;
+    text-align: left;
+}
+
+.featureItem {
+    display: flex;
+    gap: 20px;
+    margin-bottom: 40px;
+}
+
+.featureIcon {
+    width: 60px;
+    height: 60px;
+    background: #f0f5ff;
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.5rem;
+    color: var(--blue-primary);
+    flex-shrink: 0;
+}
+
+.featureItem h4 {
+    font-size: 1.25rem;
+    margin-bottom: 8px;
+}
+
+.featureItem p {
+    color: #595959;
+}

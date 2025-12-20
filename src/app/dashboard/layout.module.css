@@ -1,0 +1,28 @@
+.dashboardContainer {
+    display: flex;
+    gap: 32px;
+    padding: 40px 0;
+    min-height: 80vh;
+    align-items: flex-start;
+}
+
+.sidebarWrapper {
+    width: 280px;
+    flex-shrink: 0;
+}
+
+.contentWrapper {
+    flex: 1;
+    min-width: 0;
+    /* Prevent overflow issues */
+}
+
+@media (max-width: 992px) {
+    .dashboardContainer {
+        flex-direction: column;
+    }
+
+    .sidebarWrapper {
+        width: 100%;
+    }
+}

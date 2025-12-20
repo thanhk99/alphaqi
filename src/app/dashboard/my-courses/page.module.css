@@ -1,0 +1,465 @@
+.pageHeader {
+    margin-bottom: 32px;
+}
+
+.title {
+    font-size: 28px;
+    font-weight: 700;
+    color: #1f1f1f;
+    margin: 0 0 8px;
+}
+
+.subtitle {
+    color: #666;
+    margin: 0;
+}
+
+/* Loading State */
+.loadingContainer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 60px 0;
+    color: #666;
+}
+
+.spinner {
+    width: 40px;
+    height: 40px;
+    border: 4px solid #f0f0f0;
+    border-top-color: #1890ff;
+    border-radius: 50%;
+    animation: spin 0.8s linear infinite;
+    margin-bottom: 16px;
+}
+
+@keyframes spin {
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+/* Notification */
+.notification {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    padding: 16px 24px;
+    border-radius: 8px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+    z-index: 1001;
+    animation: slideInRight 0.3s ease-out;
+    font-weight: 500;
+}
+
+@keyframes slideInRight {
+    from {
+        transform: translateX(100%);
+        opacity: 0;
+    }
+
+    to {
+        transform: translateX(0);
+        opacity: 1;
+    }
+}
+
+.notification.success {
+    background-color: #f6ffed;
+    color: #52c41a;
+    border: 1px solid #b7eb8f;
+}
+
+.notification.error {
+    background-color: #fff1f0;
+    color: #ff4d4f;
+    border: 1px solid #ffccc7;
+}
+
+/* Filter Tabs */
+.filterTabs {
+    display: flex;
+    gap: 12px;
+    margin-bottom: 24px;
+    border-bottom: 2px solid #f0f0f0;
+    overflow-x: auto;
+}
+
+.filterTab {
+    padding: 12px 20px;
+    background: none;
+    border: none;
+    border-bottom: 2px solid transparent;
+    margin-bottom: -2px;
+    font-size: 15px;
+    font-weight: 500;
+    color: #666;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    white-space: nowrap;
+}
+
+.filterTab:hover {
+    color: #1890ff;
+}
+
+.filterTab.active {
+    color: #1890ff;
+    border-bottom-color: #1890ff;
+}
+
+/* Course Grid */
+.courseGrid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
+    gap: 24px;
+}
+
+.courseCard {
+    background-color: #fff;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+}
+
+.courseCard:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
+}
+
+.thumbnailWrapper {
+    position: relative;
+    padding-top: 56.25%;
+}
+
+.thumbnail {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+}
+
+.badgeContainer {
+    position: absolute;
+    top: 12px;
+    left: 12px;
+    right: 12px;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 8px;
+}
+
+.courseTypeBadge {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 6px 12px;
+    border-radius: 12px;
+    font-size: 12px;
+    font-weight: 600;
+    background-color: rgba(255, 255, 255, 0.95);
+    backdrop-filter: blur(4px);
+}
+
+.courseTypeBadge.online {
+    color: #1890ff;
+}
+
+.courseTypeBadge.offline {
+    color: #722ed1;
+}
+
+/* Card Content */
+.cardContent {
+    padding: 20px;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+.courseTitle {
+    font-size: 18px;
+    font-weight: 600;
+    color: #1f1f1f;
+    margin: 0;
+    line-height: 1.4;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+}
+
+/* Instructor Section */
+.instructorSection {
+    display: flex;
+    gap: 12px;
+    align-items: flex-start;
+}
+
+.instructorAvatar {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    object-fit: cover;
+    flex-shrink: 0;
+}
+
+.instructorInfo {
+    flex: 1;
+    min-width: 0;
+}
+
+.instructorName {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    color: #1f1f1f;
+    font-weight: 500;
+    font-size: 14px;
+    margin-bottom: 4px;
+}
+
+.instructorName span {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.instructorSpecialization {
+    font-size: 12px;
+    color: #999;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+/* Course Info */
+.courseInfo {
+    display: flex;
+    gap: 16px;
+    flex-wrap: wrap;
+}
+
+.infoItem {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    color: #666;
+    font-size: 13px;
+}
+
+/* Offline Details */
+.offlineDetails {
+    padding: 12px;
+    background-color: #f9f0ff;
+    border-radius: 8px;
+    border-left: 3px solid #722ed1;
+}
+
+.offlineDetails .infoItem {
+    margin-bottom: 8px;
+}
+
+.offlineDetails .infoItem:last-child {
+    margin-bottom: 0;
+}
+
+.addressText {
+    font-size: 12px;
+    color: #666;
+    line-height: 1.5;
+    margin-top: 8px;
+    padding-left: 20px;
+}
+
+/* Enrollment Dates */
+.enrollmentDates {
+    padding: 12px;
+    background-color: #f5f5f5;
+    border-radius: 8px;
+    font-size: 13px;
+}
+
+.dateItem {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 6px;
+}
+
+.dateItem:last-child {
+    margin-bottom: 0;
+}
+
+.dateLabel {
+    color: #666;
+}
+
+.dateValue {
+    color: #1f1f1f;
+    font-weight: 500;
+}
+
+/* Progress Section */
+.progressSection {
+    margin-top: auto;
+}
+
+.progressInfo {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 6px;
+    font-size: 13px;
+    color: #666;
+}
+
+.progressBar {
+    width: 100%;
+    height: 6px;
+    background-color: #f0f0f0;
+    border-radius: 3px;
+    overflow: hidden;
+    margin-bottom: 16px;
+}
+
+.progressFill {
+    height: 100%;
+    background: linear-gradient(90deg, #1890ff 0%, #40a9ff 100%);
+    border-radius: 3px;
+    transition: width 0.3s ease;
+}
+
+/* Action Buttons */
+.actionButtons {
+    display: flex;
+    gap: 8px;
+    align-items: center;
+}
+
+.linkButton {
+    flex: 1;
+    text-decoration: none;
+}
+
+.cancelButton {
+    padding: 10px 16px;
+    background-color: #fff;
+    border: 1px solid #ff4d4f;
+    border-radius: 8px;
+    color: #ff4d4f;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    font-size: 16px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.cancelButton:hover {
+    background-color: #fff1f0;
+    border-color: #ff7875;
+    color: #ff7875;
+}
+
+/* Empty State */
+.emptyState {
+    text-align: center;
+    padding: 60px 20px;
+    background-color: #fff;
+    border-radius: 12px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+}
+
+.emptyIcon {
+    font-size: 48px;
+    color: #d9d9d9;
+    margin-bottom: 16px;
+}
+
+.emptyState h3 {
+    font-size: 20px;
+    font-weight: 600;
+    color: #1f1f1f;
+    margin: 0 0 8px;
+}
+
+.emptyState p {
+    color: #666;
+    margin-bottom: 24px;
+}
+
+/* Responsive Design */
+@media (max-width: 1024px) {
+    .courseGrid {
+        grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    }
+}
+
+@media (max-width: 768px) {
+    .title {
+        font-size: 24px;
+    }
+
+    .filterTabs {
+        gap: 8px;
+    }
+
+    .filterTab {
+        padding: 10px 16px;
+        font-size: 14px;
+    }
+
+    .courseGrid {
+        grid-template-columns: 1fr;
+        gap: 16px;
+    }
+
+    .badgeContainer {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .notification {
+        left: 20px;
+        right: 20px;
+    }
+}
+
+@media (max-width: 480px) {
+    .pageHeader {
+        margin-bottom: 24px;
+    }
+
+    .title {
+        font-size: 20px;
+    }
+
+    .subtitle {
+        font-size: 14px;
+    }
+
+    .cardContent {
+        padding: 16px;
+        gap: 12px;
+    }
+
+    .courseTitle {
+        font-size: 16px;
+    }
+
+    .actionButtons {
+        flex-direction: column;
+    }
+
+    .cancelButton {
+        width: 100%;
+    }
+}

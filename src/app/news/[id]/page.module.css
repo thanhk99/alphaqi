@@ -1,0 +1,173 @@
+.container {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 40px 20px;
+}
+
+.backLink {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    color: #6366f1;
+    font-weight: 500;
+    margin-bottom: 30px;
+    cursor: pointer;
+    background: none;
+    border: none;
+    font-size: 16px;
+    transition: color 0.3s ease;
+}
+
+.backLink:hover {
+    color: #4f46e5;
+}
+
+.article {
+    background: white;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.featuredImage {
+    width: 100%;
+    height: 400px;
+    overflow: hidden;
+    background: #f3f4f6;
+}
+
+.featuredImage img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.header {
+    padding: 30px 40px 20px;
+}
+
+.title {
+    font-size: 32px;
+    font-weight: 700;
+    color: #1a1a1a;
+    line-height: 1.4;
+    margin: 0 0 15px 0;
+}
+
+.meta {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    color: #6b7280;
+    font-size: 14px;
+}
+
+.date {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+}
+
+.updated {
+    font-style: italic;
+}
+
+.content {
+    padding: 0 40px 40px;
+}
+
+.description {
+    font-size: 16px;
+    line-height: 1.8;
+    color: #374151;
+    white-space: pre-wrap;
+}
+
+/* CSS for .content moved to RichText.module.css */
+.content {
+    padding: 0 40px 40px;
+}
+
+/* Loading & Error States */
+.loadingContainer,
+.errorContainer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 400px;
+    text-align: center;
+}
+
+.spinner {
+    width: 50px;
+    height: 50px;
+    border: 4px solid #f3f4f6;
+    border-top-color: #6366f1;
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+    margin-bottom: 20px;
+}
+
+@keyframes spin {
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+.errorContainer h2 {
+    font-size: 24px;
+    color: #dc2626;
+    margin-bottom: 10px;
+}
+
+.errorContainer p {
+    color: #6b7280;
+    margin-bottom: 20px;
+}
+
+.backButton {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 10px 24px;
+    background: #6366f1;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    font-size: 16px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: background 0.3s ease;
+}
+
+.backButton:hover {
+    background: #4f46e5;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .container {
+        padding: 20px 15px;
+    }
+
+    .featuredImage {
+        height: 250px;
+    }
+
+    .header {
+        padding: 20px 20px 15px;
+    }
+
+    .title {
+        font-size: 24px;
+    }
+
+    .content {
+        padding: 0 20px 30px;
+    }
+
+    .description {
+        font-size: 15px;
+    }
+}

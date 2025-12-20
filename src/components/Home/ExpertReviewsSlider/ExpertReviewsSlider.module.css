@@ -1,0 +1,150 @@
+.sliderWrapper {
+    padding: 3rem 0;
+    overflow: hidden;
+    background: #fafafa;
+    border-top: 1px solid #f0f0f0;
+    border-bottom: 1px solid #f0f0f0;
+    position: relative;
+}
+
+.loadingState {
+    text-align: center;
+    padding: 2rem;
+    color: var(--text-muted);
+}
+
+.marquee {
+    display: flex;
+    overflow: hidden;
+    user-select: none;
+    mask-image: linear-gradient(to right,
+            transparent,
+            black 10%,
+            black 90%,
+            transparent);
+}
+
+.marqueeContent {
+    flex-shrink: 0;
+    display: flex;
+    justify-content: space-around;
+    min-width: 100%;
+    gap: 2rem;
+    animation: scroll 40s linear infinite;
+}
+
+.marquee:hover .marqueeContent {
+    animation-play-state: paused;
+}
+
+@keyframes scroll {
+    from {
+        transform: translateX(0);
+    }
+
+    to {
+        transform: translateX(calc(-50% - 1rem));
+    }
+}
+
+.reviewCard {
+    flex-shrink: 0;
+    width: 350px;
+    background: white;
+    padding: 1.5rem;
+    border-radius: 12px;
+    border: 1px solid #e5e7eb;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.03);
+    transition: all 0.3s ease;
+}
+
+.reviewCard:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.08);
+    border-color: var(--blue-primary);
+}
+
+.cardHeader {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    margin-bottom: 1rem;
+}
+
+.avatarWrapper {
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    overflow: hidden;
+    background: #f3f4f6;
+    border: 2px solid #fff;
+    box-shadow: 0 0 0 1px #e5e7eb;
+}
+
+.avatarWrapper img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.expertInfo h4 {
+    margin: 0;
+    font-size: 1rem;
+    font-weight: 700;
+    color: var(--text-primary);
+}
+
+.expertInfo span {
+    font-size: 0.8rem;
+    color: var(--text-muted);
+}
+
+.rating {
+    margin-bottom: 0.75rem;
+}
+
+.starIcon {
+    color: #fbbf24;
+    font-size: 0.8rem;
+    margin-right: 2px;
+}
+
+.reviewCard p {
+    margin: 0;
+    font-size: 0.9rem;
+    line-height: 1.6;
+    color: var(--text-secondary);
+    font-style: italic;
+}
+
+.courseLink {
+    display: block;
+    margin-top: 0.75rem;
+    padding-top: 0.75rem;
+    border-top: 1px solid #f0f0f0;
+    font-size: 0.85rem;
+    color: var(--blue-primary);
+    text-decoration: none;
+    transition: color 0.2s ease;
+}
+
+.courseLink:hover {
+    color: var(--blue-dark);
+    text-decoration: underline;
+}
+
+.courseLabel {
+    font-weight: 600;
+    color: var(--text-muted);
+}
+
+@media (max-width: 768px) {
+    .reviewCard {
+        width: 280px;
+        padding: 1.25rem;
+    }
+
+    .marqueeContent {
+        animation-duration: 30s;
+    }
+}
