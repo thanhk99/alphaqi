@@ -1,4 +1,4 @@
-import React from 'react';
+'use client';
 import MainLayout from '@/components/layouts/MainLayout/MainLayout';
 import {
     TeamOutlined,
