@@ -15,6 +15,7 @@ import {
     ShoppingOutlined,
     LogoutOutlined,
     MenuOutlined,
+    CloseOutlined,
     DownOutlined
 } from '@ant-design/icons';
 import styles from './Header.module.css';
@@ -54,8 +55,9 @@ const Header: React.FC = () => {
                 <button
                     className={styles.mobileMenuButton}
                     onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+                    aria-label={mobileMenuOpen ? 'Close menu' : 'Open menu'}
                 >
-                    <MenuOutlined />
+                    {mobileMenuOpen ? <CloseOutlined /> : <MenuOutlined />}
                 </button>
 
                 <nav className={`${styles.nav} ${mobileMenuOpen ? styles.navOpen : ''}`}>

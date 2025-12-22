@@ -13,33 +13,33 @@ const WhyChooseUs = () => {
     const services = [
         {
             id: 1,
-            image: '/imgs/service1.png',
             title: 'Báo cáo vĩ mô ',
-            description: 'Báo cáo vĩ mô là một trong những dịch vụ chính của chúng tôi, cung cấp thông tin chi tiết về thị trường chứng khoán và các xu hướng tài chính.'
+            description: 'Báo cáo vĩ mô là một trong những dịch vụ chính của chúng tôi, cung cấp thông tin chi tiết về thị trường chứng khoán và các xu hướng tài chính.',
+            color: 'linear-gradient(135deg, #667eea 0%, #764ba2 100%)'
         },
         {
             id: 2,
-            image: '/imgs/service2.png',
             title: 'Báo cáo chiến lược đầu tư ',
-            description: 'Báo cáo chiến lược đầu tư là một trong những dịch vụ chính của chúng tôi, cung cấp thông tin chi tiết về thị trường chứng khoán và các xu hướng tài chính.'
+            description: 'Báo cáo chiến lược đầu tư là một trong những dịch vụ chính của chúng tôi, cung cấp thông tin chi tiết về thị trường chứng khoán và các xu hướng tài chính.',
+            color: 'linear-gradient(135deg, #f093fb 0%, #f5576c 100%)'
         },
         {
             id: 3,
-            image: '/imgs/service3.png',
             title: 'Báo cáo công ty , ngành',
-            description: 'Báo cáo công ty, ngành là một trong những dịch vụ chính của chúng tôi, cung cấp thông tin chi tiết về thị trường chứng khoán và các xu hướng tài chính.'
+            description: 'Báo cáo công ty, ngành là một trong những dịch vụ chính của chúng tôi, cung cấp thông tin chi tiết về thị trường chứng khoán và các xu hướng tài chính.',
+            color: 'linear-gradient(135deg, #4facfe 0%, #00f2fe 100%)'
         },
         {
             id: 4,
-            image: '/imgs/service4.png',
             title: 'Báo cáo quản lý tài sản ',
-            description: 'Báo cáo quản lý tài sản là một trong những dịch vụ chính của chúng tôi, cung cấp thông tin chi tiết về thị trường chứng khoán và các xu hướng tài chính.'
+            description: 'Báo cáo quản lý tài sản là một trong những dịch vụ chính của chúng tôi, cung cấp thông tin chi tiết về thị trường chứng khoán và các xu hướng tài chính.',
+            color: 'linear-gradient(135deg, #43e97b 0%, #38f9d7 100%)'
         }
     ];
 
     return (
         <section className={styles.whyChooseUsContainer}>
-            <h2 className={styles.sectionTitle}>Hoạt động & Dịch vụ</h2>
+            <h2 className={styles.sectionTitle}>Báo cáo</h2>
             <Swiper
                 spaceBetween={30}
                 slidesPerView={1.2}
@@ -75,7 +75,7 @@ const WhyChooseUs = () => {
                             <div className={styles.cardInner}>
                                 <div
                                     className={styles.serviceImage}
-                                    style={{ backgroundImage: `url(${service.image})` }}
+                                    style={{ backgroundImage: service.color }}
                                 />
                                 <div className={styles.serviceContent}>
                                     <h3 className={styles.serviceTitle}>{service.title}</h3>

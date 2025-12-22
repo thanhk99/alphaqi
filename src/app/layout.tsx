@@ -6,7 +6,7 @@ import { NotificationProvider } from "@/store/NotificationContext";
 import { Notification } from "@/components/common/Notification/Notification";
 
 export const metadata: Metadata = {
-  title: "FinanceEdu - Học đầu tư tài chính chuyên nghiệp",
+  title: "AlphaQi",
   description: "Nền tảng học đầu tư tài chính hàng đầu Việt Nam",
 };
 

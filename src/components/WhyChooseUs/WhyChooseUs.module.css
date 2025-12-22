@@ -74,22 +74,8 @@
     z-index: 2;
 }
 
-/* Fallback gradients for each service when images don't exist */
-.serviceCard:nth-child(1) .serviceImage {
-    background-image: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-}
+/* Fallback gradients for each service when images don't exist - Now handled by inline styles in JSX */
 
-.serviceCard:nth-child(2) .serviceImage {
-    background-image: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
-}
-
-.serviceCard:nth-child(3) .serviceImage {
-    background-image: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
-}
-
-.serviceCard:nth-child(4) .serviceImage {
-    background-image: linear-gradient(135deg, #43e97b 0%, #38f9d7 100%);
-}
 
 .serviceCard:hover .serviceImage {
     width: 120px;

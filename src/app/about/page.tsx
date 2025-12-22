@@ -37,7 +37,7 @@ export default function AboutPage() {
                                 <p>
                                     Việt Nam đang bước vào giai đoạn tăng tốc tích lũy của cải, và cùng lúc đó là nhu cầu ngày một rõ nét về quản trị gia sản và chuyển giao thế hệ giữa người sáng lập doanh nghiệp và các thế hệ kế thừa. AlphaQi lựa chọn vai trò đơn vị tiên phong mở lối, đồng hành cùng các nhà sáng lập gia tộc và người kế thừa, để di sản không chỉ được bảo toàn mà còn thịnh vượng hơn theo thời gian.
                                 </p>
-                                <p><strong>Với đội ngũ chuyên gia dày dạn kinh nghiệm trong:</strong></p>
+                                <h4 className={styles.subHeading}>Với đội ngũ chuyên gia dày dạn kinh nghiệm trong:</h4>
                                 <ul>
                                     <li>Phân tích đầu tư và cố vấn chiến lược danh mục</li>
                                     <li>Cố vấn Family Office / quản trị gia sản & cấu trúc tài sản</li>
@@ -47,7 +47,7 @@ export default function AboutPage() {
                                 <p>
                                     …chúng tôi cam kết mang đến các giải pháp minh bạch – kỷ luật – phù hợp mục tiêu, giúp bạn đi đúng lộ trình từ tích lũy, tối ưu dòng tiền, đầu tư hiệu quả đến tự do tài chính.
                                 </p>
-                                <p><strong>Nếu bạn đang tìm kiếm một đối tác đáng tin cậy để:</strong></p>
+                                <h4 className={styles.subHeading}>Nếu bạn đang tìm kiếm một đối tác đáng tin cậy để:</h4>
                                 <ul>
                                     <li>Xây dựng chiến lược đầu tư theo mục tiêu và khẩu vị rủi ro</li>
                                     <li>Quản lý gia sản một cách hệ thống, chuẩn bị cho kế hoạch chuyển giao thế hệ</li>

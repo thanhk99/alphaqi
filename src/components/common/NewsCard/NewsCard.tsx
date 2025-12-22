@@ -34,8 +34,8 @@ const NewsCard: React.FC<NewsCardProps> = ({ news }) => {
                 </div>
                 <h3 className={styles.title}>{news.title}</h3>
                 <RichText
-                    content={news.description}
-                    clampLines={3}
+                    content={news.description.replace(/<[^>]+>/g, '')}
+                    clampLines={2}
                     className={styles.description}
                 />
             </div>
