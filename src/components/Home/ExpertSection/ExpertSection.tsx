@@ -16,8 +16,8 @@ export default function ExpertSection() {
                             Từng quản lý danh mục đầu tư trị giá gần 200 triệu USD tại SSIAM với hiệu suất vượt trội.
                         </p>
                         <p>
-                            Với triết lý "Quản lý tài sản bền vững", ông đã giúp hàng nghìn cá nhân và doanh nghiệp
-                            xây dựng lộ trình tài chính vững chắc, đạt được các cột mốc từ tiết kiệm đến tự do tài chính.
+                            Với triết lý "Quản lý tài sản bền vững", ông đã giúp hàng nghìn cá nhân và doanh nghiệp xây dựng lộ trình tài chính vững chắc,
+                            đạt được các cột mốc tự do tài chính, cũng như quản lý gia sản một cách chuẩn mực đem lại giá trị bền vững cho các gia tộc.
                         </p>
                     </div>
                     <div className={styles.expertImage}>
