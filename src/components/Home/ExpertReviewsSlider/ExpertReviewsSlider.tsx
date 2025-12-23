@@ -76,8 +76,8 @@ export default function ExpertReviewsSlider() {
                                 ))}
                             </div>
                             <p>"{review.content}"</p>
-                            <Link href={`/courses/${review.courseId}`} className={styles.courseLink}>
-                                <span className={styles.courseLabel}>Khóa học:</span> {review.courseName}
+                            <Link href={review.courseId ? `/courses/${review.courseId}` : '/courses'} className={styles.courseLink}>
+                                <span className={styles.courseLabel}>Khóa học:</span> {review.courseName || 'Tất cả khóa học'}
                             </Link>
                         </div>
                     ))}

@@ -9,6 +9,7 @@ import CoursesSection from './CoursesSection/CoursesSection';
 import FeaturesSection from './FeaturesSection/FeaturesSection';
 import ExpertSection from './ExpertSection/ExpertSection';
 import ExpertReviewsSlider from './ExpertReviewsSlider/ExpertReviewsSlider';
+import PartnerCompaniesSlider from './PartnerCompaniesSlider/PartnerCompaniesSlider';
 import CTASection from './CTASection/CTASection';
 
 export default function Home() {
@@ -21,6 +22,7 @@ export default function Home() {
             <CoursesSection />
             <FeaturesSection />
             <ExpertReviewsSlider />
+            <PartnerCompaniesSlider />
             <ExpertSection />
             <CTASection />
         </>
