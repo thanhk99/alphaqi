@@ -35,14 +35,12 @@ export default function ServicesPage() {
         {
             icon: <RiseOutlined />,
             title: 'Tư vấn đầu tư',
-            description: 'Chiến lược đầu tư chuyên sâu, phân tích kỹ thuật và cơ bản giúp tối ưu hóa lợi nhuận danh mục.',
-            requiresAuth: true
+            description: 'Chiến lược đầu tư chuyên sâu, phân tích kỹ thuật và cơ bản giúp tối ưu hóa lợi nhuận danh mục.'
         },
         {
             icon: <BankOutlined />,
             title: 'Tư vấn quản lý gia sản',
-            description: 'Hoạch định tài chính toàn diện, bảo toàn và phát triển tài sản bền vững cho cá nhân và gia đình.',
-            requiresAuth: true
+            description: 'Hoạch định tài chính toàn diện, bảo toàn và phát triển tài sản bền vững cho cá nhân và gia đình.'
         },
         {
             icon: <ArrowRightOutlined />,
@@ -97,32 +95,21 @@ export default function ServicesPage() {
                     </div>
 
                     <div className={styles.servicesGrid}>
-                        {services.map((service, index) => {
-                            const isDisabled = (service as any).requiresAuth && !isAuthenticated;
-                            return (
-                                <div
-                                    key={index}
-                                    className={`${styles.serviceCard} ${isDisabled ? styles.disabledCard : ''}`}
-                                >
-                                    <div className={styles.iconWrapper}>
-                                        {service.icon}
-                                    </div>
-                                    <h3 className={styles.serviceTitle}>{service.title}</h3>
-                                    <p className={styles.serviceDesc}>{service.description}</p>
-                                    {isDisabled ? (
-                                        <div className={styles.lockedMessage}>
-                                            <span style={{ fontSize: '0.9rem', color: '#999', display: 'flex', alignItems: 'center', gap: '5px' }}>
-                                                <SafetyCertificateOutlined /> Đăng nhập để xem
-                                            </span>
-                                        </div>
-                                    ) : (
-                                        <a href="/contact" className={styles.serviceLink}>
-                                            Tìm hiểu thêm <ArrowRightOutlined />
-                                        </a>
-                                    )}
+                        {services.map((service, index) => (
+                            <div
+                                key={index}
+                                className={styles.serviceCard}
+                            >
+                                <div className={styles.iconWrapper}>
+                                    {service.icon}
                                 </div>
-                            );
-                        })}
+                                <h3 className={styles.serviceTitle}>{service.title}</h3>
+                                <p className={styles.serviceDesc}>{service.description}</p>
+                                <a href="/contact" className={styles.serviceLink}>
+                                    Tìm hiểu thêm <ArrowRightOutlined />
+                                </a>
+                            </div>
+                        ))}
                     </div>
                 </div>
             </section>
