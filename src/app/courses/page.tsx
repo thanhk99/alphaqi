@@ -13,10 +13,10 @@ export default function CoursesPage() {
     const [courses, setCourses] = useState<Course[]>([]);
     const [categories, setCategories] = useState<CourseCategory[]>([]);
     const [loading, setLoading] = useState(true);
+    const [searchTerm, setSearchTerm] = useState('');
     const [filters, setFilters] = useState({
         search: '',
         category: undefined as string | undefined,
-        priceRange: undefined as string | undefined,
         sort: 'newest'
     });
 
@@ -73,24 +73,6 @@ export default function CoursesPage() {
             result = result.filter(course => course.category === filters.category);
         }
 
-        // Filter by price range
-        if (filters.priceRange) {
-            switch (filters.priceRange) {
-                case 'free':
-                    result = result.filter(course => course.price === 0);
-                    break;
-                case 'under_1m':
-                    result = result.filter(course => course.price < 1000000);
-                    break;
-                case '1m_3m':
-                    result = result.filter(course => course.price >= 1000000 && course.price <= 3000000);
-                    break;
-                case 'above_3m':
-                    result = result.filter(course => course.price > 3000000);
-                    break;
-            }
-        }
-
         // Sort
         switch (filters.sort) {
             case 'newest':
@@ -111,7 +93,7 @@ export default function CoursesPage() {
     };
 
     const handleSearch = (e: React.ChangeEvent<HTMLInputElement>) => {
-        setFilters({ ...filters, search: e.target.value });
+        setSearchTerm(e.target.value);
     };
 
     const handleCategoryChange = (category: string) => {
@@ -121,11 +103,14 @@ export default function CoursesPage() {
         }));
     };
 
-    const handlePriceChange = (range: string) => {
-        setFilters(prev => ({
-            ...prev,
-            priceRange: prev.priceRange === range ? undefined : range
-        }));
+    const handleSearchClick = () => {
+        setFilters({ ...filters, search: searchTerm });
+    };
+
+    const handleKeyDown = (e: React.KeyboardEvent<HTMLInputElement>) => {
+        if (e.key === 'Enter') {
+            setFilters({ ...filters, search: searchTerm });
+        }
     };
 
     return (
@@ -143,10 +128,11 @@ export default function CoursesPage() {
                                 type="text"
                                 placeholder="Tìm kiếm khóa học..."
                                 className={styles.searchInput}
-                                value={filters.search}
+                                value={searchTerm}
                                 onChange={handleSearch}
+                                onKeyDown={handleKeyDown}
                             />
-                            <button className={styles.searchButton}>Tìm kiếm</button>
+                            <button className={styles.searchButton} onClick={handleSearchClick}>Tìm kiếm</button>
                         </div>
                     </div>
                 </div>
@@ -169,25 +155,6 @@ export default function CoursesPage() {
                                                 onChange={() => handleCategoryChange(cat.name)}
                                             />
                                             <span>{cat.name}</span>
-                                        </label>
-                                    ))}
-                                </div>
-
-                                <div className={styles.filterGroup}>
-                                    <h4>Giá</h4>
-                                    {[
-                                        { label: 'Miễn phí', value: 'free' },
-                                        { label: 'Dưới 1 triệu', value: 'under_1m' },
-                                        { label: '1-3 triệu', value: '1m_3m' },
-                                        { label: 'Trên 3 triệu', value: 'above_3m' }
-                                    ].map((range) => (
-                                        <label key={range.value} className={styles.checkbox}>
-                                            <input
-                                                type="checkbox"
-                                                checked={filters.priceRange === range.value}
-                                                onChange={() => handlePriceChange(range.value)}
-                                            />
-                                            <span>{range.label}</span>
                                         </label>
                                     ))}
                                 </div>

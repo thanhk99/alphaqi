@@ -153,7 +153,7 @@ export default function ServicesPage() {
                     <div className={styles.ctaContent}>
                         <h2>Sẵn sàng nâng tầm kiến thức tài chính?</h2>
                         <p className="mt-3">
-                            Liên hệ ngay với FinanceEdu để được tư vấn giải pháp đào tạo phù hợp nhất cho bạn và doanh nghiệp.
+                            Liên hệ ngay với AlphaQi để được tư vấn giải pháp đào tạo phù hợp nhất cho bạn và doanh nghiệp.
                         </p>
                         <a href="/contact" className={styles.ctaButton}>
                             Đăng ký tư vấn <ArrowRightOutlined />

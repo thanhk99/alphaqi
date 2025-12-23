@@ -24,7 +24,7 @@ export default function FeaturesSection() {
         {
             icon: <SafetyCertificateOutlined />,
             title: 'Khoá học thiết kế riêng',
-            description: 'Thiết kế dành riêng cho ngân hàng, không dùng chương trình đóng gói sẵn',
+            description: 'Thiết kế dành riêng cho các tổ chức và cá nhân, không dùng chương trình đóng gói sẵn.',
         },
     ];
 
