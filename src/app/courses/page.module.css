@@ -51,6 +51,8 @@
     padding: 0.5rem;
     border-radius: var(--radius-lg);
     box-shadow: var(--shadow-lg);
+    position: relative;
+    z-index: 10;
 }
 
 .searchIcon {
@@ -66,6 +68,21 @@
     font-size: 1rem;
     padding: 0.75rem;
     font-family: 'Be Vietnam Pro', sans-serif;
+    position: relative;
+    z-index: 11;
+    background: transparent;
+}
+
+.loadingWrapper,
+.noResults {
+    grid-column: 1 / -1;
+    padding: 3rem;
+    text-align: center;
+    background: var(--bg-zinc-50);
+    border-radius: var(--radius-xl);
+    color: var(--text-secondary);
+    font-size: 1.125rem;
+    border: 2px dashed var(--border-gray);
 }
 
 .searchButton {

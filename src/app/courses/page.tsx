@@ -1,6 +1,6 @@
 'use client';
 
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useMemo } from 'react';
 import MainLayout from '@/components/layouts/MainLayout/MainLayout';
 import { SearchOutlined, FilterOutlined } from '@ant-design/icons';
 import CourseCard from '@/components/common/CourseCard/CourseCard';
@@ -10,7 +10,6 @@ import { Course, CourseCategory } from '@/types/course.types';
 
 export default function CoursesPage() {
     const [allCourses, setAllCourses] = useState<Course[]>([]);
-    const [courses, setCourses] = useState<Course[]>([]);
     const [categories, setCategories] = useState<CourseCategory[]>([]);
     const [loading, setLoading] = useState(true);
     const [searchTerm, setSearchTerm] = useState('');
@@ -25,14 +24,10 @@ export default function CoursesPage() {
         fetchAllCourses();
     }, []);
 
-    useEffect(() => {
-        applyFilters();
-    }, [filters, allCourses]);
-
     const fetchCategories = async () => {
         try {
             const data = await courseService.getCategories();
-            setCategories(data);
+            if (data) setCategories(data);
         } catch (error) {
             console.error('Failed to fetch categories:', error);
         }
@@ -41,31 +36,29 @@ export default function CoursesPage() {
     const fetchAllCourses = async () => {
         try {
             setLoading(true);
-            // Fetch all published courses
             const data = await courseService.getCourses({
                 published: true
             });
-            setAllCourses(data);
-            setCourses(data);
+            if (data) setAllCourses(data);
         } catch (error) {
             console.error('Failed to fetch courses:', error);
             setAllCourses([]);
-            setCourses([]);
         } finally {
             setLoading(false);
         }
     };
 
-    const applyFilters = () => {
+    const filteredCourses = useMemo(() => {
         let result = [...allCourses];
 
         // Filter by search
         if (filters.search) {
-            const searchLower = filters.search.toLowerCase();
-            result = result.filter(course =>
-                course.title.toLowerCase().includes(searchLower) ||
-                course.description.toLowerCase().includes(searchLower)
-            );
+            const searchLower = filters.search.toLowerCase().normalize('NFC');
+            result = result.filter(course => {
+                const title = (course.title || '').toLowerCase().normalize('NFC');
+                const desc = (course.description || '').toLowerCase().normalize('NFC');
+                return title.includes(searchLower) || desc.includes(searchLower);
+            });
         }
 
         // Filter by category
@@ -79,20 +72,20 @@ export default function CoursesPage() {
                 result.sort((a, b) => new Date(b.createdAt).getTime() - new Date(a.createdAt).getTime());
                 break;
             case 'popular':
-                result.sort((a, b) => b.enrollmentCount - a.enrollmentCount);
+                result.sort((a, b) => (b.enrollmentCount || 0) - (a.enrollmentCount || 0));
                 break;
             case 'price_asc':
-                result.sort((a, b) => a.price - b.price);
+                result.sort((a, b) => (a.price || 0) - (b.price || 0));
                 break;
             case 'price_desc':
-                result.sort((a, b) => b.price - a.price);
+                result.sort((a, b) => (b.price || 0) - (a.price || 0));
                 break;
         }
 
-        setCourses(result);
-    };
+        return result;
+    }, [filters, allCourses]);
 
-    const handleSearch = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const handleSearchChange = (e: React.ChangeEvent<HTMLInputElement>) => {
         setSearchTerm(e.target.value);
     };
 
@@ -104,12 +97,12 @@ export default function CoursesPage() {
     };
 
     const handleSearchClick = () => {
-        setFilters({ ...filters, search: searchTerm });
+        setFilters(prev => ({ ...prev, search: searchTerm }));
     };
 
-    const handleKeyDown = (e: React.KeyboardEvent<HTMLInputElement>) => {
+    const handleKeyUp = (e: React.KeyboardEvent<HTMLInputElement>) => {
         if (e.key === 'Enter') {
-            setFilters({ ...filters, search: searchTerm });
+            handleSearchClick();
         }
     };
 
@@ -122,15 +115,15 @@ export default function CoursesPage() {
                         <h1>Khám phá khóa học</h1>
 
                         {/* Search Bar */}
-                        <div className={styles.searchBar}>
+                        <div className={styles.searchBar} key="course-search-bar">
                             <SearchOutlined className={styles.searchIcon} />
                             <input
                                 type="text"
                                 placeholder="Tìm kiếm khóa học..."
                                 className={styles.searchInput}
                                 value={searchTerm}
-                                onChange={handleSearch}
-                                onKeyDown={handleKeyDown}
+                                onChange={handleSearchChange}
+                                onKeyUp={handleKeyUp}
                             />
                             <button className={styles.searchButton} onClick={handleSearchClick}>Tìm kiếm</button>
                         </div>
@@ -178,12 +171,18 @@ export default function CoursesPage() {
                             </div>
 
                             {loading ? (
-                                <div>Loading...</div>
+                                <div className={styles.loadingWrapper}>Đang tải khóa học...</div>
                             ) : (
                                 <div className={styles.coursesGrid}>
-                                    {courses.map((course) => (
-                                        <CourseCard key={course.id} course={course} />
-                                    ))}
+                                    {filteredCourses.length > 0 ? (
+                                        filteredCourses.map((course) => (
+                                            <CourseCard key={course.id} course={course} />
+                                        ))
+                                    ) : (
+                                        <div className={styles.noResults}>
+                                            Không tìm thấy khóa học nào phù hợp.
+                                        </div>
+                                    )}
                                 </div>
                             )}
 

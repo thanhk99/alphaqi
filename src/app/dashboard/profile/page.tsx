@@ -67,8 +67,20 @@ export default function ProfilePage() {
         setFormData(prev => ({ ...prev, [name]: value }));
     };
 
+    const validateEmail = (email: string) => {
+        // Must contain @ and . and follows general email format
+        const re = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+        return re.test(email);
+    };
+
     const handleSubmit = async (e: React.FormEvent) => {
         e.preventDefault();
+
+        if (!validateEmail(formData.email)) {
+            setMessage({ type: 'error', text: 'Email không hợp lệ (phải có @ và .)' });
+            return;
+        }
+
         setLoading(true);
         setMessage(null);
 
@@ -78,11 +90,6 @@ export default function ProfilePage() {
                 email: formData.email,
                 phoneNumber: formData.phoneNumber
             });
-
-            // Update local user context if possible, or just show success
-            // Assuming login/auth context has a way to update user, or we just rely on the fact that 
-            // the user object might be updated on next fetch. 
-            // For now, we'll just show success.
             setMessage({ type: 'success', text: 'Cập nhật thông tin thành công!' });
         } catch (error) {
             console.error('Update profile error:', error);
@@ -149,8 +156,8 @@ export default function ProfilePage() {
             return;
         }
 
-        if (passwordForm.newPassword.length < 6) {
-            setMessage({ type: 'error', text: 'Mật khẩu mới phải có ít nhất 6 ký tự' });
+        if (passwordForm.newPassword.length < 8) {
+            setMessage({ type: 'error', text: 'Mật khẩu mới phải có ít nhất 8 ký tự' });
             return;
         }
 
@@ -247,8 +254,9 @@ export default function ProfilePage() {
                                 type="email"
                                 name="email"
                                 value={formData.email}
-                                disabled
+                                onChange={handleChange}
                                 className={styles.input}
+                                placeholder="example@domain.com"
                             />
                         </div>
 
@@ -301,9 +309,9 @@ export default function ProfilePage() {
                             onChange={(e) => setPasswordForm({ ...passwordForm, newPassword: e.target.value })}
                             className={styles.input}
                             required
-                            minLength={6}
+                            minLength={8}
                         />
-                        <small className={styles.hint}>Mật khẩu phải có ít nhất 6 ký tự</small>
+                        <small className={styles.hint}>Mật khẩu phải có ít nhất 8 ký tự</small>
                     </div>
 
                     <div className={styles.formGroup}>

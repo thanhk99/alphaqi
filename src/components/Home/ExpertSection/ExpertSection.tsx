@@ -5,7 +5,7 @@ import styles from './ExpertSection.module.css';
 
 export default function ExpertSection() {
     return (
-        <section className={styles.expertSection}>
+        <section id="expert" className={styles.expertSection}>
             <div className="container">
                 <h2 className={styles.sectionTitle}>Gặp gỡ Chuyên gia</h2>
                 <div className={styles.expertGrid}>

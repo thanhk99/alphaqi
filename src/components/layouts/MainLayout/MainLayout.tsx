@@ -1,6 +1,7 @@
 import React, { ReactNode } from 'react';
 import Header from '../Header/Header';
 import Footer from '../Footer/Footer';
+import FloatingSidebar from '../../common/FloatingSidebar/FloatingSidebar';
 import styles from './MainLayout.module.css';
 
 interface MainLayoutProps {
@@ -13,6 +14,7 @@ const MainLayout: React.FC<MainLayoutProps> = ({ children }) => {
             <Header />
             <main className={styles.main}>{children}</main>
             <Footer />
+            <FloatingSidebar />
         </div>
     );
 };
