@@ -8,12 +8,8 @@ const authRoutes = ['/auth/login', '/auth/register'];
 export function middleware(request: NextRequest) {
     const { pathname } = request.nextUrl;
 
-    // Debug logging
-    console.log('Middleware - Path:', pathname);
-    console.log('Middleware - Cookies:', request.cookies.getAll());
 
     const hasRefreshToken = request.cookies.has('refreshToken');
-    console.log('Middleware - Has Refresh Token:', hasRefreshToken);
 
     const isProtectedRoute = protectedRoutes.some(route => pathname.startsWith(route));
 

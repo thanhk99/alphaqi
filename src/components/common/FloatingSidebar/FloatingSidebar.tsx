@@ -36,7 +36,7 @@ const FloatingSidebar: React.FC = () => {
                     </div>
                     <span className={styles.label}>Chuyên gia</span>
                 </Link>
-                <Link href="https://zalo.me/your_phone_number" target="_blank" className={styles.linkItem}>
+                <Link href="https://www.linkedin.com/in/hanhnm/" target="_blank" className={styles.linkItem}>
                     <div className={styles.iconWrapper}>
                         <CustomerServiceOutlined />
                     </div>

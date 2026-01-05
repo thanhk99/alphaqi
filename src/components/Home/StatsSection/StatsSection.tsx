@@ -5,10 +5,10 @@ import styles from './StatsSection.module.css';
 
 export default function StatsSection() {
     const stats = [
-        { number: '500+', label: 'Khách hàng tin tưởng' },
-        { number: '50M USD+', label: 'Tài sản được tư vấn' },
+        { number: '1000+', label: 'Khách hàng tin tưởng' },
+        { number: '200M USD+', label: 'Tài sản được tư vấn' },
         { number: '20+', label: 'Năm kinh nghiệm' },
-        { number: '95%', label: 'Đạt mục tiêu tài chính' },
+        { number: '98%', label: 'Đạt mục tiêu tài chính' },
     ];
 
     return (
