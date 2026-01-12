@@ -35,18 +35,24 @@ export default function LoginPage() {
             const redirectUrl = searchParams.get('redirect') || '/';
             router.push(redirectUrl);
         } catch (error: any) {
-            console.log('Login error:', error);
-            const errorCode = error.response?.data?.message || error.message;
+            let errorMessage = 'Đăng nhập thất bại. Vui lòng thử lại sau.';
 
-            const ERROR_MAPPING: Record<string, string> = {
-                'INVALID_CREDENTIALS': 'Tên đăng nhập hoặc mật khẩu không đúng',
-                'Bad credentials': 'Tên đăng nhập hoặc mật khẩu không đúng',
-                'USER_NOT_FOUND': 'Tài khoản không tồn tại',
-                'USER_LOCKED': 'Tài khoản của bạn đã bị khóa',
-                'ACCOUNT_DISABLED': 'Tài khoản đã bị vô hiệu hóa',
-            };
+            if (error.response?.status === 401) {
+                errorMessage = 'Tài khoản hoặc mật khẩu không đúng';
+            } else {
+                const errorCode = error.response?.data?.message || error.message;
 
-            const errorMessage = ERROR_MAPPING[errorCode] || errorCode || 'Đăng nhập thất bại. Vui lòng thử lại sau.';
+                const ERROR_MAPPING: Record<string, string> = {
+                    'INVALID_CREDENTIALS': 'Tên đăng nhập hoặc mật khẩu không đúng',
+                    'Bad credentials': 'Tên đăng nhập hoặc mật khẩu không đúng',
+                    'USER_NOT_FOUND': 'Tài khoản không tồn tại',
+                    'USER_LOCKED': 'Tài khoản của bạn đã bị khóa',
+                    'ACCOUNT_DISABLED': 'Tài khoản đã bị vô hiệu hóa',
+                };
+
+                errorMessage = ERROR_MAPPING[errorCode] || errorCode || errorMessage;
+            }
+
             showNotification('error', errorMessage);
             setErrors({ username: errorMessage });
         } finally {

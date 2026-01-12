@@ -6,6 +6,7 @@ import {
     SafetyCertificateOutlined,
     PlayCircleOutlined,
     StarFilled,
+    LinkedinOutlined,
 } from '@ant-design/icons';
 import Button from '@/components/common/Button/Button';
 import { Course } from '@/types/course.types';
@@ -72,9 +73,29 @@ export default function CourseHero({
                         </div>
 
                         <div className={styles.instructorMini}>
-                            <div>
-                                <span>Giảng viên</span>
-                                <strong>{course.instructorName || 'Chưa cập nhật'}</strong>
+                            <img
+                                src="/imgs/avt-Photoroom.png"
+                                alt={course.instructorName || 'Nguyễn Minh Hạnh'}
+                                className={styles.instructorAvatar}
+                                onError={(e) => {
+                                    const img = e.target as HTMLImageElement;
+                                    img.src = 'https://ui-avatars.com/api/?name=' + (course.instructorName || 'Nguyễn Minh Hạnh') + '&background=random';
+                                }}
+                            />
+                            <div className={styles.instructorDetails}>
+                                <span className={styles.instructorLabel}>Giảng viên</span>
+                                <div className={styles.instructorNameWrapper}>
+                                    <strong className={styles.instructorName}>{course.instructorName || 'Nguyễn Minh Hạnh'}</strong>
+                                    <a
+                                        href="https://www.linkedin.com/in/hanhnm/"
+                                        target="_blank"
+                                        rel="noopener noreferrer"
+                                        className={styles.linkedinLink}
+                                        title="LinkedIn Profile"
+                                    >
+                                        <LinkedinOutlined />
+                                    </a>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -148,7 +169,6 @@ export default function CourseHero({
                             )}
 
                             <ul className={styles.featuresList}>
-                                <li><ClockCircleOutlined /> {course.duration || 0} giờ thời lượng</li>
                                 <li><BookOutlined /> {course.lessonCount || 0} bài giảng</li>
                                 <li><SafetyCertificateOutlined /> Chứng chỉ hoàn thành</li>
                                 <li><TeamOutlined /> Hỗ trợ 24/7</li>

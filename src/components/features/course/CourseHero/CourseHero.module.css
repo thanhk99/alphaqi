@@ -114,27 +114,73 @@
 .instructorMini {
     display: flex;
     align-items: center;
-    gap: 1rem;
-    margin-top: 2rem;
+    gap: 1.25rem;
+    margin-top: 2.5rem;
     padding-top: 2rem;
     border-top: 1px solid var(--border-gray);
+    transition: all var(--transition-base);
 }
 
-.instructorMini img {
-    width: 48px;
-    height: 48px;
+.instructorAvatar {
+    width: 64px;
+    height: 64px;
     border-radius: 50%;
-    border: 1px solid var(--border-gray);
+    border: 2px solid var(--blue-light);
+    object-fit: contain;
+    box-shadow: var(--shadow-sm);
+    transition: transform var(--transition-base);
 }
 
-.instructorMini div {
+.instructorMini:hover .instructorAvatar {
+    transform: scale(1.05);
+    border-color: var(--blue-primary);
+}
+
+.instructorDetails {
     display: flex;
     flex-direction: column;
+    justify-content: center;
 }
 
-.instructorMini span {
-    font-size: 0.875rem;
+.instructorLabel {
+    font-size: 0.8125rem;
     color: var(--text-muted);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    font-weight: 500;
+    margin-bottom: 0.25rem;
+}
+
+.instructorNameWrapper {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.instructorName {
+    font-size: 1.25rem;
+    font-weight: 700;
+    color: var(--text-primary);
+    line-height: 1.2;
+}
+
+.linkedinLink {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #0a66c2;
+    font-size: 1.125rem;
+    width: 28px;
+    height: 28px;
+    border-radius: 4px;
+    background: #0a66c215;
+    transition: all var(--transition-base);
+}
+
+.linkedinLink:hover {
+    background: #0a66c2;
+    color: white;
+    transform: translateY(-2px);
 }
 
 .heroCard {

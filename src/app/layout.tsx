@@ -7,7 +7,7 @@ import { Notification } from "@/components/common/Notification/Notification";
 
 export const metadata: Metadata = {
   title: "AlphaQi",
-  description: "Nền tảng học đầu tư tài chính hàng đầu Việt Nam",
+  description: "Nền tảng Quản lý Tài sản hàng đầu Việt Nam",
 };
 
 export default function RootLayout({
