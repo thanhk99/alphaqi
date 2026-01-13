@@ -5,11 +5,15 @@ import MainLayout from '@/components/layouts/MainLayout/MainLayout';
 import { newsService } from '@/services/news.service';
 import { News } from '@/types/news.types';
 import NewsCard from '@/components/common/NewsCard/NewsCard';
+import Pagination from '@/components/common/Pagination/Pagination';
 import styles from './page.module.css';
+
+const ITEMS_PER_PAGE = 6;
 
 export default function NewsListPage() {
     const [newsList, setNewsList] = useState<News[]>([]);
     const [loading, setLoading] = useState(true);
+    const [currentPage, setCurrentPage] = useState(1);
 
     useEffect(() => {
         const fetchNews = async () => {
@@ -27,6 +31,16 @@ export default function NewsListPage() {
         fetchNews();
     }, []);
 
+    // Pagination Logic
+    const totalPages = Math.ceil(newsList.length / ITEMS_PER_PAGE);
+    const startIndex = (currentPage - 1) * ITEMS_PER_PAGE;
+    const currentNews = newsList.slice(startIndex, startIndex + ITEMS_PER_PAGE);
+
+    const handlePageChange = (page: number) => {
+        setCurrentPage(page);
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+    };
+
     return (
         <MainLayout>
             <div className={styles.container}>
@@ -41,11 +55,19 @@ export default function NewsListPage() {
                         <p>Đang tải danh sách tin tức...</p>
                     </div>
                 ) : newsList.length > 0 ? (
-                    <div className={styles.newsGrid}>
-                        {newsList.map((news) => (
-                            <NewsCard key={news.id} news={news} />
-                        ))}
-                    </div>
+                    <>
+                        <div className={styles.newsGrid}>
+                            {currentNews.map((news) => (
+                                <NewsCard key={news.id} news={news} />
+                            ))}
+                        </div>
+
+                        <Pagination
+                            currentPage={currentPage}
+                            totalPages={totalPages}
+                            onPageChange={handlePageChange}
+                        />
+                    </>
                 ) : (
                     <div className={styles.emptyState}>
                         <p>Hiện tại chưa có tin tức nào được đăng tải.</p>

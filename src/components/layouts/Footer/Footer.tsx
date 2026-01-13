@@ -57,7 +57,6 @@ const Footer: React.FC = () => {
                             <li><Link href="/">Câu hỏi thường gặp</Link></li>
                             <li><Link href="/">Điều khoản sử dụng</Link></li>
                             <li><Link href="/">Chính sách bảo mật</Link></li>
-                            <li><Link href="/">Tư vấn đầu tư</Link></li>
                         </ul>
                     </div>
                 </div>

@@ -67,6 +67,9 @@
     margin-top: 2.5rem;
     margin-bottom: 1.5rem;
     color: var(--text-primary);
+    word-break: break-word;
+    overflow-wrap: break-word;
+    max-width: 100%;
 }
 
 .content h3 {

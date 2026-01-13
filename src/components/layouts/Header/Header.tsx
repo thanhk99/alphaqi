@@ -65,6 +65,30 @@ const Header: React.FC = () => {
                         Khóa học
                     </Link>
 
+                    <div className={`${styles.navItemDropdownWrapper} ${activeDropdown === 'reports' ? styles.dropdownVisible : ''}`}>
+                        <Link
+                            href="/reports"
+                            className={styles.navLink}
+                            onClick={(e) => toggleDropdown('reports', e)}
+                        >
+                            Báo cáo <DownOutlined style={{ fontSize: '10px', marginLeft: '4px' }} />
+                        </Link>
+                        <div className={styles.navDropdown}>
+                            <Link href="/reports/macro" className={styles.navDropdownItem} onClick={() => setMobileMenuOpen(false)}>
+                                Báo cáo vĩ mô
+                            </Link>
+                            <Link href="/reports/strategy" className={styles.navDropdownItem} onClick={() => setMobileMenuOpen(false)}>
+                                Báo cáo chiến lược đầu tư
+                            </Link>
+                            <Link href="/reports/industry" className={styles.navDropdownItem} onClick={() => setMobileMenuOpen(false)}>
+                                Báo cáo công ty, nghành
+                            </Link>
+                            <Link href="/reports/asset-management" className={styles.navDropdownItem} onClick={() => setMobileMenuOpen(false)}>
+                                Báo cáo quản lý tài sản
+                            </Link>
+                        </div>
+                    </div>
+
                     <div className={`${styles.navItemDropdownWrapper} ${activeDropdown === 'services' ? styles.dropdownVisible : ''}`}>
                         <Link
                             href="/services"
@@ -82,10 +106,6 @@ const Header: React.FC = () => {
                             </Link>
                         </div>
                     </div>
-
-                    <Link href="/about" className={styles.navLink} onClick={() => setMobileMenuOpen(false)}>
-                        Về AlphaQi
-                    </Link>
 
                     <div className={`${styles.navItemDropdownWrapper} ${activeDropdown === 'news' ? styles.dropdownVisible : ''}`}>
                         <Link
@@ -105,9 +125,23 @@ const Header: React.FC = () => {
                         </div>
                     </div>
 
-                    <Link href="/contact" className={styles.navLink} onClick={() => setMobileMenuOpen(false)}>
-                        Liên hệ
-                    </Link>
+                    <div className={`${styles.navItemDropdownWrapper} ${activeDropdown === 'about' ? styles.dropdownVisible : ''}`}>
+                        <Link
+                            href="/about"
+                            className={styles.navLink}
+                            onClick={(e) => toggleDropdown('about', e)}
+                        >
+                            Về AlphaQi <DownOutlined style={{ fontSize: '10px', marginLeft: '4px' }} />
+                        </Link>
+                        <div className={styles.navDropdown}>
+                            <Link href="/about" className={styles.navDropdownItem} onClick={() => setMobileMenuOpen(false)}>
+                                Giới thiệu
+                            </Link>
+                            <Link href="/contact" className={styles.navDropdownItem} onClick={() => setMobileMenuOpen(false)}>
+                                Liên hệ
+                            </Link>
+                        </div>
+                    </div>
                 </nav>
 
                 <div className={styles.actions}>
