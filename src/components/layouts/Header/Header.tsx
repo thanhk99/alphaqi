@@ -90,19 +90,19 @@ const Header: React.FC = () => {
                     </div>
 
                     <div className={`${styles.navItemDropdownWrapper} ${activeDropdown === 'services' ? styles.dropdownVisible : ''}`}>
-                        <Link
-                            href="/services"
+                        <div
                             className={styles.navLink}
                             onClick={(e) => toggleDropdown('services', e)}
+                            style={{ cursor: 'pointer' }}
                         >
-                            Dịch vụ tổ chức/Cá nhân <DownOutlined style={{ fontSize: '10px', marginLeft: '4px' }} />
-                        </Link>
+                            Dịch vụ <DownOutlined style={{ fontSize: '10px', marginLeft: '4px' }} />
+                        </div>
                         <div className={styles.navDropdown}>
-                            <Link href="/services" className={styles.navDropdownItem} onClick={() => setMobileMenuOpen(false)}>
+                            <Link href="/investment-services" className={styles.navDropdownItem} onClick={() => setMobileMenuOpen(false)}>
                                 Tư vấn đầu tư
                             </Link>
-                            <Link href="/services" className={styles.navDropdownItem} onClick={() => setMobileMenuOpen(false)}>
-                                Tư vấn quản lý gia sản
+                            <Link href="/training-services" className={styles.navDropdownItem} onClick={() => setMobileMenuOpen(false)}>
+                                Wealth Management
                             </Link>
                         </div>
                     </div>

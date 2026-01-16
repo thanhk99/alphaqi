@@ -1,0 +1,293 @@
+.hero {
+    background: var(--gradient-blue);
+    padding: 100px 0;
+    text-align: center;
+    color: var(--text-white);
+    border-bottom-left-radius: 60px;
+    border-bottom-right-radius: 60px;
+    margin-bottom: 80px;
+    position: relative;
+    overflow: hidden;
+    box-shadow: 0 10px 30px rgba(18, 117, 188, 0.15);
+}
+
+.heroContent {
+    position: relative;
+    z-index: 2;
+    max-width: 900px;
+    margin: 0 auto;
+}
+
+.heroTitle {
+    font-size: 3.5rem;
+    font-weight: 800;
+    margin-bottom: 24px;
+    color: white;
+}
+
+.heroSubtitle {
+    font-size: 1.25rem;
+    opacity: 0.95;
+    line-height: 1.8;
+    margin-bottom: 0;
+    color: rgba(255, 255, 255, 0.9);
+}
+
+.servicesSection {
+    padding: 40px 0 80px;
+}
+
+.sectionTitle {
+    text-align: center;
+    margin-bottom: 60px;
+}
+
+.sectionTitle span {
+    display: block;
+    font-size: 0.9rem;
+    text-transform: uppercase;
+    letter-spacing: 3px;
+    color: var(--blue-primary);
+    margin-bottom: 12px;
+    font-weight: 700;
+}
+
+.sectionTitle h2 {
+    font-size: 2.5rem;
+    color: var(--text-primary);
+}
+
+.servicesGrid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    gap: 30px;
+}
+
+.serviceCard {
+    background: var(--bg-white);
+    padding: 40px;
+    border-radius: var(--radius-xl);
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+    transition: all 0.3s ease;
+    border: 1px solid var(--border-gray);
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+}
+
+.serviceCard:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+    border-color: var(--blue-primary);
+}
+
+.iconWrapper {
+    width: 64px;
+    height: 64px;
+    background: var(--blue-light);
+    border-radius: 16px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 28px;
+    color: var(--blue-primary);
+    margin-bottom: 24px;
+    transition: all 0.3s ease;
+}
+
+.serviceCard:hover .iconWrapper {
+    background: var(--blue-primary);
+    color: #fff;
+    transform: scale(1.1);
+}
+
+.serviceTitle {
+    font-size: 1.4rem;
+    margin-bottom: 16px;
+    color: var(--text-primary);
+    font-weight: 700;
+}
+
+.serviceDesc {
+    color: var(--text-secondary);
+    flex-grow: 1;
+    margin-bottom: 24px;
+    line-height: 1.6;
+    font-size: 1rem;
+}
+
+.serviceLink {
+    color: var(--blue-primary);
+    font-weight: 600;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    transition: gap 0.2s;
+}
+
+.serviceLink:hover {
+    gap: 12px;
+}
+
+.disabledCard {
+    opacity: 0.7;
+    filter: grayscale(1);
+    cursor: not-allowed;
+    background: #f9f9f9;
+}
+
+.disabledCard:hover {
+    transform: none;
+    box-shadow: none;
+    border-color: var(--border-gray);
+}
+
+.disabledCard .iconWrapper {
+    background: #e0e0e0;
+    color: #999;
+}
+
+.lockedMessage {
+    background: #f0f0f0;
+    padding: 8px 12px;
+    border-radius: 8px;
+    display: inline-block;
+    align-self: flex-start;
+}
+
+.processSection {
+    background: #f8fafc;
+    padding: 100px 0;
+    margin-top: 60px;
+}
+
+.processSteps {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 30px;
+    margin-top: 60px;
+}
+
+.step {
+    text-align: center;
+    position: relative;
+    padding: 0 10px;
+}
+
+.stepNumber {
+    width: 60px;
+    height: 60px;
+    background: white;
+    color: var(--blue-primary);
+    border: 2px solid var(--blue-primary);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.5rem;
+    font-weight: 800;
+    margin: 0 auto 24px;
+    position: relative;
+    z-index: 2;
+    transition: all 0.3s ease;
+}
+
+.step:hover .stepNumber {
+    background: var(--blue-primary);
+    color: white;
+}
+
+.step::after {
+    content: '';
+    position: absolute;
+    top: 30px;
+    left: 50%;
+    width: 100%;
+    height: 2px;
+    background: #e2e8f0;
+    z-index: 1;
+}
+
+.step:last-child::after {
+    display: none;
+}
+
+.stepTitle {
+    font-size: 1.25rem;
+    font-weight: 700;
+    margin-bottom: 12px;
+    color: var(--text-primary);
+}
+
+.stepDesc {
+    font-size: 0.95rem;
+    color: var(--text-secondary);
+    line-height: 1.6;
+}
+
+.ctaSection {
+    padding: 100px 0;
+    background: var(--gradient-blue-indigo-dark);
+    position: relative;
+    text-align: center;
+    color: white;
+    margin-top: 0;
+}
+
+.ctaSection::before {
+    display: none;
+}
+
+.ctaContent {
+    position: relative;
+    z-index: 1;
+    max-width: 700px;
+    margin: 0 auto;
+}
+
+.ctaContent h2 {
+    color: white;
+}
+
+.ctaContent p {
+    color: white;
+}
+
+.ctaButton {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    background: #fff;
+    color: var(--blue-primary);
+
+    padding: 15px 40px;
+    border-radius: 50px;
+    font-weight: 600;
+    font-size: 1.1rem;
+    margin-top: 30px;
+    transition: transform 0.2s;
+}
+
+.ctaButton:hover {
+    transform: scale(1.05);
+}
+
+@media (max-width: 992px) {
+    .processSteps {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .step::after {
+        display: none;
+    }
+}
+
+@media (max-width: 576px) {
+    .heroTitle {
+        font-size: 2.5rem;
+    }
+
+    .processSteps {
+        grid-template-columns: 1fr;
+    }
+}

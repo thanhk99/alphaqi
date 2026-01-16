@@ -144,8 +144,8 @@ export default function CoursesPage() {
                                         <label key={cat.id} className={styles.checkbox}>
                                             <input
                                                 type="checkbox"
-                                                checked={filters.category === cat.name}
-                                                onChange={() => handleCategoryChange(cat.name)}
+                                                checked={filters.category === cat.id}
+                                                onChange={() => handleCategoryChange(cat.id)}
                                             />
                                             <span>{cat.name}</span>
                                         </label>
@@ -173,17 +173,38 @@ export default function CoursesPage() {
                             {loading ? (
                                 <div className={styles.loadingWrapper}>Đang tải khóa học...</div>
                             ) : (
-                                <div className={styles.coursesGrid}>
-                                    {filteredCourses.length > 0 ? (
-                                        filteredCourses.map((course) => (
-                                            <CourseCard key={course.id} course={course} />
-                                        ))
+                                <>
+                                    {!filters.category && !filters.search ? (
+                                        // Group by Category View
+                                        categories.map((cat) => {
+                                            const catCourses = filteredCourses.filter(c => c.category === cat.id);
+                                            if (catCourses.length === 0) return null;
+                                            return (
+                                                <div key={cat.id} className={styles.categorySection}>
+                                                    <h3 className={styles.categoryTitle}>{cat.name}</h3>
+                                                    <div className={styles.coursesGrid}>
+                                                        {catCourses.map((course) => (
+                                                            <CourseCard key={course.id} course={course} />
+                                                        ))}
+                                                    </div>
+                                                </div>
+                                            );
+                                        })
                                     ) : (
-                                        <div className={styles.noResults}>
-                                            Không tìm thấy khóa học nào phù hợp.
+                                        // Filtered View
+                                        <div className={styles.coursesGrid}>
+                                            {filteredCourses.length > 0 ? (
+                                                filteredCourses.map((course) => (
+                                                    <CourseCard key={course.id} course={course} />
+                                                ))
+                                            ) : (
+                                                <div className={styles.noResults}>
+                                                    Không tìm thấy khóa học nào phù hợp.
+                                                </div>
+                                            )}
                                         </div>
                                     )}
-                                </div>
+                                </>
                             )}
 
                             {/* Pagination - To be implemented with API data */}

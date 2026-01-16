@@ -47,7 +47,8 @@ export interface Lesson {
 export interface CourseCategory {
     id: string;
     name: string;
-    slug: string;
+    code?: string;
+    slug?: string;
     description?: string;
 }
 

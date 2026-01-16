@@ -201,11 +201,22 @@
     border-color: var(--blue-primary);
 }
 
+.categorySection {
+    margin-bottom: 3rem;
+}
+
+.categoryTitle {
+    font-size: 1.5rem;
+    margin-bottom: 1.5rem;
+    color: var(--text-primary);
+    border-left: 4px solid var(--blue-primary);
+    padding-left: 1rem;
+}
+
 .coursesGrid {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
     gap: 2rem;
-    margin-bottom: 3rem;
 }
 
 .courseCard {

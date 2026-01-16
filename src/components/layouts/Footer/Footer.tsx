@@ -33,11 +33,11 @@ const Footer: React.FC = () => {
                     <div className={styles.column}>
                         <h4 className={styles.columnTitle}>Dịch vụ</h4>
                         <ul className={styles.links}>
-                            <li><Link href="/courses">Tư vấn đầu tư khách hàng cá nhân & tổ chức </Link></li>
-                            <li><Link href="/courses">Ngân hàng đầu tư </Link></li>
-                            <li><Link href="/courses">Quản lý tài sản </Link></li>
-                            <li><Link href="/courses">Đào tạo tài chỉnh  </Link></li>
-                            <li><Link href="/courses">Quantitative Trading  </Link></li>
+                            <li><Link href="/investment-services">Tư vấn đầu tư</Link></li>
+                            <li><Link href="/investment-services">Ngân hàng đầu tư </Link></li>
+                            <li><Link href="/investment-services">Quản lý tài sản </Link></li>
+                            <li><Link href="/training-services">Đào tạo tài chính  </Link></li>
+                            <li><Link href="/training-services">Dữ liệu & Quantitative Trading  </Link></li>
                         </ul>
                     </div>
 
