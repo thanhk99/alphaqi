@@ -4,9 +4,9 @@ import React from 'react';
 import MainLayout from '@/components/layouts/MainLayout/MainLayout';
 import {
     RiseOutlined,
-    ArrowRightOutlined,
     BankOutlined,
-    DollarOutlined
+    DollarOutlined,
+    ArrowRightOutlined
 } from '@ant-design/icons';
 import styles from './page.module.css';
 
@@ -16,7 +16,8 @@ export default function InvestmentServicesPage() {
         {
             icon: <RiseOutlined />,
             title: 'Tư vấn đầu tư',
-            description: 'Chiến lược đầu tư chuyên sâu, phân tích kỹ thuật và cơ bản giúp tối ưu hóa lợi nhuận danh mục.'
+            description: 'Chiến lược đầu tư chuyên sâu, phân tích định lượng và cơ bản giúp tối ưu hóa lợi nhuận danh mục.',
+            link: '/investment-services/consulting'
         },
         {
             icon: <BankOutlined />,
@@ -27,7 +28,19 @@ export default function InvestmentServicesPage() {
             icon: <DollarOutlined />,
             title: 'Tư vấn ngân hàng đầu tư',
             description: 'Tư vấn cấu trúc vốn, M&A, IPO và huy động vốn chiến lược cho doanh nghiệp, tối ưu hóa giá trị công ty.'
+        },
+        {
+            icon: <DollarOutlined />,
+            title: 'Dịch vụ Family Office',
+            description: 'Dịch vụ setup thành lập family office, vận hành hoạt động đầu tư cho family office với vai trò CIO của Family Office, các hoạt động tư vấn về kinh doanh, vận hành, tài chính, đầu tư,... hàng ngày. Đi kèm với đó là các dịch vụ về pháp lý, thuế, bảo hiểm, đào tạo các thế hệ kế cận nối nghiệp gia đình từng bước một và đảm bảo thế hệ kế cận có thể vận hành family office thành công trong tương lai.'
+        },
+        {
+            icon: <DollarOutlined />,
+            title: 'Đào tạo doanh nghiệp',
+            description: 'Chúng tôi cung cấp các khóa học đào tạo cho doanh nghiệp với sự cá nhân hóa từ ngân hàng các modul học có sẵn của chúng tôi về các chủ đề đa dạng để đem lại lợi ích thực tế cho doanh nghiệp trong quá trình phát triển của doanh nghiệp. Các khóa học đa dạng như:',
+            link: '/training-services/corporate'
         }
+
     ];
 
     const steps = [
@@ -59,7 +72,7 @@ export default function InvestmentServicesPage() {
             <section className={styles.hero}>
                 <div className="container">
                     <div className={styles.heroContent}>
-                        <h1 className={styles.heroTitle}>Giải pháp Đầu tư & Quản lý Tài sản</h1>
+                        <h1 className={styles.heroTitle}>Giải pháp Quản lý Gia sản và Family Office cho các gia đình.</h1>
                         <p className={styles.heroSubtitle}>
                             Kiến tạo thịnh vượng bền vững với các giải pháp tài chính chuyên sâu từ AlphaQi.
                         </p>
@@ -86,7 +99,7 @@ export default function InvestmentServicesPage() {
                                 </div>
                                 <h3 className={styles.serviceTitle}>{service.title}</h3>
                                 <p className={styles.serviceDesc}>{service.description}</p>
-                                <a href="/contact" className={styles.serviceLink}>
+                                <a href={service.link || '/contact'} className={styles.serviceLink}>
                                     Tìm hiểu thêm <ArrowRightOutlined />
                                 </a>
                             </div>

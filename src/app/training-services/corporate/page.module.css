@@ -1,0 +1,210 @@
+.hero {
+    background-color: #f8f9fa;
+    padding: 80px 0;
+    position: relative;
+    overflow: hidden;
+}
+
+.heroContent {
+    max-width: 800px;
+    margin: 0 auto;
+    text-align: center;
+}
+
+.heroTitle {
+    font-size: 48px;
+    font-weight: 700;
+    color: #000;
+    margin-bottom: 24px;
+    line-height: 1.2;
+}
+
+.highlightText {
+    color: #1890ff;
+}
+
+.heroSubtitle {
+    font-size: 18px;
+    color: #666;
+    line-height: 1.6;
+    margin-bottom: 32px;
+    max-width: 600px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.heroContentLeft {
+    text-align: left;
+    max-width: 100%;
+}
+
+.heroContentLeft .heroSubtitle {
+    margin-left: 0;
+}
+
+.advisorButton {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    height: 48px;
+    padding: 0 32px;
+    background-color: #1890ff;
+    color: #fff;
+    font-size: 16px;
+    font-weight: 600;
+    border-radius: 6px;
+    text-decoration: none;
+    transition: all 0.3s ease;
+}
+
+.advisorButton:hover {
+    background-color: #40a9ff;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(24, 144, 255, 0.3);
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 24px;
+}
+
+.heroSection {
+    display: flex;
+    gap: 60px;
+    align-items: flex-start;
+    padding: 80px 0;
+}
+
+.heroLeft {
+    flex: 1;
+}
+
+.tag {
+    display: inline-block;
+    padding: 6px 16px;
+    background-color: #e6f7ff;
+    color: #1890ff;
+    border-radius: 4px;
+    font-size: 14px;
+    font-weight: 600;
+    margin-bottom: 24px;
+    text-transform: uppercase;
+}
+
+.heroRight {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+}
+
+.serviceCard {
+    background: #fff;
+    border: 1px solid #ebeef5;
+    border-radius: 12px;
+    padding: 24px;
+    display: flex;
+    align-items: flex-start;
+    transition: all 0.3s ease;
+}
+
+.serviceCard:hover {
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+    border-color: #d9d9d9;
+    transform: translateY(-2px);
+}
+
+.iconWrapper {
+    width: 48px;
+    height: 48px;
+    border-radius: 8px;
+    background-color: #e6f7ff;
+    color: #1890ff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 24px;
+    margin-right: 20px;
+    flex-shrink: 0;
+}
+
+.cardContent {
+    flex: 1;
+}
+
+.cardTitle {
+    font-size: 18px;
+    font-weight: 700;
+    color: #1f1f1f;
+    margin-bottom: 8px;
+}
+
+.cardDesc {
+    font-size: 14px;
+    color: #666;
+    line-height: 1.6;
+    margin: 0;
+}
+
+.ctaSection {
+    background-color: #f8f9fa;
+    padding: 60px 0 100px;
+}
+
+.ctaBox {
+    background-color: #e6f7ff;
+    border-radius: 16px;
+    padding: 48px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    border: 1px solid #bae7ff;
+}
+
+.ctaText h2 {
+    font-size: 24px;
+    font-weight: 700;
+    color: #1f1f1f;
+    margin-bottom: 12px;
+}
+
+.ctaText p {
+    color: #595959;
+    margin: 0;
+    font-size: 16px;
+}
+
+.ctaButton {
+    background-color: #1890ff;
+    color: white;
+    padding: 12px 24px;
+    border-radius: 6px;
+    font-weight: 600;
+    text-decoration: none;
+    transition: all 0.3s;
+    white-space: nowrap;
+    margin-left: 24px;
+}
+
+.ctaButton:hover {
+    background-color: #40a9ff;
+    box-shadow: 0 4px 12px rgba(24, 144, 255, 0.3);
+}
+
+@media (max-width: 992px) {
+    .heroSection {
+        flex-direction: column;
+        gap: 40px;
+    }
+
+    .ctaBox {
+        flex-direction: column;
+        text-align: center;
+        gap: 24px;
+    }
+
+    .ctaButton {
+        margin-left: 0;
+    }
+}
