@@ -6,7 +6,8 @@ import {
     RiseOutlined,
     BankOutlined,
     DollarOutlined,
-    ArrowRightOutlined
+    ArrowRightOutlined,
+    DatabaseOutlined
 } from '@ant-design/icons';
 import styles from './page.module.css';
 
@@ -20,27 +21,21 @@ export default function InvestmentServicesPage() {
             link: '/investment-services/consulting'
         },
         {
-            icon: <BankOutlined />,
-            title: 'Tư vấn quản lý gia sản',
-            description: 'Hoạch định tài chính toàn diện, bảo toàn và phát triển tài sản bền vững cho cá nhân và gia đình.'
-        },
-        {
             icon: <DollarOutlined />,
             title: 'Tư vấn ngân hàng đầu tư',
             description: 'Tư vấn cấu trúc vốn, M&A, IPO và huy động vốn chiến lược cho doanh nghiệp, tối ưu hóa giá trị công ty.'
         },
         {
-            icon: <DollarOutlined />,
-            title: 'Dịch vụ Family Office',
-            description: 'Dịch vụ setup thành lập family office, vận hành hoạt động đầu tư cho family office với vai trò CIO của Family Office, các hoạt động tư vấn về kinh doanh, vận hành, tài chính, đầu tư,... hàng ngày. Đi kèm với đó là các dịch vụ về pháp lý, thuế, bảo hiểm, đào tạo các thế hệ kế cận nối nghiệp gia đình từng bước một và đảm bảo thế hệ kế cận có thể vận hành family office thành công trong tương lai.'
+            icon: <DatabaseOutlined />,
+            title: 'Dịch vụ dữ liệu & báo cáo',
+            description: 'Báo cáo phân tích vĩ mô, ngành và doanh nghiệp định kỳ hỗ trợ ra quyết định đầu tư chính xác.'
         },
         {
             icon: <DollarOutlined />,
             title: 'Đào tạo doanh nghiệp',
-            description: 'Chúng tôi cung cấp các khóa học đào tạo cho doanh nghiệp với sự cá nhân hóa từ ngân hàng các modul học có sẵn của chúng tôi về các chủ đề đa dạng để đem lại lợi ích thực tế cho doanh nghiệp trong quá trình phát triển của doanh nghiệp. Các khóa học đa dạng như:',
-            link: '/training-services/corporate'
-        }
-
+            description: 'Các khóa học tài chính, đầu tư và quản lý tài sản được thiết kế riêng phù hợp với đặc thù của từng doanh nghiệp.',
+            link: '/investment-services/corporate'
+        },
     ];
 
     const steps = [

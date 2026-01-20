@@ -7,18 +7,14 @@ import {
     SolutionOutlined,
     BankOutlined,
     ArrowRightOutlined,
-    DatabaseOutlined
+    DatabaseOutlined,
+    DollarOutlined
 } from '@ant-design/icons';
 import styles from './page.module.css';
 
 export default function TrainingServicesPage() {
 
     const services = [
-        {
-            icon: <TeamOutlined />,
-            title: 'Đào tạo Doanh nghiệp',
-            description: 'Các khóa học tài chính, đầu tư và quản lý tài sản được thiết kế riêng phù hợp với đặc thù của từng doanh nghiệp.'
-        },
         {
             icon: <SolutionOutlined />,
             title: 'Tư vấn Tài chính Cá nhân',
@@ -30,10 +26,16 @@ export default function TrainingServicesPage() {
             description: 'Liên kết với các trường đại học, tổ chức giáo dục để triển khai các môn học thực chiến về thị trường chứng khoán.'
         },
         {
-            icon: <DatabaseOutlined />,
-            title: 'Cung cấp Dữ liệu',
-            description: 'Báo cáo phân tích vĩ mô, ngành và doanh nghiệp định kỳ hỗ trợ ra quyết định đầu tư chính xác.'
-        }
+            icon: <BankOutlined />,
+            title: 'Tư vấn quản lý gia sản',
+            description: 'Hoạch định tài chính toàn diện, bảo toàn và phát triển tài sản bền vững cho cá nhân và gia đình.'
+        },
+        {
+            icon: <DollarOutlined />,
+            title: 'Dịch vụ Family Office',
+            description: 'Dịch vụ setup thành lập family office, vận hành hoạt động đầu tư cho family office với vai trò CIO của Family Office, các hoạt động tư vấn về kinh doanh, vận hành, tài chính, đầu tư,... hàng ngày. Đi kèm với đó là các dịch vụ về pháp lý, thuế, bảo hiểm, đào tạo các thế hệ kế cận nối nghiệp gia đình từng bước một và đảm bảo thế hệ kế cận có thể vận hành family office thành công trong tương lai.'
+        },
+
     ];
 
     const steps = [
