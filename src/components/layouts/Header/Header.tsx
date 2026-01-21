@@ -101,7 +101,7 @@ const Header: React.FC = () => {
                             <Link href="/investment-services" className={styles.navDropdownItem} onClick={() => setMobileMenuOpen(false)}>
                                 Tư vấn đầu tư
                             </Link>
-                            <Link href="/training-services" className={styles.navDropdownItem} onClick={() => setMobileMenuOpen(false)}>
+                            <Link href="/wealth" className={styles.navDropdownItem} onClick={() => setMobileMenuOpen(false)}>
                                 Wealth Management
                             </Link>
                         </div>

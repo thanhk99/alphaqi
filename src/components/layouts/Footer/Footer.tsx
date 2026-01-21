@@ -36,8 +36,8 @@ const Footer: React.FC = () => {
                             <li><Link href="/investment-services">Tư vấn đầu tư</Link></li>
                             <li><Link href="/investment-services">Ngân hàng đầu tư </Link></li>
                             <li><Link href="/investment-services">Quản lý tài sản </Link></li>
-                            <li><Link href="/training-services">Đào tạo tài chính  </Link></li>
-                            <li><Link href="/training-services">Dữ liệu & Quantitative Trading  </Link></li>
+                            <li><Link href="/wealth">Đào tạo tài chính  </Link></li>
+                            <li><Link href="/wealth">Dữ liệu & Quantitative Trading  </Link></li>
                         </ul>
                     </div>
 

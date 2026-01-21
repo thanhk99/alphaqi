@@ -23,12 +23,14 @@ export default function InvestmentServicesPage() {
         {
             icon: <DollarOutlined />,
             title: 'Tư vấn ngân hàng đầu tư',
-            description: 'Tư vấn cấu trúc vốn, M&A, IPO và huy động vốn chiến lược cho doanh nghiệp, tối ưu hóa giá trị công ty.'
+            description: 'Tư vấn cấu trúc vốn, M&A, IPO và huy động vốn chiến lược cho doanh nghiệp, tối ưu hóa giá trị công ty.',
+            link: '/investment-services/investment-bank'
         },
         {
             icon: <DatabaseOutlined />,
             title: 'Dịch vụ dữ liệu & báo cáo',
-            description: 'Báo cáo phân tích vĩ mô, ngành và doanh nghiệp định kỳ hỗ trợ ra quyết định đầu tư chính xác.'
+            description: 'Báo cáo phân tích vĩ mô, ngành và doanh nghiệp định kỳ hỗ trợ ra quyết định đầu tư chính xác.',
+            link: '/investment-services/data-reports'
         },
         {
             icon: <DollarOutlined />,

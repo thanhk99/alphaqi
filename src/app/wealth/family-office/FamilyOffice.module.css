@@ -1,0 +1,236 @@
+.pageContainer {
+    background-color: #ffffff;
+    color: var(--text-primary);
+    font-family: 'Inter', sans-serif;
+    padding-bottom: var(--spacing-3xl);
+}
+
+.hero {
+    padding: var(--spacing-3xl) 0 var(--spacing-2xl);
+}
+
+.heroTag {
+    display: inline-block;
+    color: var(--blue-primary);
+    font-size: 0.75rem;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    margin-bottom: var(--spacing-sm);
+    border-bottom: 2px solid var(--blue-primary);
+    padding-bottom: 2px;
+}
+
+.heroTitle {
+    font-size: 3rem;
+    font-weight: 700;
+    margin-bottom: var(--spacing-md);
+    color: #1a1a1a;
+}
+
+.heroSubtitle {
+    font-size: 1.125rem;
+    color: var(--text-secondary);
+    max-width: 800px;
+    line-height: 1.6;
+}
+
+/* Service Cards */
+.serviceGrid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: var(--spacing-2xl);
+    padding: var(--spacing-2xl) 0;
+}
+
+.serviceCard {
+    display: flex;
+    flex-direction: column;
+}
+
+.cardImageWrapper {
+    width: 100%;
+    aspect-ratio: 16/10;
+    position: relative;
+    border-radius: var(--radius-lg);
+    overflow: hidden;
+    margin-bottom: var(--spacing-lg);
+}
+
+.cardImage {
+    object-fit: cover;
+}
+
+.cardTag {
+    font-size: 0.7rem;
+    color: var(--blue-primary);
+    font-weight: 700;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    margin-bottom: var(--spacing-xs);
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-xs);
+}
+
+.cardTitle {
+    font-size: 1.25rem;
+    font-weight: 700;
+    color: #1a1a1a;
+    margin-bottom: var(--spacing-sm);
+}
+
+.cardDesc {
+    font-size: 0.9rem;
+    color: var(--text-secondary);
+    line-height: 1.6;
+}
+
+/* Core Values Section */
+.valuesSection {
+    background-color: #fafafa;
+    padding: var(--spacing-3xl) 0;
+    text-align: center;
+}
+
+.sectionTitle {
+    font-size: 2rem;
+    font-weight: 700;
+    color: #1a1a1a;
+    margin-bottom: var(--spacing-sm);
+}
+
+.sectionSubtitle {
+    color: var(--text-secondary);
+    max-width: 600px;
+    margin: 0 auto var(--spacing-2xl);
+    line-height: 1.6;
+}
+
+.valueGrid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: var(--spacing-xl);
+}
+
+.valueCard {
+    background: white;
+    padding: var(--spacing-2xl) var(--spacing-xl);
+    border-radius: var(--radius-lg);
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.03);
+    text-align: left;
+}
+
+.valueIcon {
+    width: 40px;
+    height: 40px;
+    background: #eef6ff;
+    color: var(--blue-primary);
+    border-radius: var(--radius-md);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.25rem;
+    margin-bottom: var(--spacing-lg);
+}
+
+.valueTitle {
+    font-size: 1.125rem;
+    font-weight: 700;
+    margin-bottom: var(--spacing-sm);
+}
+
+.valueDesc {
+    font-size: 0.875rem;
+    color: var(--text-secondary);
+    line-height: 1.6;
+}
+
+/* CTA Section */
+.ctaBox {
+    background: #eaf4ff;
+    border-radius: var(--radius-2xl);
+    padding: var(--spacing-3xl);
+    text-align: center;
+    margin: var(--spacing-3xl) 0;
+}
+
+.ctaTitle {
+    font-size: 2.25rem;
+    font-weight: 700;
+    margin-bottom: var(--spacing-md);
+}
+
+.ctaDesc {
+    color: var(--text-secondary);
+    margin-bottom: var(--spacing-2xl);
+}
+
+.ctaButtons {
+    display: flex;
+    justify-content: center;
+    gap: var(--spacing-md);
+}
+
+.primaryBtn {
+    background: var(--blue-primary);
+    color: white;
+    padding: var(--spacing-md) var(--spacing-2xl);
+    border-radius: var(--radius-md);
+    font-weight: 600;
+    text-decoration: none;
+    transition: background 0.3s;
+}
+
+.primaryBtn:hover {
+    background: var(--blue-hover);
+}
+
+.secondaryBtn {
+    background: white;
+    color: var(--text-primary);
+    padding: var(--spacing-md) var(--spacing-2xl);
+    border-radius: var(--radius-md);
+    font-weight: 600;
+    text-decoration: none;
+    border: 1px solid #e1e1e1;
+    transition: background 0.3s;
+}
+
+.secondaryBtn:hover {
+    background: #f8f8f8;
+}
+
+.footerNote {
+    text-align: center;
+    font-size: 0.75rem;
+    color: var(--text-muted);
+    margin-top: var(--spacing-xl);
+}
+
+@media (max-width: 1024px) {
+
+    .serviceGrid,
+    .valueGrid {
+        grid-template-columns: 1fr 1fr;
+    }
+}
+
+@media (max-width: 768px) {
+    .heroTitle {
+        font-size: 2.25rem;
+    }
+
+    .serviceGrid,
+    .valueGrid {
+        grid-template-columns: 1fr;
+    }
+
+    .ctaBox {
+        padding: var(--spacing-xl);
+    }
+
+    .ctaButtons {
+        flex-direction: column;
+    }
+}

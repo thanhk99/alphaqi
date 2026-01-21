@@ -22,18 +22,20 @@ export default function TrainingServicesPage() {
         },
         {
             icon: <BankOutlined />,
-            title: 'Hợp tác Đào tạo',
-            description: 'Liên kết với các trường đại học, tổ chức giáo dục để triển khai các môn học thực chiến về thị trường chứng khoán.'
+            title: 'Gợi ý phân bố gia sản',
+            description: 'Định kỳ hàng tháng chúng tôi sẽ có báo cáo gợi ý phân bổ tài sản cho khách hàng. Báo cáo được upload lên đây và phải có tài khoản mới xem được báo cáo. '
         },
         {
             icon: <BankOutlined />,
             title: 'Tư vấn quản lý gia sản',
-            description: 'Hoạch định tài chính toàn diện, bảo toàn và phát triển tài sản bền vững cho cá nhân và gia đình.'
+            description: 'Hoạch định tài chính toàn diện, bảo toàn và phát triển tài sản bền vững cho cá nhân và gia đình.',
+            link: '/wealth/asset-manage'
         },
         {
             icon: <DollarOutlined />,
             title: 'Dịch vụ Family Office',
-            description: 'Dịch vụ setup thành lập family office, vận hành hoạt động đầu tư cho family office với vai trò CIO của Family Office, các hoạt động tư vấn về kinh doanh, vận hành, tài chính, đầu tư,... hàng ngày. Đi kèm với đó là các dịch vụ về pháp lý, thuế, bảo hiểm, đào tạo các thế hệ kế cận nối nghiệp gia đình từng bước một và đảm bảo thế hệ kế cận có thể vận hành family office thành công trong tương lai.'
+            description: 'Dịch vụ setup thành lập family office, vận hành hoạt động đầu tư cho family office với vai trò CIO của Family Office, các hoạt động tư vấn về kinh doanh, vận hành, tài chính, đầu tư,... hàng ngày.',
+            link: '/wealth/family-office'
         },
 
     ];
@@ -94,7 +96,7 @@ export default function TrainingServicesPage() {
                                 </div>
                                 <h3 className={styles.serviceTitle}>{service.title}</h3>
                                 <p className={styles.serviceDesc}>{service.description}</p>
-                                <a href="/contact" className={styles.serviceLink}>
+                                <a href={service.link} className={styles.serviceLink}>
                                     Tìm hiểu thêm <ArrowRightOutlined />
                                 </a>
                             </div>
