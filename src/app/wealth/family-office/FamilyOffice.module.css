@@ -184,6 +184,7 @@
 
 .primaryBtn:hover {
     background: var(--blue-hover);
+    color: white;
 }
 
 .secondaryBtn {

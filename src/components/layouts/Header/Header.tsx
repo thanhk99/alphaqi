@@ -74,6 +74,10 @@ const Header: React.FC = () => {
                             Báo cáo <DownOutlined style={{ fontSize: '10px', marginLeft: '4px' }} />
                         </Link>
                         <div className={styles.navDropdown}>
+                            <Link href="/reports/cio" className={styles.navDropdownItem} onClick={() => setMobileMenuOpen(false)}>
+                                Báo cáo CIO
+                            </Link>
+
                             <Link href="/reports/macro" className={styles.navDropdownItem} onClick={() => setMobileMenuOpen(false)}>
                                 Báo cáo vĩ mô
                             </Link>

@@ -133,7 +133,6 @@ export default function FamilyOfficePage() {
                         </p>
                         <div className={styles.ctaButtons}>
                             <a href="/contact" className={styles.primaryBtn}>Đặt lịch tư vấn</a>
-                            <a href="#" className={styles.secondaryBtn}>Tải Brochure dịch vụ</a>
                         </div>
                     </div>
                 </section>

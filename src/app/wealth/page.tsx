@@ -12,18 +12,23 @@ import {
 } from '@ant-design/icons';
 import styles from './page.module.css';
 
-export default function TrainingServicesPage() {
+import { useRouter } from 'next/navigation';
+
+export default function WealthPage() {
+    const router = useRouter();
 
     const services = [
         {
             icon: <SolutionOutlined />,
             title: 'Tư vấn Tài chính Cá nhân',
-            description: 'Dịch vụ Coaching 1-1 giúp xây dựng lộ trình tự do tài chính, cơ cấu danh mục đầu tư an toàn và hiệu quả.'
+            description: 'Dịch vụ Coaching 1-1 giúp xây dựng lộ trình tự do tài chính, cơ cấu danh mục đầu tư an toàn và hiệu quả.',
+            link: '/investment-services/consulting'
         },
         {
             icon: <BankOutlined />,
-            title: 'Gợi ý phân bố gia sản',
-            description: 'Định kỳ hàng tháng chúng tôi sẽ có báo cáo gợi ý phân bổ tài sản cho khách hàng. Báo cáo được upload lên đây và phải có tài khoản mới xem được báo cáo. '
+            title: 'Gợi ý phân bổ gia sản',
+            description: 'Định kỳ hàng tháng chúng tôi sẽ có báo cáo gợi ý phân bổ tài sản cho khách hàng. Báo cáo được cập nhật vào ngày làm việc đầu tiên của mỗi tháng.',
+            link: '/reports/asset-allocation'
         },
         {
             icon: <BankOutlined />,
@@ -43,23 +48,23 @@ export default function TrainingServicesPage() {
     const steps = [
         {
             number: '01',
-            title: 'Khảo sát Nhu cầu',
-            description: 'Lắng nghe và phân tích mục tiêu đào tạo của doanh nghiệp/cá nhân.'
+            title: 'Thấu hiểu Mục tiêu',
+            description: 'Phân tích thực trạng tài chính và mong muốn phát triển tài sản của khách hàng.'
         },
         {
             number: '02',
-            title: 'Thiết kế Lộ trình',
-            description: 'Xây dựng nội dung, phương pháp và thời lượng tối ưu.'
+            title: 'Thiết kế Giải pháp',
+            description: 'Xây dựng danh mục đầu tư và lộ trình quản lý gia sản tối ưu, bền vững.'
         },
         {
             number: '03',
-            title: 'Triển khai Đào tạo',
-            description: 'Giảng dạy bởi đội ngũ chuyên gia, kết hợp lý thuyết và thực hành.'
+            title: 'Thực thi & Giám sát',
+            description: 'Triển khai các hoạt động đầu tư và theo dõi sát sao biến động thị trường.'
         },
         {
             number: '04',
-            title: 'Đánh giá Hiệu quả',
-            description: 'Kiểm tra kiến thức, cấp chứng chỉ và hỗ trợ sau đào tạo.'
+            title: 'Báo cáo & Tối ưu',
+            description: 'Định kỳ đánh giá hiệu quả và điều chỉnh danh mục để đạt mục tiêu đề ra.'
         }
     ];
 
@@ -69,9 +74,9 @@ export default function TrainingServicesPage() {
             <section className={styles.hero}>
                 <div className="container">
                     <div className={styles.heroContent}>
-                        <h1 className={styles.heroTitle}>Giải pháp Đào tạo & Dữ liệu</h1>
+                        <h1 className={styles.heroTitle}>Quản lý Gia sản & Đầu tư</h1>
                         <p className={styles.heroSubtitle}>
-                            Nâng tầm kiến thức, tối ưu hóa lợi nhuận. AlphaQi đồng hành cùng doanh nghiệp và nhà đầu tư kiến tạo thịnh vượng bền vững.
+                            Bảo toàn giá trị, kiến tạo thịnh vượng. AlphaQi đồng hành cùng quý khách hàng trên con đường tự do tài chính và truyền giữ gia sản.
                         </p>
                     </div>
                 </div>
@@ -81,24 +86,31 @@ export default function TrainingServicesPage() {
             <section className={styles.servicesSection}>
                 <div className="container">
                     <div className={styles.sectionTitle}>
-                        <span>Dịch vụ Đào tạo</span>
-                        <h2>Đa dạng - Chuyên sâu - Thực chiến</h2>
+                        <span>Giải pháp Chuyên biệt</span>
+                        <h2>Wealth Management & Personal Finance</h2>
                     </div>
 
                     <div className={styles.servicesGrid}>
                         {services.map((service, index) => (
                             <div
                                 key={index}
-                                className={styles.serviceCard}
+                                className={`${styles.serviceCard} ${service.link ? styles.clickableCard : ''}`}
+                                onClick={() => service.link && router.push(service.link)}
                             >
                                 <div className={styles.iconWrapper}>
                                     {service.icon}
                                 </div>
                                 <h3 className={styles.serviceTitle}>{service.title}</h3>
                                 <p className={styles.serviceDesc}>{service.description}</p>
-                                <a href={service.link} className={styles.serviceLink}>
-                                    Tìm hiểu thêm <ArrowRightOutlined />
-                                </a>
+                                {service.link ? (
+                                    <div className={styles.serviceLink}>
+                                        Tìm hiểu thêm <ArrowRightOutlined />
+                                    </div>
+                                ) : (
+                                    <div className={styles.lockedMessage}>
+                                        Sắp ra mắt
+                                    </div>
+                                )}
                             </div>
                         ))}
                     </div>
@@ -109,8 +121,8 @@ export default function TrainingServicesPage() {
             <section className={styles.processSection}>
                 <div className="container">
                     <div className={styles.sectionTitle}>
-                        <span>Quy trình Hợp tác</span>
-                        <h2>Chuyên nghiệp & Tận tâm</h2>
+                        <span>Quy trình Tư vấn</span>
+                        <h2>Chuyên nghiệp & Minh bạch</h2>
                     </div>
 
                     <div className={styles.processSteps}>
@@ -129,12 +141,12 @@ export default function TrainingServicesPage() {
             <section className={styles.ctaSection}>
                 <div className="container">
                     <div className={styles.ctaContent}>
-                        <h2>Sẵn sàng nâng tầm kiến thức tài chính?</h2>
+                        <h2>Sẵn sàng bắt đầu hành trình thịnh vượng?</h2>
                         <p className="mt-3">
-                            Liên hệ ngay với AlphaQi để được tư vấn giải pháp đào tạo phù hợp nhất cho bạn và doanh nghiệp.
+                            Liên hệ ngay với đội ngũ cố vấn của AlphaQi để được tư vấn lộ trình tài chính cá nhân hóa dành riêng cho bạn.
                         </p>
                         <a href="/contact" className={styles.ctaButton}>
-                            Đăng ký tư vấn <ArrowRightOutlined />
+                            Đặt lịch tư vấn ngay <ArrowRightOutlined />
                         </a>
                     </div>
                 </div>

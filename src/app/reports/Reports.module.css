@@ -1,0 +1,629 @@
+.pageContainer {
+    background-color: #f8f9fa;
+    min-height: 100vh;
+    padding-bottom: var(--spacing-3xl);
+}
+
+.hero {
+    background: #f8f9fa;
+    padding: var(--spacing-2xl) 0;
+    margin-bottom: var(--spacing-xl);
+}
+
+.heroTitle {
+    font-size: 2.5rem;
+    font-weight: 700;
+    color: var(--text-primary);
+    margin-bottom: var(--spacing-sm);
+}
+
+.heroSubtitle {
+    color: var(--text-secondary);
+    font-size: 1.125rem;
+}
+
+.filterBar {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--spacing-md);
+    background: white;
+    padding: var(--spacing-lg);
+    border-radius: var(--radius-lg);
+    border: 1px solid var(--border-gray);
+    margin-bottom: var(--spacing-xl);
+    align-items: flex-end;
+}
+
+.searchGroup {
+    flex: 2;
+    min-width: 250px;
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-xs);
+}
+
+.filterGroup {
+    flex: 1;
+    min-width: 150px;
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-xs);
+}
+
+.label {
+    font-size: 0.8125rem;
+    font-weight: 600;
+    color: var(--text-secondary);
+}
+
+.inputWrapper {
+    position: relative;
+    display: flex;
+    align-items: center;
+}
+
+.inputIcon {
+    position: absolute;
+    left: 12px;
+    color: var(--text-muted);
+}
+
+.input {
+    width: 100%;
+    padding: 10px 12px 10px 36px;
+    border: 1px solid var(--border-gray);
+    border-radius: var(--radius-md);
+    outline: none;
+    transition: all 0.2s;
+    font-size: 0.875rem;
+}
+
+.input:focus {
+    border-color: var(--blue-primary);
+    box-shadow: 0 0 0 2px rgba(24, 144, 255, 0.1);
+}
+
+.searchButton {
+    background: var(--blue-primary);
+    color: white;
+    border: none;
+    padding: 10px var(--spacing-xl);
+    border-radius: var(--radius-md);
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.2s;
+    height: 40px;
+}
+
+.searchButton:hover {
+    background: #40a9ff;
+}
+
+.tabsContainer {
+    display: flex;
+    gap: var(--spacing-md);
+    margin-bottom: var(--spacing-xl);
+    border-bottom: 1px solid var(--border-gray);
+    padding-bottom: var(--spacing-sm);
+}
+
+.tab {
+    padding: var(--spacing-sm) var(--spacing-lg);
+    font-weight: 600;
+    color: var(--text-muted);
+    cursor: pointer;
+    transition: all 0.2s;
+    border-bottom: 2px solid transparent;
+    text-decoration: none;
+}
+
+.tab:hover {
+    color: var(--blue-primary);
+}
+
+.activeTab {
+    color: var(--blue-primary);
+    border-bottom-color: var(--blue-primary);
+}
+
+.reportGrid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: var(--spacing-xl);
+}
+
+.reportCard {
+    background: white;
+    border-radius: var(--radius-lg);
+    border: 1px solid var(--border-gray);
+    padding: var(--spacing-xl);
+    display: flex;
+    flex-direction: column;
+    transition: all 0.3s;
+    position: relative;
+    overflow: hidden;
+}
+
+.reportCard:hover {
+    box-shadow: var(--shadow-lg);
+    transform: translateY(-4px);
+    border-color: var(--blue-primary);
+}
+
+.cardHeader {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-bottom: var(--spacing-sm);
+}
+
+.reportDateTop {
+    font-size: 0.8125rem;
+    color: var(--text-muted);
+}
+
+.updateDate {
+    margin-left: 8px;
+    color: var(--blue-primary);
+}
+
+.reportTypeSmall {
+    display: inline-block;
+    padding: 2px 6px;
+    border-radius: 4px;
+    font-size: 0.7rem;
+    font-weight: 700;
+    text-transform: uppercase;
+}
+
+.reportType {
+    display: inline-block;
+    padding: 2px 8px;
+    border-radius: 4px;
+    font-size: 0.75rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    margin-bottom: var(--spacing-md);
+}
+
+.typeMACRO {
+    background: #e6f7ff;
+    color: #0050b3;
+}
+
+.typeINVESTMENT_STRATEGY {
+    background: #f6ffed;
+    color: #237804;
+}
+
+.typeCOMPANY_INDUSTRY {
+    background: #fff7e6;
+    color: #ad4e00;
+}
+
+.typeASSET_MANAGEMENT {
+    background: #f9f0ff;
+    color: #531dab;
+}
+
+.reportTitle {
+    font-size: 1.125rem;
+    font-weight: 800;
+    color: #002b5b;
+    /* Dark blue from image */
+    margin-bottom: var(--spacing-md);
+    line-height: 1.5;
+    text-transform: uppercase;
+}
+
+.reportDesc {
+    font-size: 1rem;
+    color: var(--text-secondary);
+    line-height: 1.6;
+    margin-bottom: var(--spacing-lg);
+    flex-grow: 1;
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    line-clamp: 3;
+    overflow: hidden;
+}
+
+.reportFooter {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-top: 1px solid #f0f0f0;
+    padding-top: var(--spacing-md);
+}
+
+.reportDate {
+    font-size: 0.8125rem;
+    color: var(--text-muted);
+}
+
+.viewButton {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-xs);
+    color: var(--blue-primary);
+    font-weight: 600;
+    font-size: 0.875rem;
+    text-decoration: none;
+}
+
+.viewButton:hover {
+    text-decoration: underline;
+}
+
+.loading {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+    gap: var(--spacing-xl);
+}
+
+.skeletonCard {
+    height: 250px;
+    background: #eee;
+    background: linear-gradient(110deg, #ececec 8%, #f5f5f5 18%, #ececec 33%);
+    border-radius: var(--radius-lg);
+    background-size: 200% 100%;
+    animation: 1.5s shine linear infinite;
+}
+
+@keyframes shine {
+    to {
+        background-position-x: -200%;
+    }
+}
+
+.emptyState {
+    text-align: center;
+    padding: var(--spacing-3xl) 0;
+    color: var(--text-secondary);
+}
+
+@media (max-width: 768px) {
+    .tabsContainer {
+        overflow-x: auto;
+        padding-bottom: var(--spacing-xs);
+    }
+
+    .tab {
+        white-space: nowrap;
+        padding: var(--spacing-sm) var(--spacing-md);
+    }
+
+    .reportGrid {
+        grid-template-columns: 1fr;
+    }
+}
+
+/* Detail Page Styles */
+.backButton {
+    background: none;
+    border: none;
+    color: var(--blue-primary);
+    font-weight: 600;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 0;
+    margin-bottom: var(--spacing-lg);
+    font-size: 0.875rem;
+}
+
+.backButton:hover {
+    text-decoration: underline;
+}
+
+/* Detail Page Refinement (Image 1 & 2) */
+.detailWrapper {
+    background: white;
+    padding: var(--spacing-2xl);
+    border-radius: var(--radius-lg);
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+    margin-top: var(--spacing-xl);
+}
+
+.backButtonDetail {
+    background: none;
+    border: none;
+    color: var(--text-muted);
+    font-size: 0.875rem;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-bottom: var(--spacing-xl);
+}
+
+.backButtonDetail:hover {
+    color: var(--blue-primary);
+}
+
+.detailHeader {
+    text-align: center;
+    margin-bottom: var(--spacing-2xl);
+    padding-bottom: var(--spacing-xl);
+    border-bottom: 1px solid #eee;
+}
+
+.detailTitle {
+    font-size: 2.5rem;
+    font-weight: 800;
+    color: #002b5b;
+    /* Navy blue from image */
+    line-height: 1.3;
+    max-width: 900px;
+    margin: 0 auto;
+}
+
+.detailBody {
+    max-width: 1000px;
+    margin: 0 auto;
+}
+
+.reportContent {
+    font-size: 1.125rem;
+    line-height: 1.8;
+    color: var(--text-primary);
+    margin-bottom: var(--spacing-3xl);
+    white-space: pre-line;
+}
+
+.documentActions {
+    display: flex;
+    justify-content: flex-end;
+    gap: var(--spacing-md);
+    margin-bottom: var(--spacing-3xl);
+}
+
+.primaryActionButton {
+    background: #f58220;
+    /* Orange from image */
+    background: linear-gradient(to right, #f58220, #f7941d);
+    color: white;
+    border: none;
+    padding: 12px 24px;
+    border-radius: 8px;
+    font-weight: 700;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    transition: all 0.2s;
+}
+
+.primaryActionButton:hover {
+    opacity: 0.9;
+    transform: translateY(-2px);
+}
+
+.secondaryActionButton {
+    background: white;
+    color: #f58220;
+    border: 1px solid #f58220;
+    padding: 12px 24px;
+    border-radius: 8px;
+    font-weight: 700;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    text-decoration: none;
+    transition: all 0.2s;
+}
+
+.secondaryActionButton:hover {
+    background: #fff8f1;
+}
+
+.pdfPreviewSection {
+    margin-top: var(--spacing-3xl);
+    padding-top: var(--spacing-2xl);
+    border-top: 1px solid #eee;
+}
+
+.sectionHeader {
+    font-size: 1.25rem;
+    font-weight: 700;
+    margin-bottom: var(--spacing-lg);
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.pdfIframeWrapper {
+    background: #f0f2f5;
+    padding: var(--spacing-md);
+    border-radius: 12px;
+}
+
+.pdfIframe {
+    border: none;
+    border-radius: 8px;
+    box-shadow: var(--shadow-sm);
+}
+
+.relatedSectionList {
+    margin-top: var(--spacing-3xl);
+    padding-top: var(--spacing-2xl);
+    border-top: 1px solid #eee;
+}
+
+.relatedTitle {
+    font-size: 1.5rem;
+    font-weight: 700;
+    margin-bottom: var(--spacing-xl);
+    color: #222;
+}
+
+.relatedList {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.relatedListItem {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 12px 16px;
+    border-bottom: 1px solid #f5f5f5;
+    text-decoration: none;
+    transition: background 0.2s;
+}
+
+.relatedListItem:hover {
+    background: #fcfcfc;
+}
+
+.relatedItemTitle {
+    color: #444;
+    font-weight: 500;
+}
+
+.relatedListItem:hover .relatedItemTitle {
+    color: var(--blue-primary);
+    text-decoration: underline;
+}
+
+.relatedItemDate {
+    color: #888;
+    font-size: 0.875rem;
+}
+
+.reportTypeDetail {
+    display: inline-block;
+    padding: 4px 12px;
+    border-radius: 4px;
+    font-size: 0.875rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    margin-bottom: var(--spacing-md);
+}
+
+.reportDetailTitle {
+    font-size: 2.25rem;
+    font-weight: 800;
+    color: var(--text-primary);
+    margin-bottom: var(--spacing-md);
+    line-height: 1.2;
+}
+
+.reportDetailMeta {
+    display: flex;
+    gap: var(--spacing-lg);
+    color: var(--text-muted);
+    font-size: 0.875rem;
+}
+
+.reportDetailDate {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+}
+
+.detailContent {
+    background: white;
+    border-radius: var(--radius-xl);
+    padding: var(--spacing-2xl);
+    box-shadow: var(--shadow-sm);
+    margin-top: calc(-1 * var(--spacing-3xl));
+    position: relative;
+    z-index: 10;
+    border: 1px solid var(--border-gray);
+}
+
+.descriptionSection {
+    margin-bottom: var(--spacing-2xl);
+}
+
+.descriptionSection h3 {
+    margin-bottom: var(--spacing-md);
+    color: var(--text-primary);
+}
+
+.descriptionSection p {
+    color: var(--text-secondary);
+    line-height: 1.8;
+    font-size: 1.0625rem;
+}
+
+.pdfSection {
+    margin-top: var(--spacing-2xl);
+    border-top: 1px solid var(--border-gray);
+    padding-top: var(--spacing-2xl);
+}
+
+.pdfHeader {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: var(--spacing-lg);
+}
+
+.pdfTitle {
+    font-size: 1.25rem;
+    font-weight: 700;
+    color: var(--text-primary);
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-sm);
+}
+
+.pdfActions {
+    display: flex;
+    gap: var(--spacing-md);
+}
+
+.pdfActionBtn {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 8px 16px;
+    border-radius: var(--radius-md);
+    font-weight: 600;
+    font-size: 0.875rem;
+    cursor: pointer;
+    transition: all 0.2s;
+    text-decoration: none;
+    background: #f0f2f5;
+    color: var(--text-primary);
+    border: 1px solid transparent;
+}
+
+.pdfActionBtn:hover {
+    background: #e6e8eb;
+    border-color: var(--border-gray);
+}
+
+.pdfPreview {
+    background: #f8f9fa;
+    border-radius: var(--radius-lg);
+    padding: var(--spacing-md);
+    border: 1px solid var(--border-gray);
+}
+
+.relatedSection {
+    margin-top: var(--spacing-3xl);
+    padding-top: var(--spacing-2xl);
+    border-top: 2px solid #f0f0f0;
+}
+
+.sectionTitle {
+    font-size: 1.5rem;
+    font-weight: 700;
+    margin-bottom: var(--spacing-xl);
+    color: var(--text-primary);
+}
+
+.skeletonDetail {
+    height: 600px;
+    background: linear-gradient(110deg, #ececec 8%, #f5f5f5 18%, #ececec 33%);
+    background-size: 200% 100%;
+    animation: 1.5s shine linear infinite;
+    border-radius: var(--radius-xl);
+}

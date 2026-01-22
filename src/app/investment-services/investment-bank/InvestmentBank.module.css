@@ -103,90 +103,95 @@
     font-weight: 500;
     text-decoration: none;
     transition: background var(--transition-fast);
-}
 
-
-.expertSection {
-    padding: var(--spacing-3xl) 0;
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: var(--spacing-3xl);
-    align-items: center;
-}
-
-.imageWrapper {
-    position: relative;
-    border-radius: var(--radius-xl);
-    overflow: hidden;
-    box-shadow: var(--shadow-xl);
-}
-
-.expertImage {
-    width: 100%;
-    height: auto;
-    display: block;
-}
-
-.expertContent h2 {
-    font-size: 2.25rem;
-    font-weight: 700;
-    margin-bottom: var(--spacing-lg);
-    color: #1a1a1a;
-}
-
-.expertDesc {
-    font-size: 1.0625rem;
-    color: var(--text-secondary);
-    line-height: 1.7;
-    margin-bottom: var(--spacing-xl);
-}
-
-.checkGrid {
-    display: flex;
-    gap: var(--spacing-xl);
-}
-
-.checkItem {
-    display: flex;
-    align-items: center;
-    gap: var(--spacing-xs);
-    font-weight: 600;
-    color: #1a1a1a;
-}
-
-.checkIcon {
-    color: var(--blue-primary);
-}
-
-@media (max-width: 1024px) {
-    .serviceGrid {
-        grid-template-columns: repeat(2, 1fr);
+    .ctaButton:hover {
+        background: var(--blue-hover);
+        color: white;
     }
+
 
     .expertSection {
-        grid-template-columns: 1fr;
-        gap: var(--spacing-2xl);
-    }
-}
-
-@media (max-width: 768px) {
-    .heroTitle {
-        font-size: 2.5rem;
+        padding: var(--spacing-3xl) 0;
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: var(--spacing-3xl);
+        align-items: center;
     }
 
-    .serviceGrid {
-        grid-template-columns: 1fr;
+    .imageWrapper {
+        position: relative;
+        border-radius: var(--radius-xl);
+        overflow: hidden;
+        box-shadow: var(--shadow-xl);
     }
 
-    .ctaBanner {
-        flex-direction: column;
-        text-align: center;
-        gap: var(--spacing-lg);
-        padding: var(--spacing-xl);
+    .expertImage {
+        width: 100%;
+        height: auto;
+        display: block;
+    }
+
+    .expertContent h2 {
+        font-size: 2.25rem;
+        font-weight: 700;
+        margin-bottom: var(--spacing-lg);
+        color: #1a1a1a;
+    }
+
+    .expertDesc {
+        font-size: 1.0625rem;
+        color: var(--text-secondary);
+        line-height: 1.7;
+        margin-bottom: var(--spacing-xl);
     }
 
     .checkGrid {
-        flex-wrap: wrap;
-        gap: var(--spacing-md);
+        display: flex;
+        gap: var(--spacing-xl);
+    }
+
+    .checkItem {
+        display: flex;
+        align-items: center;
+        gap: var(--spacing-xs);
+        font-weight: 600;
+        color: #1a1a1a;
+    }
+
+    .checkIcon {
+        color: var(--blue-primary);
+    }
+
+    @media (max-width: 1024px) {
+        .serviceGrid {
+            grid-template-columns: repeat(2, 1fr);
+        }
+
+        .expertSection {
+            grid-template-columns: 1fr;
+            gap: var(--spacing-2xl);
+        }
+    }
+
+    @media (max-width: 768px) {
+        .heroTitle {
+            font-size: 2.5rem;
+        }
+
+        .serviceGrid {
+            grid-template-columns: 1fr;
+        }
+
+        .ctaBanner {
+            flex-direction: column;
+            text-align: center;
+            gap: var(--spacing-lg);
+            padding: var(--spacing-xl);
+        }
+
+        .checkGrid {
+            flex-wrap: wrap;
+            gap: var(--spacing-md);
+        }
     }
 }

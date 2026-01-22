@@ -36,6 +36,12 @@
     border-radius: 2px;
 }
 
+.cardLink {
+    text-decoration: none;
+    display: block;
+    cursor: pointer;
+}
+
 .serviceCard {
     background: #ffffff;
     border-radius: 20px;
@@ -48,10 +54,12 @@
     position: relative;
     width: 85%;
     margin: 0 auto;
+    cursor: pointer;
 }
 
 .serviceCard:hover {
     box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
+    transform: translateY(-5px);
 }
 
 .cardInner {
@@ -159,35 +167,69 @@
     align-self: flex-start;
 }
 
-.learnMoreLink:hover {
+.cardLink:hover .learnMoreLink {
     background: #ffffff;
     color: #4481eb;
     transform: translateX(5px);
+    box-shadow: 0 4px 15px rgba(255, 255, 255, 0.3);
 }
 
-/* Swiper Navigation Buttons */
+/* Custom Navigation Wrapper */
+.navigationWrapper {
+    position: absolute;
+    top: 50%;
+    left: 0;
+    right: 0;
+    transform: translateY(-50%);
+    z-index: 10;
+    pointer-events: none;
+}
+
+/* Custom Navigation Buttons */
+.navButton {
+    position: absolute;
+    top: 0;
+    color: white;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    width: 55px;
+    height: 55px;
+    border-radius: 50%;
+    box-shadow: 0 8px 25px rgba(102, 126, 234, 0.4);
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    border: 2px solid rgba(255, 255, 255, 0.3);
+    backdrop-filter: blur(10px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    z-index: 10;
+    font-size: 24px;
+    pointer-events: auto;
+}
+
+.navButton:hover {
+    background: linear-gradient(135deg, #764ba2 0%, #667eea 100%);
+    box-shadow: 0 12px 35px rgba(102, 126, 234, 0.6);
+    transform: scale(1.15) translateY(-2px);
+    border-color: rgba(255, 255, 255, 0.5);
+}
+
+.navButton:active {
+    transform: scale(1.05);
+}
+
+:global(.swiper-button-prev-custom) {
+    left: 10px;
+}
+
+:global(.swiper-button-next-custom) {
+    right: 10px;
+}
+
+/* Swiper Navigation Buttons - Hide default */
 :global(.mySwiper .swiper-button-next),
 :global(.mySwiper .swiper-button-prev) {
-    color: #4481eb;
-    background: white;
-    width: 45px;
-    height: 45px;
-    border-radius: 50%;
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
-    transition: all 0.3s ease;
-}
-
-:global(.mySwiper .swiper-button-next:hover),
-:global(.mySwiper .swiper-button-prev:hover) {
-    background: #4481eb;
-    color: white;
-    transform: scale(1.1);
-}
-
-:global(.mySwiper .swiper-button-next::after),
-:global(.mySwiper .swiper-button-prev::after) {
-    font-size: 18px;
-    font-weight: bold;
+    display: none;
 }
 
 /* Swiper Pagination */
