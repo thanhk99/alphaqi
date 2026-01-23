@@ -6,6 +6,8 @@ import { Report } from '@/types/report.types';
 import { SearchOutlined, ArrowRightOutlined, LeftOutlined, RightOutlined } from '@ant-design/icons';
 import styles from './Reports.module.css';
 import Link from 'next/link';
+import { useSearchParams } from 'next/navigation';
+
 
 // Định nghĩa cấu trúc phân cấp loại báo cáo cố định
 const REPORT_GROUPS = [
@@ -46,16 +48,26 @@ const REPORT_GROUPS = [
 ];
 
 const ReportList: React.FC = () => {
+    const searchParams = useSearchParams();
+    const typeFromUrl = searchParams.get('type') || '';
+
     const [reports, setReports] = useState<Report[]>([]);
     const [loading, setLoading] = useState(true);
 
     // States
-    const [selectedType, setSelectedType] = useState<string>('');
+    const [selectedType, setSelectedType] = useState<string>(typeFromUrl);
     const [search, setSearch] = useState('');
     const [page, setPage] = useState(0);
     const [totalPages, setTotalPages] = useState(0);
     const [totalElements, setTotalElements] = useState(0);
     const [pageSize] = useState(10);
+
+    // Sync selectedType with URL parameter
+    useEffect(() => {
+        setSelectedType(typeFromUrl);
+        setPage(0);
+    }, [typeFromUrl]);
+
 
     const fetchReports = async () => {
         setLoading(true);

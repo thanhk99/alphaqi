@@ -1,6 +1,6 @@
 'use client';
 
-import React from 'react';
+import React, { Suspense } from 'react';
 import MainLayout from '@/components/layouts/MainLayout/MainLayout';
 import ReportList from './ReportList';
 import styles from './Reports.module.css';
@@ -19,7 +19,13 @@ export default function ReportsPage() {
                 </section>
 
                 <div className="container">
-                    <ReportList />
+                    <Suspense fallback={<div className={styles.loading}>
+                        {[...Array(6)].map((_, i) => (
+                            <div key={i} className={styles.skeletonCard}></div>
+                        ))}
+                    </div>}>
+                        <ReportList />
+                    </Suspense>
                 </div>
             </div>
         </MainLayout>
