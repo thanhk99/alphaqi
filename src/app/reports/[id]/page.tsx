@@ -58,7 +58,7 @@ export default function ReportDetailPage() {
                     type: data.type,
                     size: 6
                 });
-                setReports(relatedData.content);
+                setReports(relatedData.reports.content);
             } catch (error) {
                 console.error('Failed to fetch report detail:', error);
             } finally {

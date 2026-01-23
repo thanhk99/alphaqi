@@ -1,26 +1,11 @@
 import axios from 'axios';
 import apiClient, { apiService } from './api.service';
-import { Report, ReportType, ReportListParams, PaginatedResponse, ReportResponseData } from '@/types/report.types';
+import { Report, ReportType, ReportListParams, PaginatedResponse, ReportResponseData, ReportTypeInfo } from '@/types/report.types';
 
 export const reportService = {
-    getReports: async (params: ReportListParams): Promise<PaginatedResponse<Report>> => {
-        const response = await apiService.get<any>('/reports', { params });
-        // Priority 1: New nested structure
-        if (response.data?.data?.reports?.content) {
-            return response.data.data.reports;
-        }
-        // Priority 2: Direct paginated structure
-        if (response.data?.data?.content) {
-            return response.data.data;
-        }
-        // Fallback: Return empty structure to prevent UI crash
-        return {
-            content: [],
-            totalPages: 0,
-            totalElements: 0,
-            size: params.size || 10,
-            number: 0
-        };
+    getReports: async (params: ReportListParams): Promise<ReportResponseData> => {
+        const response = await apiService.get<ReportResponseData>('/reports', { params });
+        return response.data.data;
     },
 
     getReportById: async (id: number): Promise<Report> => {

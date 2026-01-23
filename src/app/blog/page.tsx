@@ -24,7 +24,8 @@ export default function BlogPage() {
                 setError(null);
                 // Fetch only published articles for public view
                 const data = await articleService.getArticles({ published: true });
-                setArticles(data);
+                const sortedData = data.sort((a, b) => new Date(b.createdAt).getTime() - new Date(a.createdAt).getTime());
+                setArticles(sortedData);
             } catch (err) {
                 console.error('Error fetching articles:', err);
                 setError('Không thể tải bài viết. Vui lòng thử lại sau.');

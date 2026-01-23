@@ -74,20 +74,20 @@ const Header: React.FC = () => {
                             Báo cáo <DownOutlined style={{ fontSize: '10px', marginLeft: '4px' }} />
                         </Link>
                         <div className={styles.navDropdown}>
-                            <Link href="/reports/cio" className={styles.navDropdownItem} onClick={() => setMobileMenuOpen(false)}>
+                            <Link href="/reports" className={styles.navDropdownItem} onClick={() => setMobileMenuOpen(false)}>
                                 Báo cáo CIO
                             </Link>
 
-                            <Link href="/reports/macro" className={styles.navDropdownItem} onClick={() => setMobileMenuOpen(false)}>
+                            <Link href="/reports" className={styles.navDropdownItem} onClick={() => setMobileMenuOpen(false)}>
                                 Báo cáo vĩ mô
                             </Link>
-                            <Link href="/reports/strategy" className={styles.navDropdownItem} onClick={() => setMobileMenuOpen(false)}>
+                            <Link href="/reports" className={styles.navDropdownItem} onClick={() => setMobileMenuOpen(false)}>
                                 Báo cáo chiến lược đầu tư
                             </Link>
-                            <Link href="/reports/industry" className={styles.navDropdownItem} onClick={() => setMobileMenuOpen(false)}>
+                            <Link href="/reports" className={styles.navDropdownItem} onClick={() => setMobileMenuOpen(false)}>
                                 Báo cáo công ty, nghành
                             </Link>
-                            <Link href="/reports/asset-management" className={styles.navDropdownItem} onClick={() => setMobileMenuOpen(false)}>
+                            <Link href="/reports" className={styles.navDropdownItem} onClick={() => setMobileMenuOpen(false)}>
                                 Báo cáo quản lý tài sản
                             </Link>
                         </div>

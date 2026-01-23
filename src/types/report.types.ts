@@ -1,4 +1,8 @@
-export type ReportType = 'MACRO' | 'INVESTMENT_STRATEGY' | 'COMPANY_INDUSTRY' | 'ASSET_MANAGEMENT' | 'CIO_REPORT';
+export type ReportType =
+    | 'MACRO' | 'MACRO_MONEY_MARKET_BOND' | 'MACRO_TOPICAL'
+    | 'COMPANY_INDUSTRY' | 'COMPANY' | 'SECTOR'
+    | 'ASSET_MANAGEMENT' | 'ASSET_ALLOCATION' | 'WEALTH_MANAGEMENT_TOPICAL'
+    | 'INVESTMENT_STRATEGY' | 'CIO_REPORT';
 
 export interface Report {
     id: number;
@@ -6,17 +10,22 @@ export interface Report {
     description: string;
     type: ReportType;
     typeDisplayName: string;
+    parentType: string | null;
+    parentTypeDisplayName: string | null;
     pdfUrl: string;
     externalLink: string | null;
     createdAt: string;
     updatedAt: string;
 }
 
+export interface ReportTypeInfo {
+    code: string;
+    displayName: string;
+}
+
 export interface ReportListParams {
-    type?: ReportType;
-    keyword?: string;
-    fromDate?: string;
-    toDate?: string;
+    type?: string;
+    search?: string;
     page?: number;
     size?: number;
     sort?: string;

@@ -1,0 +1,347 @@
+.container {
+    padding-top: var(--spacing-3xl);
+    padding-bottom: var(--spacing-3xl);
+    background: #fdfdfd;
+}
+
+.header {
+    margin-bottom: var(--spacing-3xl);
+}
+
+.badge {
+    display: inline-flex;
+    align-items: center;
+    padding: 6px 12px;
+    background: #e6f0ff;
+    color: var(--blue-primary);
+    border-radius: var(--radius-full);
+    font-size: 0.75rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    margin-bottom: var(--spacing-md);
+    gap: 6px;
+}
+
+.badgeIcon {
+    font-size: 10px;
+}
+
+.title {
+    font-size: 3.5rem;
+    font-weight: 800;
+    margin-bottom: var(--spacing-lg);
+    letter-spacing: -1px;
+    color: #1a1a1a;
+}
+
+.description {
+    max-width: 600px;
+    font-size: 1.125rem;
+    color: var(--text-muted);
+    line-height: 1.7;
+}
+
+/* Services Grid */
+.servicesGrid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: var(--spacing-lg);
+    margin-bottom: var(--spacing-2xl);
+}
+
+.serviceCard {
+    background: #fff;
+    padding: var(--spacing-xl);
+    border-radius: var(--radius-xl);
+    border: 1px solid #f0f0f0;
+    transition: all var(--transition-base);
+}
+
+.serviceCard:hover {
+    transform: translateY(-5px);
+    box-shadow: var(--shadow-lg);
+    border-color: var(--blue-primary);
+}
+
+.iconWrapper {
+    width: 48px;
+    height: 48px;
+    background: #f0f7ff;
+    border-radius: var(--radius-md);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 20px;
+    color: var(--blue-primary);
+    margin-bottom: var(--spacing-lg);
+}
+
+.cardTitle {
+    font-size: 1.25rem;
+    font-weight: 700;
+    margin-bottom: var(--spacing-md);
+    color: #1a1a1a;
+}
+
+.cardDesc {
+    font-size: 0.9375rem;
+    color: var(--text-muted);
+    line-height: 1.6;
+}
+
+/* Bottom Grid */
+.bottomGrid {
+    display: grid;
+    grid-template-columns: 1.2fr 1fr;
+    gap: var(--spacing-lg);
+}
+
+/* Chart Section */
+.chartCard {
+    background: #fff;
+    padding: var(--spacing-xl);
+    border-radius: var(--radius-xl);
+    border: 1px solid #f0f0f0;
+}
+
+.chartHeader {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-bottom: var(--spacing-xl);
+}
+
+.chartTitleWrapper h3 {
+    font-size: 1.25rem;
+    font-weight: 700;
+    margin-bottom: 4px;
+}
+
+.chartSubtitle {
+    font-size: 0.75rem;
+    color: var(--text-muted);
+    letter-spacing: 1px;
+    font-weight: 600;
+}
+
+.metricWrapper {
+    text-align: right;
+}
+
+.metricValue {
+    font-size: 1.75rem;
+    font-weight: 800;
+    color: var(--blue-primary);
+    display: block;
+}
+
+.metricTrend {
+    font-size: 0.875rem;
+    font-weight: 600;
+    color: var(--green-primary);
+}
+
+.chartContainer {
+    position: relative;
+    height: 300px;
+    width: 100%;
+    margin-top: var(--spacing-lg);
+}
+
+/* SVG Chart Styles */
+.chartPath {
+    stroke-dasharray: 1000;
+    stroke-dashoffset: 1000;
+    animation: dash 3s ease-in-out forwards;
+}
+
+@keyframes dash {
+    to {
+        stroke-dashoffset: 0;
+    }
+}
+
+.chartGradient {
+    animation: fadeIn 2s ease-in-out forwards;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 0.1; }
+}
+
+.chartLabels {
+    display: flex;
+    justify-content: space-between;
+    margin-top: var(--spacing-md);
+    padding: 0 10px;
+}
+
+.chartLabel {
+    font-size: 0.75rem;
+    color: var(--text-muted);
+    font-weight: 600;
+    text-transform: uppercase;
+}
+
+/* Connection Card */
+.connectionCard {
+    background: #fff;
+    padding: var(--spacing-2xl);
+    border-radius: var(--radius-xl);
+    border: 1px solid #f0f0f0;
+    display: flex;
+    flex-direction: column;
+}
+
+.connIcon {
+    width: 48px;
+    height: 48px;
+    background: #e6f0ff;
+    color: var(--blue-primary);
+    border-radius: var(--radius-md);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 24px;
+    margin-bottom: var(--spacing-xl);
+}
+
+.connTitle {
+    font-size: 2rem;
+    font-weight: 700;
+    margin-bottom: var(--spacing-md);
+}
+
+.connDesc {
+    font-size: 1.0625rem;
+    color: var(--text-muted);
+    margin-bottom: var(--spacing-2xl);
+    line-height: 1.6;
+}
+
+.buttonGroup {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: var(--spacing-md);
+    margin-bottom: var(--spacing-2xl);
+}
+
+.connectBtn {
+    background: var(--blue-primary);
+    color: white;
+    padding: 14px;
+    border-radius: var(--radius-md);
+    font-weight: 700;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    transition: all var(--transition-base);
+}
+
+.connectBtn:hover {
+    background: var(--blue-hover);
+    color: white;
+    box-shadow: var(--shadow-blue);
+}
+
+.learnMoreBtn {
+    border: 1px solid #e5e5e5;
+    color: var(--text-primary);
+    padding: 14px;
+    border-radius: var(--radius-md);
+    font-weight: 700;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all var(--transition-base);
+}
+
+.learnMoreBtn:hover {
+    border-color: var(--blue-primary);
+    color: var(--blue-primary);
+}
+
+.socialProof {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-md);
+    margin-top: auto;
+}
+
+.avatars {
+    display: flex;
+}
+
+.avatar {
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    border: 2px solid white;
+    margin-right: -8px;
+    object-fit: cover;
+}
+
+.avatarMore {
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    background: var(--blue-primary);
+    color: white;
+    font-size: 0.625rem;
+    font-weight: 700;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 2px solid white;
+}
+
+.proofText {
+    font-size: 0.8125rem;
+    color: var(--text-muted);
+    font-weight: 500;
+}
+
+.bold {
+    font-weight: 700;
+    color: var(--text-primary);
+}
+
+/* Footer Icons */
+.footerLogos {
+    display: flex;
+    justify-content: center;
+    gap: var(--spacing-3xl);
+    margin-top: var(--spacing-3xl);
+    opacity: 0.4;
+    filter: grayscale(1);
+    transition: all var(--transition-base);
+}
+
+.footerLogos:hover {
+    opacity: 0.7;
+    filter: none;
+}
+
+.logoItem {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 0.8125rem;
+    font-weight: 700;
+    letter-spacing: 0.5px;
+}
+
+@media (max-width: 1024px) {
+    .servicesGrid {
+        grid-template-columns: 1fr;
+    }
+    .bottomGrid {
+        grid-template-columns: 1fr;
+    }
+    .title {
+        font-size: 2.5rem;
+    }
+}

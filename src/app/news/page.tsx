@@ -20,7 +20,8 @@ export default function NewsListPage() {
             try {
                 setLoading(true);
                 const data = await newsService.getAllNews(true); // Get only published news
-                setNewsList(data);
+                const sortedData = data.sort((a, b) => new Date(b.createdAt).getTime() - new Date(a.createdAt).getTime());
+                setNewsList(sortedData);
             } catch (error) {
                 console.error('Failed to fetch news list:', error);
             } finally {

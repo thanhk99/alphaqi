@@ -18,7 +18,7 @@ export default function InvestmentServicesPage() {
             icon: <RiseOutlined />,
             title: 'Tư vấn đầu tư',
             description: 'Chiến lược đầu tư chuyên sâu, phân tích định lượng và cơ bản giúp tối ưu hóa lợi nhuận danh mục.',
-            link: '/investment-services/consulting'
+            link: '/wealth/consulting'
         },
         {
             icon: <DollarOutlined />,
