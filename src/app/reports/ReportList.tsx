@@ -72,11 +72,12 @@ const ReportList: React.FC = () => {
     const fetchReports = async () => {
         setLoading(true);
         try {
+            // Fetch all reports for the catalog if no specific type is selected
             const data = await reportService.getReports({
                 type: selectedType || undefined,
                 search: search || undefined,
                 page: page,
-                size: pageSize,
+                size: selectedType ? pageSize : 100, // Fetch more for grouped view
                 sort: 'createdAt,desc'
             });
             setReports(data.reports.content);
@@ -104,6 +105,120 @@ const ReportList: React.FC = () => {
             setPage(newPage);
             window.scrollTo({ top: 0, behavior: 'smooth' });
         }
+    };
+
+    const renderReportCard = (report: Report) => (
+        <Link
+            key={report.id}
+            href={`/reports/${report.id}`}
+            className={styles.reportCard}
+        >
+            <div className={styles.cardHeader}>
+                <div className={styles.reportDateTop}>
+                    Ngày đăng: {new Date(report.createdAt).toLocaleDateString('vi-VN')}
+                </div>
+                <div className={styles.reportTypeSmall}>
+                    {report.parentTypeDisplayName || report.typeDisplayName}
+                </div>
+            </div>
+            <h3 className={styles.reportTitle}>{report.title}</h3>
+            <p className={styles.reportDesc}>{report.description}</p>
+            <div className={styles.reportFooter}>
+                <span className={styles.viewButton}>
+                    Chi tiết <ArrowRightOutlined />
+                </span>
+            </div>
+        </Link>
+    );
+
+    const groupReports = () => {
+        const groups: {
+            label: string,
+            code: string,
+            reports: Report[],
+            subGroups?: { label: string, code: string, reports: Report[] }[]
+        }[] = [];
+
+        REPORT_GROUPS.forEach(groupConfig => {
+            const itemCodes = groupConfig.items?.map(i => i.code) || [];
+            const belongReports = reports.filter(r =>
+                (r.parentType === groupConfig.code) ||
+                (r.type === groupConfig.code) ||
+                (itemCodes.includes(r.type))
+            );
+
+            if (belongReports.length > 0) {
+                if (groupConfig.code === 'MACRO' || groupConfig.code === 'COMPANY_INDUSTRY' || groupConfig.code === 'ASSET_MANAGEMENT') {
+                    // Split into sub-groups
+                    const subGroups: { label: string, code: string, reports: Report[] }[] = [];
+
+                    // Track which reports have been added to a sub-group
+                    const assignedReportIds = new Set<number>();
+
+                    groupConfig.items.forEach(itemConfig => {
+                        const itemReports = belongReports.filter(r => r.type === itemConfig.code);
+                        if (itemReports.length > 0) {
+                            subGroups.push({
+                                label: itemConfig.displayName,
+                                code: itemConfig.code,
+                                reports: itemReports
+                            });
+                            itemReports.forEach(r => assignedReportIds.add(r.id));
+                        }
+                    });
+
+                    // Find reports that matched the group but NOT any specific item
+                    const remainingReports = belongReports.filter(r => !assignedReportIds.has(r.id));
+
+                    if (remainingReports.length > 0) {
+                        // Add them to a "General" or "Other" subgroup, or mapped to the first item if appropriate
+                        // For now, let's create a "Chung" group or append to the existing list if desired.
+                        // Or if the groupConfig has an item with the same code as group, we might have missed it if type match failed but parentType matched.
+
+                        // Check if there is a "General" item (code == groupConfig.code)
+                        const generalSubGroupIndex = subGroups.findIndex(sg => sg.code === groupConfig.code);
+
+                        if (generalSubGroupIndex !== -1) {
+                            subGroups[generalSubGroupIndex].reports.push(...remainingReports);
+                        } else {
+                            // Create a catch-all subgroup
+                            subGroups.push({
+                                label: `${groupConfig.label} chung`,
+                                code: `${groupConfig.code}_GENERAL`,
+                                reports: remainingReports
+                            });
+                        }
+                    }
+
+                    groups.push({
+                        label: groupConfig.label,
+                        code: groupConfig.code,
+                        reports: [],
+                        subGroups: subGroups
+                    });
+                } else if (groupConfig.label === 'Khác') {
+                    // Handle "Khác" separately
+                    groupConfig.items.forEach(itemConfig => {
+                        const itemReports = reports.filter(r => r.type === itemConfig.code);
+                        if (itemReports.length > 0) {
+                            groups.push({
+                                label: itemConfig.displayName,
+                                code: itemConfig.code,
+                                reports: itemReports
+                            });
+                        }
+                    });
+                } else {
+                    groups.push({
+                        label: groupConfig.label,
+                        code: groupConfig.code || groupConfig.label,
+                        reports: belongReports
+                    });
+                }
+            }
+        });
+
+        return groups;
     };
 
     const renderFilterBar = () => (
@@ -156,7 +271,7 @@ const ReportList: React.FC = () => {
     );
 
     const renderPagination = () => {
-        if (totalPages <= 1) return null;
+        if (totalPages <= 1 || !selectedType) return null; // Only show pagination for specific types or search
 
         return (
             <div className={styles.pagination}>
@@ -197,37 +312,39 @@ const ReportList: React.FC = () => {
                 <div className={styles.emptyState}>
                     <p>Chưa có báo cáo nào khớp với tìm kiếm của bạn.</p>
                 </div>
-            ) : (
+            ) : (selectedType && !REPORT_GROUPS.some(g => g.code === selectedType)) ? (
                 <>
+                    <h2 className={styles.categoryTitle}>
+                        {REPORT_GROUPS.flatMap(g => g.items).find(i => i.code === selectedType)?.displayName || "Kết quả lọc"}
+                    </h2>
                     <div className={styles.reportGrid}>
-                        {reports.map((report) => (
-                            <Link
-                                key={report.id}
-                                href={`/reports/${report.id}`}
-                                className={styles.reportCard}
-                            >
-                                <div className={styles.cardHeader}>
-                                    <div className={styles.reportDateTop}>
-                                        Ngày đăng: {new Date(report.createdAt).toLocaleDateString('vi-VN')}
-                                    </div>
-                                    <div className={`${styles.reportTypeSmall} ${styles['type' + (report.parentType || report.type)]}`}>
-                                        {report.parentTypeDisplayName ? `${report.parentTypeDisplayName} > ` : ''}
-                                        {report.typeDisplayName}
-                                    </div>
-                                </div>
-                                <h3 className={styles.reportTitle}>{report.title}</h3>
-                                <p className={styles.reportDesc}>{report.description}</p>
-                                <div className={styles.reportFooter}>
-                                    <span className={styles.viewButton}>
-                                        Chi tiết <ArrowRightOutlined />
-                                    </span>
-                                </div>
-                            </Link>
-                        ))}
+                        {reports.map(renderReportCard)}
                     </div>
-
                     {renderPagination()}
                 </>
+            ) : (
+                <div className={styles.catalogView}>
+                    {groupReports().map((group) => (
+                        <section key={group.code} className={styles.categorySection}>
+                            <h2 className={styles.categoryTitle}>{group.label}</h2>
+
+                            {group.subGroups ? (
+                                group.subGroups.map(sub => (
+                                    <div key={sub.code} className={styles.subCategoryWrapper}>
+                                        <h3 className={styles.subCategoryTitle}>{sub.label}</h3>
+                                        <div className={styles.reportGrid}>
+                                            {sub.reports.map(renderReportCard)}
+                                        </div>
+                                    </div>
+                                ))
+                            ) : (
+                                <div className={styles.reportGrid}>
+                                    {group.reports.map(renderReportCard)}
+                                </div>
+                            )}
+                        </section>
+                    ))}
+                </div>
             )}
         </>
     );

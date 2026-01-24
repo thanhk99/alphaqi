@@ -233,6 +233,68 @@
     text-transform: uppercase;
 }
 
+.categorySection {
+    margin-bottom: var(--spacing-3xl);
+}
+
+.categoryTitle {
+    font-size: 1.75rem;
+    font-weight: 700;
+    color: #002b5b;
+    margin-bottom: var(--spacing-xl);
+    padding-bottom: var(--spacing-sm);
+    border-bottom: 2px solid #e0e0e0;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.categoryTitle::before {
+    content: '';
+    display: block;
+    width: 4px;
+    height: 24px;
+    background: #002b5b;
+    /* Navy accent for main category */
+    border-radius: 2px;
+}
+
+.subCategoryWrapper {
+    margin-bottom: var(--spacing-2xl);
+    padding-left: var(--spacing-lg);
+    border-left: 1px dashed #e0e0e0;
+}
+
+.subCategoryTitle {
+    font-size: 1.25rem;
+    font-weight: 700;
+    color: #444;
+    margin-bottom: var(--spacing-lg);
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.subCategoryTitle::before {
+    content: '';
+    display: block;
+    width: 8px;
+    height: 8px;
+    background: #722ed1;
+    /* Purple accent for sub category */
+    border-radius: 50%;
+}
+
+.reportTypeSmall {
+    display: inline-block;
+    padding: 2px 0;
+    font-size: 0.75rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    color: #722ed1;
+    /* Purple from image */
+}
+
 .reportDesc {
     font-size: 1rem;
     color: var(--text-secondary);
@@ -248,7 +310,7 @@
 
 .reportFooter {
     display: flex;
-    justify-content: space-between;
+    justify-content: flex-start;
     align-items: center;
     border-top: 1px solid #f0f0f0;
     padding-top: var(--spacing-md);
