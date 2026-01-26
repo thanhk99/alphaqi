@@ -783,3 +783,29 @@
     animation: 1.5s shine linear infinite;
     border-radius: var(--radius-xl);
 }
+
+.loadMoreContainer {
+    display: flex;
+    justify-content: center;
+    margin-top: var(--spacing-xl);
+    width: 100%;
+}
+
+.loadMoreButton {
+    background: white;
+    color: var(--blue-primary);
+    border: 1px solid var(--blue-primary);
+    padding: 10px 24px;
+    border-radius: var(--radius-md);
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.2s;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.loadMoreButton:hover {
+    background: var(--blue-primary);
+    color: white;
+}

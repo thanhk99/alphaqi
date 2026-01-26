@@ -58,10 +58,15 @@ const ReportList: React.FC = () => {
     const [selectedType, setSelectedType] = useState<string>(typeFromUrl);
     const [search, setSearch] = useState('');
     const [downloadingId, setDownloadingId] = useState<number | null>(null);
+    const [visibleCounts, setVisibleCounts] = useState<Record<string, number>>({});
+
+    const INITIAL_VISIBLE_COUNT = 6;
 
     // Sync selectedType with URL parameter
     useEffect(() => {
         setSelectedType(typeFromUrl);
+        // Reset visible counts when type changes
+        setVisibleCounts({});
     }, [typeFromUrl]);
 
 
@@ -103,12 +108,23 @@ const ReportList: React.FC = () => {
 
     useEffect(() => {
         fetchReports();
+        setVisibleCounts({}); // Reset when selectedType changes
     }, [selectedType]);
 
     const handleSearch = (e: React.FormEvent) => {
         e.preventDefault();
+        setVisibleCounts({}); // Reset when searching
         fetchReports();
     };
+
+    const handleShowMore = (id: string) => {
+        setVisibleCounts(prev => ({
+            ...prev,
+            [id]: (prev[id] || INITIAL_VISIBLE_COUNT) + 6
+        }));
+    };
+
+    const getVisibleCount = (id: string) => visibleCounts[id] || INITIAL_VISIBLE_COUNT;
 
 
     const renderReportCard = (report: Report) => (
@@ -320,8 +336,15 @@ const ReportList: React.FC = () => {
                         {REPORT_GROUPS.flatMap(g => g.items).find(i => i.code === selectedType)?.displayName || "Kết quả lọc"}
                     </h2>
                     <div className={styles.reportGrid}>
-                        {reports.map(renderReportCard)}
+                        {reports.slice(0, getVisibleCount('filtered')).map(renderReportCard)}
                     </div>
+                    {reports.length > getVisibleCount('filtered') && (
+                        <div className={styles.loadMoreContainer}>
+                            <button className={styles.loadMoreButton} onClick={() => handleShowMore('filtered')}>
+                                Xem thêm <ArrowRightOutlined />
+                            </button>
+                        </div>
+                    )}
                 </>
             ) : (
                 <div className={styles.catalogView}>
@@ -334,14 +357,30 @@ const ReportList: React.FC = () => {
                                     <div key={sub.code} className={styles.subCategoryWrapper}>
                                         <h3 className={styles.subCategoryTitle}>{sub.label}</h3>
                                         <div className={styles.reportGrid}>
-                                            {sub.reports.map(renderReportCard)}
+                                            {sub.reports.slice(0, getVisibleCount(sub.code)).map(renderReportCard)}
                                         </div>
+                                        {sub.reports.length > getVisibleCount(sub.code) && (
+                                            <div className={styles.loadMoreContainer}>
+                                                <button className={styles.loadMoreButton} onClick={() => handleShowMore(sub.code)}>
+                                                    Xem thêm <ArrowRightOutlined />
+                                                </button>
+                                            </div>
+                                        )}
                                     </div>
                                 ))
                             ) : (
-                                <div className={styles.reportGrid}>
-                                    {group.reports.map(renderReportCard)}
-                                </div>
+                                <>
+                                    <div className={styles.reportGrid}>
+                                        {group.reports.slice(0, getVisibleCount(group.code)).map(renderReportCard)}
+                                    </div>
+                                    {group.reports.length > getVisibleCount(group.code) && (
+                                        <div className={styles.loadMoreContainer}>
+                                            <button className={styles.loadMoreButton} onClick={() => handleShowMore(group.code)}>
+                                                Xem thêm <ArrowRightOutlined />
+                                            </button>
+                                        </div>
+                                    )}
+                                </>
                             )}
                         </section>
                     ))}
