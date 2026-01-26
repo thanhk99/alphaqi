@@ -120,7 +120,7 @@ export default function ReportDetailPage() {
                             <div className={styles.documentActions}>
                                 <button
                                     className={styles.primaryActionButton}
-                                    onClick={() => window.open(report.externalLink || report.pdfUrl, '_blank')}
+                                    onClick={() => window.open(report.pdfUrl || report.externalLink || '#', '_blank')}
                                 >
                                     <EyeOutlined /> Xem tài liệu
                                 </button>

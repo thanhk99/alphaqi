@@ -1,13 +1,6 @@
 'use client';
 
 import React from 'react';
-import { Swiper, SwiperSlide } from 'swiper/react';
-import { Autoplay, Pagination, Navigation } from 'swiper/modules';
-import { LeftOutlined, RightOutlined } from '@ant-design/icons';
-import 'swiper/css';
-import 'swiper/css/pagination';
-import 'swiper/css/navigation';
-
 import styles from './WhyChooseUs.module.css';
 
 const WhyChooseUs = () => {
@@ -53,72 +46,27 @@ const WhyChooseUs = () => {
         <section className={styles.whyChooseUsContainer}>
             <h2 className={styles.sectionTitle}>Báo cáo</h2>
 
-            <div style={{ position: 'relative' }}>
-                {/* Custom Navigation Buttons */}
-                <div className={styles.navigationWrapper}>
-                    <div className={`swiper-button-prev-custom ${styles.navButton}`}>
-                        <LeftOutlined />
-                    </div>
-                    <div className={`swiper-button-next-custom ${styles.navButton}`}>
-                        <RightOutlined />
-                    </div>
-                </div>
-
-                <Swiper
-                    spaceBetween={30}
-                    slidesPerView={1.2}
-                    centeredSlides={false}
-                    loop={false}
-                    breakpoints={{
-                        640: {
-                            slidesPerView: 2,
-                        },
-                        960: {
-                            slidesPerView: 3,
-                        },
-                        1200: {
-                            slidesPerView: 4,
-                        }
-                    }}
-                    autoplay={{
-                        delay: 5000,
-                        disableOnInteraction: false,
-                    }}
-                    pagination={{
-                        clickable: true,
-                        dynamicBullets: true
-                    }}
-                    navigation={{
-                        nextEl: '.swiper-button-next-custom',
-                        prevEl: '.swiper-button-prev-custom',
-                    }}
-                    modules={[Autoplay, Pagination, Navigation]}
-                    className="mySwiper"
-                    style={{ paddingBottom: '50px', paddingLeft: '5px', paddingRight: '5px' }}
-                >
-                    {services.map((service) => (
-                        <SwiperSlide key={service.id}>
-                            <a href={service.link} className={styles.cardLink}>
-                                <div className={styles.serviceCard}>
-                                    <div className={styles.cardInner}>
-                                        <div
-                                            className={styles.serviceImage}
-                                            style={{ backgroundImage: service.color }}
-                                        />
-                                        <div className={styles.serviceContent}>
-                                            <h3 className={styles.serviceTitle}>{service.title}</h3>
-                                            <p className={styles.serviceDescription}>{service.description}</p>
-                                            <span className={styles.learnMoreLink}>
-                                                TÌM HIỂU THÊM →
-                                            </span>
-                                        </div>
-                                    </div>
-                                    <div className={styles.cardTitle}>{service.title}</div>
+            <div className={styles.cardsGrid}>
+                {services.map((service) => (
+                    <a href={service.link} key={service.id} className={styles.cardLink}>
+                        <div className={styles.serviceCard}>
+                            <div className={styles.cardInner}>
+                                <div
+                                    className={styles.serviceImage}
+                                    style={{ backgroundImage: service.color }}
+                                />
+                                <div className={styles.serviceContent}>
+                                    <h3 className={styles.serviceTitle}>{service.title}</h3>
+                                    <p className={styles.serviceDescription}>{service.description}</p>
+                                    <span className={styles.learnMoreLink}>
+                                        TÌM HIỂU THÊM →
+                                    </span>
                                 </div>
-                            </a>
-                        </SwiperSlide>
-                    ))}
-                </Swiper>
+                            </div>
+                            <div className={styles.cardTitle}>{service.title}</div>
+                        </div>
+                    </a>
+                ))}
             </div>
         </section>
     );

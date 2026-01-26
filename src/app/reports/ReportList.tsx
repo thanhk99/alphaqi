@@ -3,10 +3,10 @@
 import React, { useEffect, useState } from 'react';
 import { reportService } from '@/services/report.service';
 import { Report } from '@/types/report.types';
-import { SearchOutlined, ArrowRightOutlined, LeftOutlined, RightOutlined } from '@ant-design/icons';
+import { SearchOutlined, ArrowRightOutlined, LeftOutlined, RightOutlined, EyeOutlined, DownloadOutlined, LoadingOutlined } from '@ant-design/icons';
 import styles from './Reports.module.css';
 import Link from 'next/link';
-import { useSearchParams } from 'next/navigation';
+import { useSearchParams, useRouter, usePathname } from 'next/navigation';
 
 
 // Định nghĩa cấu trúc phân cấp loại báo cáo cố định
@@ -49,23 +49,19 @@ const REPORT_GROUPS = [
 
 const ReportList: React.FC = () => {
     const searchParams = useSearchParams();
+    const router = useRouter();
+    const pathname = usePathname();
     const typeFromUrl = searchParams.get('type') || '';
 
     const [reports, setReports] = useState<Report[]>([]);
     const [loading, setLoading] = useState(true);
-
-    // States
     const [selectedType, setSelectedType] = useState<string>(typeFromUrl);
     const [search, setSearch] = useState('');
-    const [page, setPage] = useState(0);
-    const [totalPages, setTotalPages] = useState(0);
-    const [totalElements, setTotalElements] = useState(0);
-    const [pageSize] = useState(10);
+    const [downloadingId, setDownloadingId] = useState<number | null>(null);
 
     // Sync selectedType with URL parameter
     useEffect(() => {
         setSelectedType(typeFromUrl);
-        setPage(0);
     }, [typeFromUrl]);
 
 
@@ -76,13 +72,10 @@ const ReportList: React.FC = () => {
             const data = await reportService.getReports({
                 type: selectedType || undefined,
                 search: search || undefined,
-                page: page,
-                size: selectedType ? pageSize : 100, // Fetch more for grouped view
+                size: 1000, // Fetch all reports
                 sort: 'createdAt,desc'
             });
             setReports(data.reports.content);
-            setTotalPages(data.reports.totalPages);
-            setTotalElements(data.reports.totalElements);
         } catch (error) {
             console.error('Failed to fetch reports:', error);
         } finally {
@@ -90,22 +83,33 @@ const ReportList: React.FC = () => {
         }
     };
 
+    const handleDownload = async (report: Report, e: React.MouseEvent) => {
+        e.preventDefault();
+        e.stopPropagation();
+
+        const downloadUrl = report.pdfUrl || report.externalLink;
+        if (!downloadUrl) return;
+
+        try {
+            setDownloadingId(report.id);
+            await reportService.downloadReport(downloadUrl, report.title);
+        } catch (error) {
+            console.error('Download failed:', error);
+            window.open(downloadUrl, '_blank');
+        } finally {
+            setDownloadingId(null);
+        }
+    };
+
     useEffect(() => {
         fetchReports();
-    }, [selectedType, page]);
+    }, [selectedType]);
 
     const handleSearch = (e: React.FormEvent) => {
         e.preventDefault();
-        setPage(0);
         fetchReports();
     };
 
-    const handlePageChange = (newPage: number) => {
-        if (newPage >= 0 && newPage < totalPages) {
-            setPage(newPage);
-            window.scrollTo({ top: 0, behavior: 'smooth' });
-        }
-    };
 
     const renderReportCard = (report: Report) => (
         <Link
@@ -124,9 +128,25 @@ const ReportList: React.FC = () => {
             <h3 className={styles.reportTitle}>{report.title}</h3>
             <p className={styles.reportDesc}>{report.description}</p>
             <div className={styles.reportFooter}>
-                <span className={styles.viewButton}>
-                    Chi tiết <ArrowRightOutlined />
-                </span>
+                <div className={styles.cardActions}>
+                    <button
+                        className={styles.cardActionBtn}
+                        onClick={(e) => {
+                            e.preventDefault();
+                            e.stopPropagation();
+                            window.open(report.pdfUrl || report.externalLink || '#', '_blank');
+                        }}
+                    >
+                        <EyeOutlined /> Xem
+                    </button>
+                    <button
+                        className={styles.cardActionBtn}
+                        onClick={(e) => handleDownload(report, e)}
+                        disabled={downloadingId === report.id}
+                    >
+                        {downloadingId === report.id ? <LoadingOutlined /> : <DownloadOutlined />} Tải báo cáo
+                    </button>
+                </div>
             </div>
         </Link>
     );
@@ -243,8 +263,17 @@ const ReportList: React.FC = () => {
                     className={styles.select}
                     value={selectedType}
                     onChange={(e) => {
-                        setSelectedType(e.target.value);
-                        setPage(0);
+                        const newType = e.target.value;
+                        setSelectedType(newType);
+
+                        // Update URL
+                        const params = new URLSearchParams(searchParams.toString());
+                        if (newType) {
+                            params.set('type', newType);
+                        } else {
+                            params.delete('type');
+                        }
+                        router.push(`${pathname}?${params.toString()}`);
                     }}
                 >
                     <option value="">Tất cả loại</option>
@@ -270,33 +299,6 @@ const ReportList: React.FC = () => {
         </form>
     );
 
-    const renderPagination = () => {
-        if (totalPages <= 1 || !selectedType) return null; // Only show pagination for specific types or search
-
-        return (
-            <div className={styles.pagination}>
-                <button
-                    className={styles.pageBtn}
-                    onClick={() => handlePageChange(page - 1)}
-                    disabled={page === 0}
-                >
-                    <LeftOutlined /> Trước
-                </button>
-
-                <div className={styles.pageInfo}>
-                    Trang <span className={styles.pageNumber}>{page + 1}</span> / {totalPages}
-                </div>
-
-                <button
-                    className={styles.pageBtn}
-                    onClick={() => handlePageChange(page + 1)}
-                    disabled={page === totalPages - 1}
-                >
-                    Sau <RightOutlined />
-                </button>
-            </div>
-        );
-    };
 
     return (
         <>
@@ -320,7 +322,6 @@ const ReportList: React.FC = () => {
                     <div className={styles.reportGrid}>
                         {reports.map(renderReportCard)}
                     </div>
-                    {renderPagination()}
                 </>
             ) : (
                 <div className={styles.catalogView}>

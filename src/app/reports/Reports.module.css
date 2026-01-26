@@ -310,10 +310,40 @@
 
 .reportFooter {
     display: flex;
-    justify-content: flex-start;
+    justify-content: space-between;
     align-items: center;
     border-top: 1px solid #f0f0f0;
     padding-top: var(--spacing-md);
+    margin-top: auto;
+}
+
+.cardActions {
+    display: flex;
+    gap: 12px;
+}
+
+.cardActionBtn {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    background: none;
+    border: none;
+    color: var(--blue-primary);
+    font-weight: 600;
+    font-size: 0.8125rem;
+    cursor: pointer;
+    padding: 4px 0;
+    transition: all 0.2s;
+}
+
+.cardActionBtn:hover {
+    color: #40a9ff;
+    text-decoration: underline;
+}
+
+.cardActionBtn:disabled {
+    color: var(--text-muted);
+    cursor: wait;
 }
 
 .reportDate {

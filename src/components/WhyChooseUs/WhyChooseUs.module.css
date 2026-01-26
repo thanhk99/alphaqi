@@ -36,6 +36,15 @@
     border-radius: 2px;
 }
 
+.cardsGrid {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 30px;
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 0 40px;
+}
+
 .cardLink {
     text-decoration: none;
     display: block;
@@ -51,9 +60,14 @@
     display: flex;
     flex-direction: column;
     position: relative;
-    width: 85%;
-    margin: 0 auto;
+    width: 100%;
     cursor: pointer;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.serviceCard:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.15);
 }
 
 .cardInner {
@@ -64,17 +78,7 @@
 }
 
 .serviceImage {
-    position: absolute;
-    width: 120px;
-    height: 120px;
-    top: 25px;
-    left: 25px;
-    border-radius: 15px;
-    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
-    background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
-    z-index: 2;
+    display: none;
 }
 
 .cardTitle {
@@ -83,19 +87,13 @@
 
 
 .serviceContent {
-    position: absolute;
-    top: 0;
-    left: 0;
     width: 100%;
     height: 100%;
     padding: 30px;
-    padding-top: 170px;
     display: flex;
     flex-direction: column;
     justify-content: flex-start;
     background: linear-gradient(135deg, #4481eb 0%, #04befe 100%);
-    opacity: 1;
-    z-index: 1;
 }
 
 .serviceTitle {
@@ -113,6 +111,12 @@
     margin-bottom: 20px;
     flex: 1;
     opacity: 0.95;
+    display: -webkit-box;
+    -webkit-line-clamp: 6;
+    line-clamp: 6;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    text-overflow: ellipsis;
 }
 
 .learnMoreLink {
@@ -137,80 +141,25 @@
     box-shadow: 0 4px 15px rgba(255, 255, 255, 0.3);
 }
 
-/* Custom Navigation Wrapper */
-.navigationWrapper {
-    position: absolute;
-    top: 50%;
-    left: 0;
-    right: 0;
-    transform: translateY(-50%);
-    z-index: 10;
-    pointer-events: none;
-}
 
-/* Custom Navigation Buttons */
-.navButton {
-    position: absolute;
-    top: 0;
-    color: white;
-    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-    width: 55px;
-    height: 55px;
-    border-radius: 50%;
-    box-shadow: 0 8px 25px rgba(102, 126, 234, 0.4);
-    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-    border: 2px solid rgba(255, 255, 255, 0.3);
-    backdrop-filter: blur(10px);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    cursor: pointer;
-    z-index: 10;
-    font-size: 24px;
-    pointer-events: auto;
-}
-
-.navButton:hover {
-    background: linear-gradient(135deg, #764ba2 0%, #667eea 100%);
-    box-shadow: 0 12px 35px rgba(102, 126, 234, 0.6);
-    transform: scale(1.15) translateY(-2px);
-    border-color: rgba(255, 255, 255, 0.5);
-}
-
-.navButton:active {
-    transform: scale(1.05);
-}
-
-:global(.swiper-button-prev-custom) {
-    left: 10px;
-}
-
-:global(.swiper-button-next-custom) {
-    right: 10px;
-}
-
-/* Swiper Navigation Buttons - Hide default */
-:global(.mySwiper .swiper-button-next),
-:global(.mySwiper .swiper-button-prev) {
-    display: none;
-}
-
-/* Swiper Pagination */
-:global(.mySwiper .swiper-pagination-bullet) {
-    background: #4481eb;
-    opacity: 0.3;
-    width: 10px;
-    height: 10px;
-    transition: all 0.3s ease;
-}
-
-:global(.mySwiper .swiper-pagination-bullet-active) {
-    opacity: 1;
-    width: 30px;
-    border-radius: 5px;
-}
 
 /* Responsive */
+@media (max-width: 1200px) {
+    .cardsGrid {
+        grid-template-columns: repeat(3, 1fr);
+        gap: 25px;
+        padding: 0 30px;
+    }
+}
+
+@media (max-width: 900px) {
+    .cardsGrid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 20px;
+        padding: 0 20px;
+    }
+}
+
 @media (max-width: 768px) {
     .whyChooseUsContainer {
         padding: 60px 0;
@@ -221,20 +170,19 @@
         margin-bottom: 30px;
     }
 
-    .serviceCard {
-        height: 420px;
-        width: 92%;
+    .cardsGrid {
+        grid-template-columns: 1fr;
+        gap: 20px;
+        padding: 0 20px;
     }
 
-    .serviceCard:hover .serviceImage {
-        width: 90px;
-        height: 90px;
-        top: 20px;
-        left: 20px;
+    .serviceCard {
+        height: 380px;
+        width: 100%;
     }
 
     .serviceContent {
-        padding-top: 130px;
+        padding: 25px;
     }
 
     .cardTitle {
