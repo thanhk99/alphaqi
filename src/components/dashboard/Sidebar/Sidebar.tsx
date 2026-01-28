@@ -35,12 +35,6 @@ const Sidebar = () => {
             label: 'Hồ sơ cá nhân',
             icon: <UserOutlined />,
             href: '/dashboard/profile'
-        },
-        {
-            key: 'settings',
-            label: 'Cài đặt',
-            icon: <SettingOutlined />,
-            href: '/dashboard/settings'
         }
     ];
 

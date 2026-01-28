@@ -20,11 +20,6 @@ export const authService = {
         // Store access token in memory
         tokenManager.setAccessToken(data.accessToken);
 
-        // Store refresh token in cookie (fallback if backend doesn't set HttpOnly cookie)
-        if (data.refreshToken) {
-            Cookies.set('refreshToken', data.refreshToken, { expires: 7 }); // 7 days
-        }
-
         return data;
     },
 
@@ -41,29 +36,46 @@ export const authService = {
         } finally {
             // Clear access token from memory
             tokenManager.clearAccessToken();
-            Cookies.remove('refreshToken');
+
+            // Redirect to login with logout parameter to ensure HttpOnly cookie is cleared by middleware
+            if (typeof window !== 'undefined') {
+                window.location.href = '/auth/login?logout=true';
+            }
         }
     },
 
     // Refresh token
     refreshToken: async (): Promise<LoginResponse> => {
-        // Use axios directly to avoid interceptor redirect loops
-        const API_BASE_URL = '/api';
-        const response = await axios.post<ApiResponse<LoginResponse>>(
-            `${API_BASE_URL}/auth/refresh`,
-            {},
-            { withCredentials: true }
-        );
-        const data = response.data.data;
+        try {
+            // Use axios directly to avoid interceptor redirect loops
+            const API_BASE_URL = '/api';
+            const response = await axios.post<ApiResponse<LoginResponse>>(
+                `${API_BASE_URL}/auth/refresh`,
+                {},
+                { withCredentials: true }
+            );
+            const data = response.data.data;
 
-        // Store new access token in memory
-        tokenManager.setAccessToken(data.accessToken);
+            // Store new access token in memory
+            tokenManager.setAccessToken(data.accessToken);
 
-        if (data.refreshToken) {
-            Cookies.set('refreshToken', data.refreshToken, { expires: 7 });
+            return data;
+        } catch (error) {
+            tokenManager.clearAccessToken();
+            if (typeof window !== 'undefined') {
+                localStorage.removeItem('isLoggedIn');
+            }
+
+            // Gọi API logout để dọn dẹp phía Backend
+            try {
+                const API_BASE_URL = '/api';
+                await axios.post(`${API_BASE_URL}/auth/logout`, {}, { withCredentials: true });
+            } catch (e) {
+                // Bỏ qua lỗi logout
+            }
+
+            throw error;
         }
-
-        return data;
     },
 
     // Get current user profile

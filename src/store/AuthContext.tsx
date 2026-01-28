@@ -29,6 +29,13 @@ export const AuthProvider: React.FC<AuthProviderProps> = ({ children }) => {
     // Auto-refresh token on mount
     useEffect(() => {
         const initAuth = async () => {
+            // Only attempt refresh if we think we have a session
+            const isLoggedIn = localStorage.getItem('isLoggedIn') === 'true';
+            if (!isLoggedIn) {
+                setIsLoading(false);
+                return;
+            }
+
             try {
                 const data = await authService.refreshToken();
                 // After refreshing token, fetch full profile to get avatar, fullName etc.

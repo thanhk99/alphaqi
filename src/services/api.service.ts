@@ -1,6 +1,7 @@
 import axios, { AxiosInstance, AxiosError, InternalAxiosRequestConfig } from 'axios';
 import { tokenManager } from '@/utils/tokenManager';
 import { ApiResponse, ApiError } from '@/types/api.types';
+import Cookies from 'js-cookie';
 
 // Base API URL - using relative path to leverage Next.js proxy
 const API_BASE_URL = '/api';
@@ -59,7 +60,9 @@ apiClient.interceptors.response.use(
         const originalRequest = error.config as InternalAxiosRequestConfig & { _retry?: boolean };
 
         const isLoginRequest = originalRequest.url?.includes('/auth/login');
-        if (error.response?.status === 401 && !originalRequest._retry && !isLoginRequest) {
+        const isLogoutRequest = originalRequest.url?.includes('/auth/logout');
+
+        if (error.response?.status === 401 && !originalRequest._retry && !isLoginRequest && !isLogoutRequest) {
             if (isRefreshing) {
                 return new Promise((resolve, reject) => {
                     failedQueue.push({ resolve, reject });
@@ -99,6 +102,14 @@ apiClient.interceptors.response.use(
             } catch (refreshError) {
                 processQueue(refreshError as Error, null);
                 tokenManager.clearAccessToken();
+                localStorage.removeItem('isLoggedIn');
+
+                // Gọi API logout để dọn dẹp phía Backend và thử xoá cookie qua Header
+                try {
+                    await axios.post(`${API_BASE_URL}/auth/logout`, {}, { withCredentials: true });
+                } catch (e) {
+                    // Bỏ qua lỗi logout vì session vốn đã không hợp lệ
+                }
 
                 return Promise.reject(refreshError);
             } finally {

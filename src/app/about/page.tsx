@@ -62,7 +62,7 @@ export default function AboutPage() {
                                 </p>
                             </div>
                             <div className={styles.storyImage}>
-                                <img src="imgs/avt-Photoroom.png" alt="Our Story" />
+                                <img src="imgs/avt_about.jpg" alt="Our Story" />
                             </div>
                         </div>
                     </div>
