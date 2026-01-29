@@ -6,7 +6,7 @@ import { NotificationProvider } from "@/store/NotificationContext";
 import { Notification } from "@/components/common/Notification/Notification";
 
 export const metadata: Metadata = {
-  title: "AlphaQi",
+  title: "AQi",
   description: "Nền tảng Quản lý Tài sản hàng đầu Việt Nam",
 };
 

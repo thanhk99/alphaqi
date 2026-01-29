@@ -3,6 +3,7 @@
 import React from 'react';
 import HeroSection from './HeroSection/HeroSection';
 import StatsSection from './StatsSection/StatsSection';
+import ServicesNavSection from './ServicesNavSection/ServicesNavSection';
 import HomeSlider from '../HomeSlider/HomeSlider';
 import WhyChooseUs from '../WhyChooseUs/WhyChooseUs';
 import CoursesSection from './CoursesSection/CoursesSection';
@@ -17,9 +18,11 @@ export default function Home() {
         <>
             <HeroSection />
             <StatsSection />
+            <ServicesNavSection />
+            <CoursesSection />
             <HomeSlider />
             <WhyChooseUs />
-            <CoursesSection />
+
             <FeaturesSection />
             <ExpertReviewsSlider />
             <PartnerCompaniesSlider />

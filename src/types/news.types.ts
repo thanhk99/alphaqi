@@ -5,6 +5,7 @@ export interface News {
     description: string;
     content?: string;
     thumbnail: string;
+    type: string;
     isPublished: boolean;
     isShowHome: boolean;
     createdAt: string;

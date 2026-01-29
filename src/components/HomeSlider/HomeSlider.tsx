@@ -77,7 +77,7 @@ const HomeSlider = () => {
             >
                 {news.map((item) => (
                     <SwiperSlide key={item.id}>
-                        <Link href={`/news/${item.id}`} className={styles.cardLink}>
+                        <Link href={item.type === 'BLOG' ? `/blog/${item.id}` : `/news/${item.id}`} className={styles.cardLink}>
                             <div className={styles.card}>
                                 <div className={styles.cardImage}>
                                     <img
