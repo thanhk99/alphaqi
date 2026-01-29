@@ -28,7 +28,7 @@ export default function WealthPage() {
             icon: <BankOutlined />,
             title: 'Gợi ý phân bổ gia sản',
             description: 'Định kỳ hàng tháng chúng tôi sẽ có báo cáo gợi ý phân bổ tài sản cho khách hàng. Báo cáo được cập nhật vào ngày làm việc đầu tiên của mỗi tháng.',
-            link: '/reports'
+            link: '/wealth/asset-allocation'
         },
         {
             icon: <BankOutlined />,
