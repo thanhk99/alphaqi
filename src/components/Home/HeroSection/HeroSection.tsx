@@ -14,7 +14,7 @@ export default function HeroSection() {
                 playsInline
                 poster="/imgs/dashboard-feature-16-9.png"
             >
-                <source src="/videos/intro.mp4" type="video/mp4" />
+                <source src="/videos/0202.mp4" type="video/mp4" />
                 Your browser does not support the video tag.
             </video>
         </section>
