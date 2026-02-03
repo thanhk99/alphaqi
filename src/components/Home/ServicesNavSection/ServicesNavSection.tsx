@@ -6,43 +6,45 @@ import {
     LineChartOutlined,
     SafetyCertificateOutlined,
     ReadOutlined,
-    ArrowRightOutlined
+    BankOutlined
 } from '@ant-design/icons';
 import styles from './ServicesNavSection.module.css';
 
 export default function ServicesNavSection() {
     return (
-        <section className={styles.servicesNavSection}>
-            <div className={styles.gridContainer}>
-                {/* Top Row: Investment & Asset Management */}
-                <div className={styles.topRow}>
-                    <Link href="/investment-services" className={styles.serviceCard}>
-                        <div className={styles.iconWrapper}>
-                            <LineChartOutlined />
-                        </div>
-                        <h3 className={styles.title}>Tư vấn đầu tư</h3>
-                        <p className={styles.description}>
-                            Chiến lược đầu tư thông minh, tối ưu hóa lợi nhuận và giảm thiểu rủi ro cho danh mục của bạn.
-                        </p>
-                        <span className={styles.linkText}>
-                            Giới thiệu <ArrowRightOutlined />
-                        </span>
-                    </Link>
+        <section className={styles.navSectionWrapper}>
+            <div className={styles.navGrid}>
+                {/* Tư vấn đầu tư */}
+                <Link href="/investment-services" className={styles.navItem}>
+                    <div className={styles.iconWrapper}>
+                        <LineChartOutlined />
+                    </div>
+                    <span className={styles.title}>Tư vấn đầu tư</span>
+                </Link>
 
-                    <Link href="/wealth" className={styles.serviceCard}>
-                        <div className={styles.iconWrapper}>
-                            <SafetyCertificateOutlined />
-                        </div>
-                        <h3 className={styles.title}>Quản lý tài sản</h3>
-                        <p className={styles.description}>
-                            Giải pháp quản lý, bảo vệ và gia tăng tài sản bền vững cho tương lai thịnh vượng.
-                        </p>
-                        <span className={styles.linkText}>
-                            Giới thiệu <ArrowRightOutlined />
-                        </span>
-                    </Link>
-                </div>
+                {/* Quản lý tài sản */}
+                <Link href="/wealth-management" className={styles.navItem}>
+                    <div className={styles.iconWrapper}>
+                        <SafetyCertificateOutlined />
+                    </div>
+                    <span className={styles.title}>Quản lý tài sản</span>
+                </Link>
 
+                {/* Ngân hàng đầu tư */}
+                <Link href="/investment-banking" className={styles.navItem}>
+                    <div className={styles.iconWrapper}>
+                        <BankOutlined />
+                    </div>
+                    <span className={styles.title}>Ngân hàng đầu tư</span>
+                </Link>
+
+                {/* Đào tạo */}
+                <Link href="/investment-services/corporate" className={styles.navItem}>
+                    <div className={styles.iconWrapper}>
+                        <ReadOutlined />
+                    </div>
+                    <span className={styles.title}>Đào tạo doanh nghiệp</span>
+                </Link>
             </div>
         </section>
     );

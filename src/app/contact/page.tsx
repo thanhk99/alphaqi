@@ -52,16 +52,6 @@ export default function ContactPage() {
 
                             <div className={styles.infoItem}>
                                 <div className={styles.iconWrapper}>
-                                    <PhoneOutlined />
-                                </div>
-                                <div className={styles.itemContent}>
-                                    <h4>Hotline</h4>
-                                    <p>09xx xxx xxx</p>
-                                </div>
-                            </div>
-
-                            <div className={styles.infoItem}>
-                                <div className={styles.iconWrapper}>
                                     <ClockCircleOutlined />
                                 </div>
                                 <div className={styles.itemContent}>

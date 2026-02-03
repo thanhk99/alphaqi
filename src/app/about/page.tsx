@@ -160,11 +160,6 @@ export default function AboutPage() {
                                 <h3>Email</h3>
                                 <p>6pcapital@6p.com.vn</p>
                             </div>
-                            <div className={styles.contactItem}>
-                                <PhoneOutlined style={{ fontSize: '2rem', marginBottom: '16px' }} />
-                                <h3>Hotline</h3>
-                                <p>09xx xxx xxx</p>
-                            </div>
                         </div>
                     </div>
                 </section>

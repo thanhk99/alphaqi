@@ -16,27 +16,21 @@ export default function InvestmentServicesPage() {
     const services = [
         {
             icon: <RiseOutlined />,
-            title: 'Tư vấn đầu tư',
+            title: 'Tư vấn đầu tư cá nhân',
             description: 'Chiến lược đầu tư chuyên sâu, phân tích định lượng và cơ bản giúp tối ưu hóa lợi nhuận danh mục.',
             link: '/wealth/consulting'
         },
         {
             icon: <DollarOutlined />,
-            title: 'Tư vấn ngân hàng đầu tư',
-            description: 'Tư vấn cấu trúc vốn, M&A, IPO và huy động vốn chiến lược cho doanh nghiệp, tối ưu hóa giá trị công ty.',
-            link: '/investment-services/investment-bank'
+            title: 'Tư vấn ngân hàng đầu tư tổ chức',
+            description: 'Cung cấp các giải pháp tài chính chuyên biệt cho tổ chức, bao gồm tư vấn phát hành trái phiếu, tư vấn niêm yết và các dịch vụ tài chính khác.',
+            link: '/investment-services/organization'
         },
         {
             icon: <DatabaseOutlined />,
             title: 'Dịch vụ dữ liệu & báo cáo',
             description: 'Báo cáo phân tích vĩ mô, ngành và doanh nghiệp định kỳ hỗ trợ ra quyết định đầu tư chính xác.',
             link: '/investment-services/data-reports'
-        },
-        {
-            icon: <DollarOutlined />,
-            title: 'Đào tạo doanh nghiệp',
-            description: 'Các khóa học tài chính, đầu tư và quản lý tài sản được thiết kế riêng phù hợp với đặc thù của từng doanh nghiệp.',
-            link: '/investment-services/corporate'
         },
     ];
 

@@ -1,136 +1,126 @@
-
-.servicesNavSection {
-    padding: 4rem 0;
+.navSectionWrapper {
+    padding: 4rem 1.5rem;
     width: 100%;
-    position: relative;
-    z-index: 10;
-}
-
-.gridContainer {
     display: flex;
-    flex-direction: column;
-    gap: 2rem;
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 0 1.5rem;
+    justify-content: center;
 }
 
-.topRow {
+.navGrid {
     display: grid;
     grid-template-columns: 1fr 1fr;
-    gap: 2rem;
+    grid-template-rows: 1fr 1fr;
+    max-width: 800px;
+    /* Adjust as needed */
+    width: 100%;
+    background: linear-gradient(135deg, #1275bc 0%, #3ba0e9 100%);
+    /* Blue gradient */
+    /* Purple gradient */
+    border-radius: 24px;
+    overflow: hidden;
+    box-shadow: 0 10px 40px rgba(76, 38, 210, 0.3);
+    position: relative;
 }
 
-.bottomRow {
-    display: grid;
-    grid-template-columns: 1fr;
-}
+/* Add the cross lines effect using pseudoelements or borders on items */
+/* Approach: Borders on items */
 
-.serviceCard {
-    background: rgba(255, 255, 255, 0.8);
-    backdrop-filter: blur(10px);
-    border: 1px solid rgba(18, 117, 188, 0.1);
-    border-radius: 16px;
-    padding: 2.5rem;
-    text-decoration: none;
-    transition: all 0.3s ease;
+.navItem {
     display: flex;
     flex-direction: column;
     align-items: center;
-    text-align: center;
-    cursor: pointer;
-    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
-    height: 100%;
+    justify-content: center;
+    padding: 3rem;
+    text-decoration: none;
+    transition: all 0.3s ease;
+    position: relative;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    /* Subtle default border */
+    /* Remove double borders */
+    margin: -1px -1px 0 0;
+    /* Use this trick or just explicit borders */
 }
 
-.serviceCard:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 10px 30px rgba(18, 117, 188, 0.15);
-    border-color: rgba(18, 117, 188, 0.3);
+/* Explicit borders for 2x2 */
+.navItem:nth-child(1) {
+    /* Top Left */
+    border-right: 1px solid rgba(255, 255, 255, 0.3);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.3);
+    border-top: none;
+    border-left: none;
+}
+
+.navItem:nth-child(2) {
+    /* Top Right */
+    border-bottom: 1px solid rgba(255, 255, 255, 0.3);
+    border-left: none;
+    /* Just in case */
+    border-top: none;
+    border-right: none;
+}
+
+.navItem:nth-child(3) {
+    /* Bottom Left */
+    border-right: 1px solid rgba(255, 255, 255, 0.3);
+    border-top: none;
+    /* Just in case */
+    border-bottom: none;
+    border-left: none;
+}
+
+.navItem:nth-child(4) {
+    /* Bottom Right */
+    border: none;
+}
+
+.navItem:hover {
+    background: rgba(255, 255, 255, 0.1);
 }
 
 .iconWrapper {
-    width: 80px;
-    height: 80px;
-    background: linear-gradient(135deg, #e6f7ff 0%, #ffffff 100%);
+    width: 64px;
+    height: 64px;
     border-radius: 50%;
+    border: 2px solid rgba(255, 255, 255, 0.3);
     display: flex;
     align-items: center;
     justify-content: center;
-    margin-bottom: 1.5rem;
-    font-size: 2.5rem;
-    color: #1275bc;
-    box-shadow: 0 4px 10px rgba(18, 117, 188, 0.1);
+    margin-bottom: 1rem;
+    font-size: 1.8rem;
+    color: #ffffff;
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(4px);
     transition: all 0.3s ease;
 }
 
-.serviceCard:hover .iconWrapper {
-    background: #1275bc;
-    color: #ffffff;
+.navItem:hover .iconWrapper {
+    background: #ffffff;
+    color: #1275bc;
     transform: scale(1.1);
+    border-color: #ffffff;
 }
 
 .title {
-    font-size: 1.5rem;
-    font-weight: 700;
-    color: #231F20;
-    margin-bottom: 1rem;
-    transition: color 0.3s ease;
-}
-
-.serviceCard:hover .title {
-    color: #1275bc;
-}
-
-.description {
-    color: #525252;
-    font-size: 1rem;
-    line-height: 1.6;
-    margin-bottom: 1.5rem;
-}
-
-.linkText {
-    font-weight: 600;
-    color: #1275bc;
-    display: inline-flex;
-    align-items: center;
-    gap: 0.5rem;
-}
-
-.trainingCard {
-    background: linear-gradient(135deg, rgba(255, 255, 255, 0.9) 0%, rgba(240, 249, 255, 0.9) 100%);
-    border: 1px solid rgba(34, 197, 94, 0.2);
-}
-
-.trainingCard .iconWrapper {
-    color: #22c55e;
-    background: linear-gradient(135deg, #dcfce7 0%, #ffffff 100%);
-}
-
-.trainingCard:hover .iconWrapper {
-    background: #22c55e;
+    font-size: 1.25rem;
+    font-weight: 500;
     color: #ffffff;
-}
-
-.trainingCard:hover .title {
-    color: #22c55e;
-}
-
-.trainingCard .linkText {
-    color: #22c55e;
+    text-align: center;
 }
 
 @media (max-width: 768px) {
-    .topRow {
+    .navGrid {
         grid-template-columns: 1fr;
-        gap: 1.5rem;
+        /* Stack on mobile */
+        grid-template-rows: auto;
     }
-    
-    .gridContainer {
-        gap: 1.5rem;
-    }
-    
-    .serviceCard {
+
+    .navItem {
+        border: none !important;
+        /* Remove grid borders on mobile */
+        border-bottom: 1px solid rgba(255, 255, 255, 0.2) !important;
         padding: 2rem;
+    }
+
+    .navItem:last-child {
+        border-bottom: none !important;
     }
 }
