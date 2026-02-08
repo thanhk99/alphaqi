@@ -10,35 +10,35 @@ const WhyChooseUs = () => {
             title: 'Báo cáo CIO',
             description: 'Phân tích chuyên sâu từ Giám đốc Đầu tư về xu hướng thị trường và cơ hội đầu tư.',
             color: 'linear-gradient(135deg, #f6d365 0%, #fda085 100%)',
-            link: '/reports'
+            link: '/reports?type=CIO_REPORT'
         },
         {
             id: 2,
             title: 'Báo cáo vĩ mô ',
             description: 'Báo cáo vĩ mô là một trong những dịch vụ chính của chúng tôi, cung cấp thông tin chi tiết về thị trường chứng khoán và các xu hướng tài chính.',
             color: 'linear-gradient(135deg, #667eea 0%, #764ba2 100%)',
-            link: '/reports'
+            link: '/reports?type=MACRO'
         },
         {
             id: 3,
             title: 'Báo cáo chiến lược đầu tư ',
             description: 'Báo cáo chiến lược đầu tư là một trong những dịch vụ chính của chúng tôi, cung cấp thông tin chi tiết về thị trường chứng khoán và các xu hướng tài chính.',
             color: 'linear-gradient(135deg, #f093fb 0%, #f5576c 100%)',
-            link: '/reports'
+            link: '/reports?type=INVESTMENT_STRATEGY'
         },
         {
             id: 4,
             title: 'Báo cáo công ty , ngành',
             description: 'Báo cáo công ty, ngành là một trong những dịch vụ chính của chúng tôi, cung cấp thông tin chi tiết về thị trường chứng khoán và các xu hướng tài chính.',
             color: 'linear-gradient(135deg, #4facfe 0%, #00f2fe 100%)',
-            link: '/reports'
+            link: '/reports?type=COMPANY_INDUSTRY'
         },
         {
             id: 5,
             title: 'Báo cáo quản lý tài sản ',
             description: 'Báo cáo quản lý tài sản là một trong những dịch vụ chính của chúng tôi, cung cấp thông tin chi tiết về thị trường chứng khoán và các xu hướng tài chính.',
             color: 'linear-gradient(135deg, #43e97b 0%, #38f9d7 100%)',
-            link: '/reports'
+            link: '/reports?type=ASSET_MANAGEMENT'
         }
     ];
 
