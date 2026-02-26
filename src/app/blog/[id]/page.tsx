@@ -113,7 +113,7 @@ export default function BlogPostPage({ params }: { params: Promise<{ id: string 
                     )}
 
                     <div className={styles.content}>
-                        <div dangerouslySetInnerHTML={{ __html: article.description }} />
+                        <RichText content={article.description} />
                         <div style={{
                             marginTop: '2rem',
                             padding: '2rem',
