@@ -19,6 +19,36 @@
     margin: 0 auto;
 }
 
+.tabsContainer {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    margin-bottom: 40px;
+}
+
+.tabButton {
+    padding: 10px 25px;
+    border-radius: 50px;
+    border: 1px solid var(--border-gray);
+    background: white;
+    color: var(--text-secondary);
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.tabButton:hover {
+    border-color: var(--blue-primary);
+    color: var(--blue-primary);
+}
+
+.tabButton.activeTab {
+    background: var(--blue-primary);
+    color: white;
+    border-color: var(--blue-primary);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
 .featuredSection {
     margin-bottom: 80px;
 }

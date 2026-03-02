@@ -15,6 +15,7 @@ export default function BlogPage() {
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState<string | null>(null);
     const [currentPage, setCurrentPage] = useState(1);
+    const [activeTab, setActiveTab] = useState('BLOG'); // Mặc định hiển thị Blog
     const ITEMS_PER_PAGE = 6;
 
     useEffect(() => {
@@ -22,10 +23,9 @@ export default function BlogPage() {
             try {
                 setLoading(true);
                 setError(null);
-                // Fetch only published articles for public view
+                // Fetch all published articles (pointing to /news)
                 const data = await articleService.getArticles({ published: true });
-                const filteredData = data.filter(article => article.type === 'BLOG');
-                const sortedData = filteredData.sort((a, b) => new Date(b.createdAt).getTime() - new Date(a.createdAt).getTime());
+                const sortedData = data.sort((a, b) => new Date(b.createdAt).getTime() - new Date(a.createdAt).getTime());
                 setArticles(sortedData);
             } catch (err) {
                 console.error('Error fetching articles:', err);
@@ -48,13 +48,24 @@ export default function BlogPage() {
         });
     };
 
+    // Tab Filtering Logic
+    const availableTypes = ['ALL', ...Array.from(new Set(articles.map(a => a.type)))];
+    const filteredArticles = activeTab === 'ALL'
+        ? articles
+        : articles.filter(a => a.type === activeTab);
+
     // Pagination Logic
-    const totalPages = Math.ceil(articles.length / ITEMS_PER_PAGE);
+    const totalPages = Math.ceil(filteredArticles.length / ITEMS_PER_PAGE);
     const startIndex = (currentPage - 1) * ITEMS_PER_PAGE;
-    const paginatedArticles = articles.slice(startIndex, startIndex + ITEMS_PER_PAGE);
-    const featuredArticle = articles.length > 0 ? articles[0] : null;
-    const regularArticles = articles.slice(1);
+    const paginatedArticles = filteredArticles.slice(startIndex, startIndex + ITEMS_PER_PAGE);
+    const featuredArticle = filteredArticles.length > 0 ? filteredArticles[0] : null;
+    const regularArticles = filteredArticles.slice(1);
     const paginatedRegularArticles = regularArticles.slice(startIndex, startIndex + ITEMS_PER_PAGE);
+
+    const handleTabChange = (type: string) => {
+        setActiveTab(type);
+        setCurrentPage(1);
+    };
 
     const handlePageChange = (page: number) => {
         setCurrentPage(page);
@@ -74,6 +85,18 @@ export default function BlogPage() {
             </section>
 
             <div className="container">
+                {/* Tabs Section */}
+                <div className={styles.tabsContainer}>
+                    {availableTypes.map(type => (
+                        <button
+                            key={type}
+                            className={`${styles.tabButton} ${activeTab === type ? styles.activeTab : ''}`}
+                            onClick={() => handleTabChange(type)}
+                        >
+                            {type === 'ALL' ? 'Tất cả' : type === 'BLOG' ? 'Blog' : type === 'NEWS' ? 'Tin tức' : type}
+                        </button>
+                    ))}
+                </div>
                 {loading ? (
                     <div style={{ textAlign: 'center', padding: '4rem 0' }}>
                         <p>Đang tải bài viết...</p>
@@ -105,11 +128,7 @@ export default function BlogPage() {
                                     </div>
                                     <div className={styles.featuredContent}>
                                         <div className={styles.category}>
-                                            {featuredArticle.type === 'EXTERNAL' ? (
-                                                <><LinkOutlined /> Bài viết liên kết</>
-                                            ) : (
-                                                <><FileTextOutlined /> Bài viết nội bộ</>
-                                            )}
+                                            <FileTextOutlined /> Tin tức
                                         </div>
                                         <h2 className={styles.featuredTitle}>
                                             <Link href={`/blog/${featuredArticle.id}`}>{featuredArticle.title}</Link>
@@ -150,11 +169,7 @@ export default function BlogPage() {
                                             </div>
                                             <div className={styles.cardContent}>
                                                 <div className={styles.category} style={{ fontSize: '0.7rem' }}>
-                                                    {article.type === 'EXTERNAL' ? (
-                                                        <><LinkOutlined /> Liên kết</>
-                                                    ) : (
-                                                        <><FileTextOutlined /> Nội bộ</>
-                                                    )}
+                                                    <FileTextOutlined /> Tin tức
                                                 </div>
                                                 <h4 className={styles.cardTitle}>
                                                     <Link href={`/blog/${article.id}`}>{article.title}</Link>
