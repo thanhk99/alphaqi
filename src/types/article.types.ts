@@ -1,4 +1,4 @@
-export type ArticleType = 'EXTERNAL' | 'INTERNAL';
+export type ArticleType = 'EXTERNAL' | 'INTERNAL' | 'NEWS' | 'BLOG';
 
 export interface Article {
     id: string;

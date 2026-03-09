@@ -18,6 +18,7 @@ import styles from './page.module.css';
 import { articleService } from '@/services/article.service';
 import { Article } from '@/types/article.types';
 import RichText from '@/components/common/RichText/RichText';
+import { getImageUrl } from '@/utils/imageUtils';
 
 export default function BlogPostPage({ params }: { params: Promise<{ id: string }> }) {
     // Unwrap params
@@ -108,12 +109,12 @@ export default function BlogPostPage({ params }: { params: Promise<{ id: string 
 
                     {article.thumbnail && (
                         <div className={styles.featuredImage}>
-                            <img src={article.thumbnail} alt={article.title} style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
+                            <img src={getImageUrl(article.thumbnail)} alt={article.title} style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
                         </div>
                     )}
 
                     <div className={styles.content}>
-                        <div dangerouslySetInnerHTML={{ __html: article.description }} />
+                        <RichText content={article.description} />
                         <div style={{
                             marginTop: '2rem',
                             padding: '2rem',
@@ -188,7 +189,7 @@ export default function BlogPostPage({ params }: { params: Promise<{ id: string 
 
                 {article.thumbnail && (
                     <div className={styles.featuredImage}>
-                        <img src={article.thumbnail} alt={article.title} style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
+                        <img src={getImageUrl(article.thumbnail)} alt={article.title} style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
                     </div>
                 )}
 

@@ -22,10 +22,11 @@ export default function NewsListPage() {
             try {
                 setLoading(true);
                 const backendPage = currentPage - 1;
-                const response = await newsService.getAllNews(true, backendPage, ITEMS_PER_PAGE);
+                const response = await newsService.getAllNews(true, backendPage, ITEMS_PER_PAGE); 
                 
                 if (response && response.content) {
-                    setNewsList(response.content);
+                    const filteredData = response.content.filter(news => news.type === 'NEWS');
+                    setNewsList(filteredData);
                     setTotalPages(response.totalPages);
                 } else {
                     setNewsList([]);

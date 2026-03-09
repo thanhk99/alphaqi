@@ -9,7 +9,8 @@ import {
     SafetyCertificateOutlined,
     CheckCircleFilled,
     LineChartOutlined,
-    ThunderboltFilled
+    ThunderboltFilled,
+    FileProtectOutlined
 } from '@ant-design/icons';
 import styles from './InvestmentBank.module.css';
 import Image from 'next/image';
@@ -35,6 +36,11 @@ export default function InvestmentBankPage() {
             icon: <SafetyCertificateOutlined />,
             title: 'Private Credit & Alternative',
             description: 'Các thương vụ phát hành công cụ nợ có cam kết lợi nhuận ổn định và tính bảo mật cao.'
+        },
+        {
+            icon: <FileProtectOutlined />,
+            title: 'Dịch vụ IR (Investor Ralation)',
+            description: 'Chúng tôi với các cộng sự hàng đầu trên thị trường đã và đang triển khai dịch vụ IR cho các tổ chức niêm yết trên thị trường chứng khoán Việt Nam. Chúng tôi hiện đang cung cấp dịch vụ cho 5/10 Công ty có giá trị vốn hóa cao nhất trên thị trường chứng khoán Việt Nam với chất lượng được đánh giá cao vượt trội so với các đối thủ cạnh tranh trên thị trường hiện nay. Đội ngũ chuyên gia của chúng tôi bao gồm các chuyên gia như Giám đốc đầu tư ở Công ty Quản lý Quỹ quản lý hàng tỷ USD, CEO công ty Chứng khoán vốn hóa tỷ USD, Giám đốc Phân tích công ty chứng khoán - công ty quản lý quỹ, Giám đốc môi giới khách hàng cá nhân, Giám đốc môi giới khách hàng tổ chức, Giám đốc quản lý tài sản của dịch vụ Wealth Management, nhà báo chứng khoán kỳ cựu,...'
         }
     ];
 

@@ -22,7 +22,7 @@ export default function InvestmentServicesPage() {
         },
         {
             icon: <DollarOutlined />,
-            title: 'Tư vấn ngân hàng đầu tư tổ chức',
+            title: 'Tư vấn đầu tư tổ chức',
             description: 'Cung cấp các giải pháp tài chính chuyên biệt cho tổ chức, bao gồm tư vấn phát hành trái phiếu, tư vấn niêm yết và các dịch vụ tài chính khác.',
             link: '/investment-services/organization'
         },

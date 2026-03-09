@@ -18,8 +18,10 @@ const NewsCard: React.FC<NewsCardProps> = ({ news }) => {
         });
     };
 
+    const detailPath = news.type === 'BLOG' ? `/blog/${news.id}` : `/news/${news.id}`;
+
     return (
-        <Link href={`/news/${news.id}`} className={styles.card}>
+        <Link href={detailPath} className={styles.card}>
             <div className={styles.imageContainer}>
                 <img
                     src={news.thumbnail}

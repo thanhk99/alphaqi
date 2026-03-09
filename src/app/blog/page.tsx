@@ -111,11 +111,7 @@ export default function BlogPage() {
                                     </div>
                                     <div className={styles.featuredContent}>
                                         <div className={styles.category}>
-                                            {featuredArticle.type === 'EXTERNAL' ? (
-                                                <><LinkOutlined /> Bài viết liên kết</>
-                                            ) : (
-                                                <><FileTextOutlined /> Bài viết nội bộ</>
-                                            )}
+                                            <FileTextOutlined /> Tin tức
                                         </div>
                                         <h2 className={styles.featuredTitle}>
                                             <Link href={`/blog/${featuredArticle.id}`}>{featuredArticle.title}</Link>
@@ -156,11 +152,7 @@ export default function BlogPage() {
                                             </div>
                                             <div className={styles.cardContent}>
                                                 <div className={styles.category} style={{ fontSize: '0.7rem' }}>
-                                                    {article.type === 'EXTERNAL' ? (
-                                                        <><LinkOutlined /> Liên kết</>
-                                                    ) : (
-                                                        <><FileTextOutlined /> Nội bộ</>
-                                                    )}
+                                                    <FileTextOutlined /> Tin tức
                                                 </div>
                                                 <h4 className={styles.cardTitle}>
                                                     <Link href={`/blog/${article.id}`}>{article.title}</Link>

@@ -527,6 +527,9 @@
     color: var(--text-primary);
     margin-bottom: var(--spacing-3xl);
     white-space: pre-line;
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+    word-break: break-word;
 }
 
 .documentActions {

@@ -31,7 +31,7 @@ export default function ServicesNavSection() {
                 </Link>
 
                 {/* Ngân hàng đầu tư */}
-                <Link href="/investment-banking" className={styles.navItem}>
+                <Link href="/investment-bank" className={styles.navItem}>
                     <div className={styles.iconWrapper}>
                         <BankOutlined />
                     </div>
