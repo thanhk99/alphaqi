@@ -8,6 +8,7 @@ import { BookOutlined, ClockCircleOutlined, DeleteOutlined } from '@ant-design/i
 import Button from '@/components/common/Button/Button';
 import EnrollmentStatusBadge from '@/components/common/EnrollmentStatusBadge/EnrollmentStatusBadge';
 import ConfirmModal from '@/components/common/ConfirmModal/ConfirmModal';
+import Pagination from '@/components/common/Pagination/Pagination';
 import { getImageUrl } from '@/utils/imageUtils';
 import { useNotification } from '@/store/NotificationContext';
 import styles from './page.module.css';
@@ -22,10 +23,13 @@ export default function MyCoursesPage() {
     const [filterStatus, setFilterStatus] = useState<FilterStatus>('ALL');
     const [cancelModalOpen, setCancelModalOpen] = useState(false);
     const [selectedEnrollmentId, setSelectedEnrollmentId] = useState<string | null>(null);
+    const [page, setPage] = useState(1);
+    const [totalPages, setTotalPages] = useState(1);
+    const pageSize = 6;
 
     useEffect(() => {
         fetchEnrollments();
-    }, []);
+    }, [page]);
 
     useEffect(() => {
         filterEnrollments();
@@ -34,8 +38,16 @@ export default function MyCoursesPage() {
     const fetchEnrollments = async () => {
         try {
             setLoading(true);
-            const data = await enrollmentService.getMyEnrollments();
-            setEnrollments(data);
+            const backendPage = page - 1;
+            const data = await enrollmentService.getMyEnrollments(backendPage, pageSize);
+            
+            if (data && data.content) {
+                setEnrollments(data.content);
+                setTotalPages(data.totalPages);
+            } else {
+                setEnrollments([]);
+                setTotalPages(1);
+            }
         } catch (error) {
             console.error('Failed to fetch enrollments:', error);
             showNotification('error', 'Không thể tải danh sách khóa học');
@@ -125,7 +137,9 @@ export default function MyCoursesPage() {
             {filteredEnrollments.length > 0 ? (
                 <div className={styles.courseGrid}>
                     {filteredEnrollments.map((enrollment) => (
+                        // ... card content ...
                         <div key={enrollment.id} className={styles.courseCard}>
+                            {/* Content clipped for brevity, same as before */}
                             <div className={styles.thumbnailWrapper}>
                                 <img
                                     src={getImageUrl(enrollment.course.thumbnail) || '/placeholder-course.jpg'}
@@ -140,7 +154,6 @@ export default function MyCoursesPage() {
                             <div className={styles.cardContent}>
                                 <h3 className={styles.courseTitle}>{enrollment.course.title}</h3>
 
-                                {/* Course Info */}
                                 <div className={styles.courseInfo}>
                                     <div className={styles.infoItem}>
                                         <BookOutlined />
@@ -148,7 +161,6 @@ export default function MyCoursesPage() {
                                     </div>
                                 </div>
 
-                                {/* Enrollment Dates */}
                                 <div className={styles.enrollmentDates}>
                                     <div className={styles.dateItem}>
                                         <span className={styles.dateLabel}>Ngày đăng ký:</span>
@@ -162,7 +174,6 @@ export default function MyCoursesPage() {
                                     )}
                                 </div>
 
-                                {/* Progress Section */}
                                 {enrollment.status !== 'CANCELLED' && (
                                     <div className={styles.progressSection}>
                                         <div className={styles.progressInfo}>
@@ -178,7 +189,6 @@ export default function MyCoursesPage() {
                                     </div>
                                 )}
 
-                                {/* Action Buttons */}
                                 <div className={styles.actionButtons}>
                                     {enrollment.status === 'ACTIVE' && (
                                         <>
@@ -207,6 +217,13 @@ export default function MyCoursesPage() {
                             </div>
                         </div>
                     ))}
+                    <div className={styles.paginationWrapper} style={{ gridColumn: '1 / -1', marginTop: '20px' }}>
+                        <Pagination 
+                            currentPage={page}
+                            totalPages={totalPages}
+                            onPageChange={setPage}
+                        />
+                    </div>
                 </div>
             ) : (
                 <div className={styles.emptyState}>

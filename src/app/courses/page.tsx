@@ -16,13 +16,20 @@ export default function CoursesPage() {
     const [filters, setFilters] = useState({
         search: '',
         category: undefined as string | undefined,
-        sort: 'newest'
+        sort: 'newest',
+        page: 0,
+        size: 12
     });
+    const [totalPages, setTotalPages] = useState(1);
+    const [page, setPage] = useState(1);
 
     useEffect(() => {
         fetchCategories();
-        fetchAllCourses();
     }, []);
+
+    useEffect(() => {
+        fetchAllCourses();
+    }, [filters.category, filters.search, filters.sort, page]);
 
     const fetchCategories = async () => {
         try {
@@ -36,54 +43,33 @@ export default function CoursesPage() {
     const fetchAllCourses = async () => {
         try {
             setLoading(true);
-            const data = await courseService.getCourses({
-                published: true
+            const response = await courseService.getCourses({
+                published: true,
+                category: filters.category,
+                search: filters.search,
+                sort: filters.sort,
+                page: page - 1,
+                size: filters.size
             });
-            if (data) setAllCourses(data);
+            
+            if (response && response.content) {
+                setAllCourses(response.content);
+                setTotalPages(response.totalPages);
+            } else {
+                setAllCourses([]);
+                setTotalPages(1);
+            }
         } catch (error) {
             console.error('Failed to fetch courses:', error);
             setAllCourses([]);
+            setTotalPages(1);
         } finally {
             setLoading(false);
         }
     };
 
-    const filteredCourses = useMemo(() => {
-        let result = [...allCourses];
-
-        // Filter by search
-        if (filters.search) {
-            const searchLower = filters.search.toLowerCase().normalize('NFC');
-            result = result.filter(course => {
-                const title = (course.title || '').toLowerCase().normalize('NFC');
-                const desc = (course.description || '').toLowerCase().normalize('NFC');
-                return title.includes(searchLower) || desc.includes(searchLower);
-            });
-        }
-
-        // Filter by category
-        if (filters.category) {
-            result = result.filter(course => course.category === filters.category);
-        }
-
-        // Sort
-        switch (filters.sort) {
-            case 'newest':
-                result.sort((a, b) => new Date(b.createdAt).getTime() - new Date(a.createdAt).getTime());
-                break;
-            case 'popular':
-                result.sort((a, b) => (b.enrollmentCount || 0) - (a.enrollmentCount || 0));
-                break;
-            case 'price_asc':
-                result.sort((a, b) => (a.price || 0) - (b.price || 0));
-                break;
-            case 'price_desc':
-                result.sort((a, b) => (b.price || 0) - (a.price || 0));
-                break;
-        }
-
-        return result;
-    }, [filters, allCourses]);
+    // We no longer need useMemo for filteredCourses as we fetch from server
+    const displayCourses = allCourses;
 
     const handleSearchChange = (e: React.ChangeEvent<HTMLInputElement>) => {
         setSearchTerm(e.target.value);
@@ -94,10 +80,12 @@ export default function CoursesPage() {
             ...prev,
             category: prev.category === category ? undefined : category
         }));
+        setPage(1);
     };
 
     const handleSearchClick = () => {
         setFilters(prev => ({ ...prev, search: searchTerm }));
+        setPage(1);
     };
 
     const handleKeyUp = (e: React.KeyboardEvent<HTMLInputElement>) => {
@@ -161,7 +149,10 @@ export default function CoursesPage() {
                                 <select
                                     className={styles.sortSelect}
                                     value={filters.sort}
-                                    onChange={(e) => setFilters({ ...filters, sort: e.target.value })}
+                                    onChange={(e) => {
+                                        setFilters({ ...filters, sort: e.target.value });
+                                        setPage(1);
+                                    }}
                                 >
                                     <option value="newest">Mới nhất</option>
                                     <option value="popular">Phổ biến nhất</option>
@@ -174,27 +165,9 @@ export default function CoursesPage() {
                                 <div className={styles.loadingWrapper}>Đang tải khóa học...</div>
                             ) : (
                                 <>
-                                    {!filters.category && !filters.search ? (
-                                        // Group by Category View
-                                        categories.map((cat) => {
-                                            const catCourses = filteredCourses.filter(c => c.category === cat.id);
-                                            if (catCourses.length === 0) return null;
-                                            return (
-                                                <div key={cat.id} className={styles.categorySection}>
-                                                    <h3 className={styles.categoryTitle}>{cat.name}</h3>
-                                                    <div className={styles.coursesGrid}>
-                                                        {catCourses.map((course) => (
-                                                            <CourseCard key={course.id} course={course} />
-                                                        ))}
-                                                    </div>
-                                                </div>
-                                            );
-                                        })
-                                    ) : (
-                                        // Filtered View
                                         <div className={styles.coursesGrid}>
-                                            {filteredCourses.length > 0 ? (
-                                                filteredCourses.map((course) => (
+                                            {displayCourses.length > 0 ? (
+                                                displayCourses.map((course) => (
                                                     <CourseCard key={course.id} course={course} />
                                                 ))
                                             ) : (
@@ -203,15 +176,34 @@ export default function CoursesPage() {
                                                 </div>
                                             )}
                                         </div>
-                                    )}
                                 </>
                             )}
 
                             {/* Pagination - To be implemented with API data */}
                             <div className={styles.pagination}>
-                                <button className={styles.pageButton}>« Trước</button>
-                                <button className={`${styles.pageButton} ${styles.active}`}>1</button>
-                                <button className={styles.pageButton}>Sau »</button>
+                                <button 
+                                    className={styles.pageButton} 
+                                    disabled={page === 1}
+                                    onClick={() => setPage(page - 1)}
+                                >
+                                    « Trước
+                                </button>
+                                {Array.from({ length: totalPages }, (_, i) => i + 1).map(p => (
+                                    <button 
+                                        key={p}
+                                        className={`${styles.pageButton} ${page === p ? styles.active : ''}`}
+                                        onClick={() => setPage(p)}
+                                    >
+                                        {p}
+                                    </button>
+                                ))}
+                                <button 
+                                    className={styles.pageButton}
+                                    disabled={page === totalPages}
+                                    onClick={() => setPage(page + 1)}
+                                >
+                                    Sau »
+                                </button>
                             </div>
                         </main>
                     </div>

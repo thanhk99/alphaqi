@@ -11,17 +11,26 @@ import styles from './page.module.css';
 const ITEMS_PER_PAGE = 6;
 
 export default function NewsListPage() {
+    const [totalPages, setTotalPages] = useState(1);
+    const [currentPage, setCurrentPage] = useState(1);
+
     const [newsList, setNewsList] = useState<News[]>([]);
     const [loading, setLoading] = useState(true);
-    const [currentPage, setCurrentPage] = useState(1);
 
     useEffect(() => {
         const fetchNews = async () => {
             try {
                 setLoading(true);
-                const data = await newsService.getAllNews(true); // Get only published news
-                const sortedData = data.sort((a, b) => new Date(b.createdAt).getTime() - new Date(a.createdAt).getTime());
-                setNewsList(sortedData);
+                const backendPage = currentPage - 1;
+                const response = await newsService.getAllNews(true, backendPage, ITEMS_PER_PAGE);
+                
+                if (response && response.content) {
+                    setNewsList(response.content);
+                    setTotalPages(response.totalPages);
+                } else {
+                    setNewsList([]);
+                    setTotalPages(1);
+                }
             } catch (error) {
                 console.error('Failed to fetch news list:', error);
             } finally {
@@ -30,12 +39,10 @@ export default function NewsListPage() {
         };
 
         fetchNews();
-    }, []);
+    }, [currentPage]);
 
-    // Pagination Logic
-    const totalPages = Math.ceil(newsList.length / ITEMS_PER_PAGE);
-    const startIndex = (currentPage - 1) * ITEMS_PER_PAGE;
-    const currentNews = newsList.slice(startIndex, startIndex + ITEMS_PER_PAGE);
+    // Client-side slice logic removed as we use server-side pagination
+    const currentNewsList = newsList;
 
     const handlePageChange = (page: number) => {
         setCurrentPage(page);
@@ -58,7 +65,7 @@ export default function NewsListPage() {
                 ) : newsList.length > 0 ? (
                     <>
                         <div className={styles.newsGrid}>
-                            {currentNews.map((news) => (
+                            {currentNewsList.map((news) => (
                                 <NewsCard key={news.id} news={news} />
                             ))}
                         </div>

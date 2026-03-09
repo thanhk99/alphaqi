@@ -15,6 +15,7 @@ export default function BlogPage() {
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState<string | null>(null);
     const [currentPage, setCurrentPage] = useState(1);
+    const [totalPages, setTotalPages] = useState(1);
     const ITEMS_PER_PAGE = 6;
 
     useEffect(() => {
@@ -22,10 +23,20 @@ export default function BlogPage() {
             try {
                 setLoading(true);
                 setError(null);
-                // Fetch only published articles for public view
-                const data = await articleService.getArticles({ published: true });
-                const sortedData = data.sort((a, b) => new Date(b.createdAt).getTime() - new Date(a.createdAt).getTime());
-                setArticles(sortedData);
+                const backendPage = currentPage - 1;
+                const response = await articleService.getArticles({ 
+                    published: true, 
+                    page: backendPage, 
+                    size: ITEMS_PER_PAGE 
+                });
+                
+                if (response && response.content) {
+                    setArticles(response.content);
+                    setTotalPages(response.totalPages);
+                } else {
+                    setArticles([]);
+                    setTotalPages(1);
+                }
             } catch (err) {
                 console.error('Error fetching articles:', err);
                 setError('Không thể tải bài viết. Vui lòng thử lại sau.');
@@ -35,7 +46,7 @@ export default function BlogPage() {
         };
 
         fetchArticles();
-    }, []);
+    }, [currentPage]);
 
     // Format date to Vietnamese format
     const formatDate = (dateString: string) => {
@@ -47,13 +58,9 @@ export default function BlogPage() {
         });
     };
 
-    // Pagination Logic
-    const totalPages = Math.ceil(articles.length / ITEMS_PER_PAGE);
-    const startIndex = (currentPage - 1) * ITEMS_PER_PAGE;
-    const paginatedArticles = articles.slice(startIndex, startIndex + ITEMS_PER_PAGE);
-    const featuredArticle = articles.length > 0 ? articles[0] : null;
-    const regularArticles = articles.slice(1);
-    const paginatedRegularArticles = regularArticles.slice(startIndex, startIndex + ITEMS_PER_PAGE);
+    // Featured Article logic (we might want to fetch this separately or use the first item of first page)
+    const featuredArticle = articles.length > 0 && currentPage === 1 ? articles[0] : null;
+    const regularArticles = featuredArticle ? articles.slice(1) : articles;
 
     const handlePageChange = (page: number) => {
         setCurrentPage(page);
@@ -134,7 +141,7 @@ export default function BlogPage() {
                             <>
                                 <h3 className="mb-4">Bài viết mới nhất</h3>
                                 <div className={styles.blogGrid}>
-                                    {paginatedRegularArticles.map((article) => (
+                                    {regularArticles.map((article) => (
                                         <div key={article.id} className={styles.blogCard}>
                                             <div className={styles.cardImage}>
                                                 <img

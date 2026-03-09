@@ -1,10 +1,11 @@
 import { apiService } from './api.service';
 import { Enrollment, LessonProgress } from '@/types/course.types';
+import { PaginatedResponse } from '@/types/api.types';
 
 export const enrollmentService = {
     // Get user's enrolled courses
-    getMyEnrollments: async (): Promise<Enrollment[]> => {
-        const response = await apiService.get<Enrollment[]>('/enrollments/my');
+    getMyEnrollments: async (page = 0, size = 10): Promise<PaginatedResponse<Enrollment>> => {
+        const response = await apiService.get<PaginatedResponse<Enrollment>>(`/enrollments/my?page=${page}&size=${size}`);
         return response.data.data;
     },
 

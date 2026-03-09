@@ -44,10 +44,10 @@ export default function CourseDetailPage({ params }: { params: Promise<{ id: str
             setReviews([]); // Clear old reviews when fetching new course details
             const courseData = await courseService.getCourseById(courseId);
 
-            // Fetch reviews
+            // Fetch reviews (first page)
             try {
-                const reviewData = await courseService.getCourseReviews(courseId);
-                setReviews(reviewData);
+                const reviewResponse = await courseService.getCourseReviews(courseId, 0, 5);
+                setReviews(reviewResponse.content || []);
             } catch (revError) {
                 console.error('Failed to fetch reviews:', revError);
             }
@@ -108,8 +108,8 @@ export default function CourseDetailPage({ params }: { params: Promise<{ id: str
             setComment('');
             setRating(5);
             // Refresh reviews
-            const newReviews = await courseService.getCourseReviews(courseId);
-            setReviews(newReviews);
+            const newReviewsResponse = await courseService.getCourseReviews(courseId, 0, 5);
+            setReviews(newReviewsResponse.content || []);
             alert('Cảm ơn bạn đã đánh giá!');
         } catch (error) {
             console.error('Failed to submit review:', error);

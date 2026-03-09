@@ -19,19 +19,20 @@ export interface CourseFilters {
 
 export const courseService = {
     // Get all courses with filters and pagination
-    getCourses: async (filters: CourseFilters = {}): Promise<Course[]> => {
+    getCourses: async (filters: CourseFilters = {}): Promise<PaginatedResponse<Course>> => {
         const params = new URLSearchParams();
 
         Object.entries(filters).forEach(([key, value]) => {
             if (value !== undefined && value !== null) {
+                // Map page to pageNumber and size to pageSize for backend compatibility if needed
+                // but the backend Pageable expects page and size query params
                 params.append(key, value.toString());
             }
         });
 
-        const response = await apiService.get<Course[]>(
+        const response = await apiService.get<PaginatedResponse<Course>>(
             `/courses?${params.toString()}`
         );
-        // API returns { success, message, data: Course[] }
         return response.data.data;
     },
 
@@ -50,7 +51,7 @@ export const courseService = {
     // Search courses
     searchCourses: async (query: string, page = 0, size = 12): Promise<PaginatedResponse<Course>> => {
         const response = await apiService.get<PaginatedResponse<Course>>(
-            `/courses/search?q=${encodeURIComponent(query)}&page=${page}&size=${size}`
+            `/courses/search?keyword=${encodeURIComponent(query)}&page=${page}&size=${size}`
         );
         return response.data.data;
     },
@@ -73,8 +74,8 @@ export const courseService = {
     },
 
     // Get course reviews
-    getCourseReviews: async (courseId: string): Promise<Review[]> => {
-        const response = await apiService.get<Review[]>(`/reviews/course/${courseId}`);
+    getCourseReviews: async (courseId: string, page = 0, size = 5): Promise<PaginatedResponse<Review>> => {
+        const response = await apiService.get<PaginatedResponse<Review>>(`/reviews/course/${courseId}?page=${page}&size=${size}`);
         return response.data.data;
     },
 
