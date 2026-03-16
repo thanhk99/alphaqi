@@ -5,7 +5,7 @@ import MainLayout from '@/components/layouts/MainLayout/MainLayout';
 import { CalendarOutlined, ArrowRightOutlined, LeftOutlined, RightOutlined, LinkOutlined, FileTextOutlined } from '@ant-design/icons';
 import Link from 'next/link';
 import styles from './page.module.css';
-import { articleService } from '@/services/article.service';
+import { blogService } from '@/services/blog.service';
 import { Article } from '@/types/article.types';
 import RichText from '@/components/common/RichText/RichText';
 import { getImageUrl, getPlaceholderImage } from '@/utils/imageUtils';
@@ -23,10 +23,9 @@ export default function BlogPage() {
             try {
                 setLoading(true);
                 setError(null);
-                const backendPage = currentPage - 1;
-                const response = await articleService.getArticles({ 
+                const response = await blogService.getBlogs({ 
                     published: true, 
-                    page: backendPage, 
+                    page: currentPage - 1, 
                     size: ITEMS_PER_PAGE 
                 });
                 

@@ -19,7 +19,9 @@ export default function DashboardPage() {
         const fetchEnrollments = async () => {
             try {
                 const data = await enrollmentService.getMyEnrollments();
-                setEnrollments(data);
+                if (data && data.content) {
+                    setEnrollments(data.content);
+                }
             } catch (error) {
                 console.error('Failed to fetch enrollments:', error);
             } finally {

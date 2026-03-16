@@ -1,12 +1,13 @@
 import React from 'react';
 import Link from 'next/link';
 import { CalendarOutlined } from '@ant-design/icons';
+import { Article } from '@/types/article.types';
 import { News } from '@/types/news.types';
 import RichText from '@/components/common/RichText/RichText';
 import styles from './NewsCard.module.css';
 
 interface NewsCardProps {
-    news: News;
+    news: Article | News;
 }
 
 const NewsCard: React.FC<NewsCardProps> = ({ news }) => {

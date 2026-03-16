@@ -12,19 +12,19 @@ import styles from './page.module.css';
 export default function NewsDetailPage() {
     const params = useParams();
     const router = useRouter();
-    const [news, setNews] = useState<News | null>(null);
+    const [article, setArticle] = useState<News | null>(null);
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState<string | null>(null);
 
     useEffect(() => {
-        const fetchNews = async () => {
+        const fetchArticle = async () => {
             try {
                 setLoading(true);
                 const id = params.id as string;
                 const data = await newsService.getNewsById(id);
-                setNews(data);
+                setArticle(data);
             } catch (err) {
-                console.error('Failed to fetch news:', err);
+                console.error('Failed to fetch article:', err);
                 setError('Không thể tải tin tức. Vui lòng thử lại sau.');
             } finally {
                 setLoading(false);
@@ -32,7 +32,7 @@ export default function NewsDetailPage() {
         };
 
         if (params.id) {
-            fetchNews();
+            fetchArticle();
         }
     }, [params.id]);
 
@@ -55,7 +55,7 @@ export default function NewsDetailPage() {
         );
     }
 
-    if (error || !news) {
+    if (error || !article) {
         return (
             <MainLayout>
                 <div className={styles.errorContainer}>
@@ -78,11 +78,11 @@ export default function NewsDetailPage() {
 
                 <article className={styles.article}>
                     {/* Featured Image */}
-                    {news.thumbnail && (
+                    {article.thumbnail && (
                         <div className={styles.featuredImage}>
                             <img
-                                src={news.thumbnail}
-                                alt={news.title}
+                                src={article.thumbnail}
+                                alt={article.title}
                                 referrerPolicy="no-referrer"
                             />
                         </div>
@@ -90,14 +90,14 @@ export default function NewsDetailPage() {
 
                     {/* Article Header */}
                     <header className={styles.header}>
-                        <h1 className={styles.title}>{news.title}</h1>
+                        <h1 className={styles.title}>{article.title}</h1>
                         <div className={styles.meta}>
                             <span className={styles.date}>
-                                <CalendarOutlined /> {formatDate(news.createdAt)}
+                                <CalendarOutlined /> {formatDate(article.createdAt)}
                             </span>
-                            {news.updatedAt !== news.createdAt && (
+                            {article.updatedAt !== article.createdAt && (
                                 <span className={styles.updated}>
-                                    (Cập nhật: {formatDate(news.updatedAt)})
+                                    (Cập nhật: {formatDate(article.updatedAt)})
                                 </span>
                             )}
                         </div>
@@ -105,7 +105,7 @@ export default function NewsDetailPage() {
 
                     {/* Article Content */}
                     <div className={styles.content}>
-                        <RichText content={news.content || news.description} />
+                        <RichText content={article.content || article.description} />
                     </div>
                 </article>
             </div>

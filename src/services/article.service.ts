@@ -1,23 +1,28 @@
 import { apiService } from './api.service';
-import { Article } from '@/types/article.types';
+import { Article, ArticleType } from '@/types/article.types';
 import { PaginatedResponse } from '@/types/api.types';
 
 export interface ArticleFilters {
     published?: boolean;
+    type?: ArticleType;
+    page?: number;
+    size?: number;
+    search?: string;
 }
 
 export const articleService = {
-    // Get all articles
-    getArticles: async (filters: ArticleFilters & { page?: number; size?: number } = {}): Promise<PaginatedResponse<Article>> => {
-        const params = new URLSearchParams();
+    // Get all articles with filters and pagination
+    getArticles: async (filters: ArticleFilters = {}): Promise<PaginatedResponse<Article>> => {
+        // Sử dụng pattern truyền params trực tiếp vào axios (giống style trang admin)
+        const response = await apiService.get<PaginatedResponse<Article>>('/articles', {
+            params: filters
+        });
+        return response.data.data;
+    },
 
-        if (filters.published !== undefined) {
-            params.append('published', filters.published.toString());
-        }
-        if (filters.page !== undefined) params.append('page', filters.page.toString());
-        if (filters.size !== undefined) params.append('size', filters.size.toString());
-
-        const response = await apiService.get<PaginatedResponse<Article>>(`/articles?${params.toString()}`);
+    // Get featured articles (max 8)
+    getFeaturedArticles: async (): Promise<Article[]> => {
+        const response = await apiService.get<Article[]>('/articles/home');
         return response.data.data;
     },
 
@@ -26,4 +31,12 @@ export const articleService = {
         const response = await apiService.get<Article>(`/articles/${id}`);
         return response.data.data;
     },
+
+    // Get latest articles
+    getLatestArticles: async (type?: ArticleType, size = 4): Promise<Article[]> => {
+        const response = await apiService.get<PaginatedResponse<Article>>('/articles', {
+            params: { published: true, type, page: 0, size }
+        });
+        return response.data.data.content;
+    }
 };

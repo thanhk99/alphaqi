@@ -2,24 +2,28 @@ import { apiService } from './api.service';
 import { News } from '@/types/news.types';
 import { PaginatedResponse } from '@/types/api.types';
 
+export interface NewsFilters {
+    published?: boolean;
+    page?: number;
+    size?: number;
+}
+
 export const newsService = {
-    // Get all news with optional published filter
-    getAllNews: async (published?: boolean, page = 0, size = 10): Promise<PaginatedResponse<News>> => {
-        let url = `/news?page=${page}&size=${size}`;
-        if (published !== undefined) {
-            url += `&published=${published}`;
-        }
-        const response = await apiService.get<PaginatedResponse<News>>(url);
+    // Lấy danh sách tin tức với style truyền params của Admin
+    getAllNews: async (filters: NewsFilters = {}): Promise<PaginatedResponse<News>> => {
+        const response = await apiService.get<PaginatedResponse<News>>('/news', {
+            params: filters
+        });
         return response.data.data;
     },
 
-    // Get news by ID
+    // Lấy chi tiết tin tức theo ID
     getNewsById: async (id: string): Promise<News> => {
         const response = await apiService.get<News>(`/news/${id}`);
         return response.data.data;
     },
 
-    // Get featured news for homepage (max 8)
+    // Lấy tin tức nổi bật cho trang chủ
     getFeaturedNews: async (): Promise<News[]> => {
         const response = await apiService.get<News[]>('/news/home');
         return response.data.data;

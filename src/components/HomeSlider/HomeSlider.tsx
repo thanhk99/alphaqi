@@ -14,15 +14,15 @@ import 'swiper/css/navigation';
 import styles from './HomeSlider.module.css';
 
 const HomeSlider = () => {
-    const [news, setNews] = useState<News[]>([]);
+    const [articles, setArticles] = useState<News[]>([]);
     const [loading, setLoading] = useState(true);
 
     useEffect(() => {
-        const fetchNews = async () => {
+        const fetchArticles = async () => {
             try {
                 setLoading(true);
                 const data = await newsService.getFeaturedNews();
-                setNews(data);
+                setArticles(data);
             } catch (error) {
                 console.error('Failed to fetch news:', error);
             } finally {
@@ -30,7 +30,7 @@ const HomeSlider = () => {
             }
         };
 
-        fetchNews();
+        fetchArticles();
     }, []);
 
     if (loading) {
@@ -42,8 +42,8 @@ const HomeSlider = () => {
         );
     }
 
-    if (news.length === 0) {
-        return null; // Don't show section if no news
+    if (articles.length === 0) {
+        return null; // Don't show section if no articles
     }
 
     return (
@@ -53,7 +53,7 @@ const HomeSlider = () => {
                 spaceBetween={30}
                 slidesPerView={1.5}
                 centeredSlides={true}
-                loop={news.length > 3}
+                loop={articles.length > 3}
                 breakpoints={{
                     640: {
                         slidesPerView: 2.5,
@@ -75,7 +75,7 @@ const HomeSlider = () => {
                 className="mySwiper"
                 style={{ paddingBottom: '50px', paddingLeft: '5px', paddingRight: '5px' }}
             >
-                {news.map((item) => (
+                {articles.map((item) => (
                     <SwiperSlide key={item.id}>
                         <Link href={item.type === 'BLOG' ? `/blog/${item.id}` : `/news/${item.id}`} className={styles.cardLink}>
                             <div className={styles.card}>

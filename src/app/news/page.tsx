@@ -14,22 +14,24 @@ export default function NewsListPage() {
     const [totalPages, setTotalPages] = useState(1);
     const [currentPage, setCurrentPage] = useState(1);
 
-    const [newsList, setNewsList] = useState<News[]>([]);
+    const [articles, setArticles] = useState<News[]>([]);
     const [loading, setLoading] = useState(true);
 
     useEffect(() => {
-        const fetchNews = async () => {
+        const fetchArticles = async () => {
             try {
                 setLoading(true);
-                const backendPage = currentPage - 1;
-                const response = await newsService.getAllNews(true, backendPage, ITEMS_PER_PAGE); 
+                const response = await newsService.getAllNews({
+                    published: true,
+                    page: currentPage - 1,
+                    size: ITEMS_PER_PAGE
+                });
                 
                 if (response && response.content) {
-                    const filteredData = response.content.filter(news => news.type === 'NEWS');
-                    setNewsList(filteredData);
+                    setArticles(response.content);
                     setTotalPages(response.totalPages);
                 } else {
-                    setNewsList([]);
+                    setArticles([]);
                     setTotalPages(1);
                 }
             } catch (error) {
@@ -39,11 +41,11 @@ export default function NewsListPage() {
             }
         };
 
-        fetchNews();
+        fetchArticles();
     }, [currentPage]);
 
     // Client-side slice logic removed as we use server-side pagination
-    const currentNewsList = newsList;
+    const currentArticles = articles;
 
     const handlePageChange = (page: number) => {
         setCurrentPage(page);
@@ -63,11 +65,11 @@ export default function NewsListPage() {
                         <div className={styles.spinner}></div>
                         <p>Đang tải danh sách tin tức...</p>
                     </div>
-                ) : newsList.length > 0 ? (
+                ) : articles.length > 0 ? (
                     <>
                         <div className={styles.newsGrid}>
-                            {currentNewsList.map((news) => (
-                                <NewsCard key={news.id} news={news} />
+                            {currentArticles.map((newsItem) => (
+                                <NewsCard key={newsItem.id} news={newsItem} />
                             ))}
                         </div>
 

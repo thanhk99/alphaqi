@@ -15,7 +15,7 @@ import {
 } from '@ant-design/icons';
 import Link from 'next/link';
 import styles from './page.module.css';
-import { articleService } from '@/services/article.service';
+import { blogService } from '@/services/blog.service';
 import { Article } from '@/types/article.types';
 import RichText from '@/components/common/RichText/RichText';
 import { getImageUrl } from '@/utils/imageUtils';
@@ -34,7 +34,7 @@ export default function BlogPostPage({ params }: { params: Promise<{ id: string 
             try {
                 setLoading(true);
                 setError(null);
-                const data = await articleService.getArticleById(id);
+                const data = await blogService.getBlogById(id);
                 setArticle(data);
             } catch (err) {
                 console.error('Error fetching article:', err);
