@@ -20,18 +20,27 @@ export interface CourseFilters {
 export const courseService = {
     // Get all courses with filters and pagination
     getCourses: async (filters: CourseFilters = {}): Promise<PaginatedResponse<Course>> => {
+        const { search, category, ...rest } = filters;
+        let url = '/courses';
         const params = new URLSearchParams();
 
-        Object.entries(filters).forEach(([key, value]) => {
+        if (search) {
+            url = '/courses/search';
+            params.append('keyword', search);
+        } else if (category) {
+            url = '/courses/filter';
+            params.append('category', category);
+        }
+
+        Object.entries(rest).forEach(([key, value]) => {
             if (value !== undefined && value !== null) {
-                // Map page to pageNumber and size to pageSize for backend compatibility if needed
-                // but the backend Pageable expects page and size query params
                 params.append(key, value.toString());
             }
         });
 
+        const queryString = params.toString();
         const response = await apiService.get<PaginatedResponse<Course>>(
-            `/courses?${params.toString()}`
+            `${url}${queryString ? `?${queryString}` : ''}`
         );
         return response.data.data;
     },

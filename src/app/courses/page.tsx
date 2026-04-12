@@ -16,7 +16,7 @@ export default function CoursesPage() {
     const [filters, setFilters] = useState({
         search: '',
         category: undefined as string | undefined,
-        sort: 'newest',
+        sort: 'updatedAt,desc',
         page: 0,
         size: 12
     });
@@ -154,10 +154,10 @@ export default function CoursesPage() {
                                         setPage(1);
                                     }}
                                 >
-                                    <option value="newest">Mới nhất</option>
-                                    <option value="popular">Phổ biến nhất</option>
-                                    <option value="price_asc">Giá thấp đến cao</option>
-                                    <option value="price_desc">Giá cao đến thấp</option>
+                                    <option value="updatedAt,desc">Mới nhất</option>
+                                    <option value="reviewCount,desc">Phổ biến nhất</option>
+                                    <option value="price,asc">Giá thấp đến cao</option>
+                                    <option value="price,desc">Giá cao đến thấp</option>
                                 </select>
                             </div>
 

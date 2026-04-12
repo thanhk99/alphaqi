@@ -1,21 +1,22 @@
 // Course Types
 export interface Course {
     id: string;
+    code: string;
     title: string;
     description: string;
-    content?: string;
     price: number;
+    thumbnail?: string;
     category: string;
+    categoryName?: string;
     isPublished: boolean;
     isShowHome: boolean;
+    introVideoUrl?: string;
+    instructorName?: string;
+    content?: string;
     averageRating: number;
     reviewCount: number;
-    enrollmentCount: number;
     lessonCount: number;
-    duration: string;
-    thumbnail?: string;
-    introVideoUrl?: string;
-    instructorName: string;
+    enrollmentCount: number;
     createdAt: string;
     updatedAt: string;
     isEnrolled: boolean;
