@@ -11,6 +11,8 @@ import FeaturesSection from './FeaturesSection/FeaturesSection';
 import ExpertSection from './ExpertSection/ExpertSection';
 import ExpertReviewsSlider from './ExpertReviewsSlider/ExpertReviewsSlider';
 import PartnerCompaniesSlider from './PartnerCompaniesSlider/PartnerCompaniesSlider';
+import FeaturedPostsSlider from './FeaturedPostsSlider/FeaturedPostsSlider';
+import ReportsHomeSection from './ReportsHomeSection/ReportsHomeSection';
 import CTASection from './CTASection/CTASection';
 
 export default function Home() {
@@ -22,6 +24,7 @@ export default function Home() {
             <CoursesSection />
             <HomeSlider />
             <WhyChooseUs />
+            <FeaturedPostsSlider />
 
             <FeaturesSection />
             <ExpertReviewsSlider />
