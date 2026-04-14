@@ -7,7 +7,6 @@ import Link from 'next/link';
 import styles from './page.module.css';
 import { featuredPostService } from '@/services/featured-post.service';
 import { FeaturedPost } from '@/types/featured-post.types';
-import { getImageUrl } from '@/utils/imageUtils';
 
 export default function FeaturedPostDetailPage({ params }: { params: Promise<{ id: string }> }) {
     const unwrappedParams = React.use(params);
@@ -17,6 +16,7 @@ export default function FeaturedPostDetailPage({ params }: { params: Promise<{ i
     const [htmlContent, setHtmlContent] = useState<string>('');
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState<string | null>(null);
+    const contentRef = React.useRef<HTMLDivElement>(null);
 
     useEffect(() => {
         const fetchPost = async () => {
@@ -25,14 +25,13 @@ export default function FeaturedPostDetailPage({ params }: { params: Promise<{ i
                 const data = await featuredPostService.getById(id);
                 setPost(data);
 
-                if (data.htmlUrl) {
-                    const response = await fetch(data.htmlUrl);
-                    if (response.ok) {
-                        const html = await response.text();
-                        setHtmlContent(html);
-                    } else {
-                        console.error('Failed to fetch HTML content');
-                    }
+                // Fetch refined HTML from our proxy
+                const response = await fetch(`/api/featured-posts/${id}/content`);
+                if (response.ok) {
+                    const html = await response.text();
+                    setHtmlContent(html);
+                } else {
+                    console.error('Failed to fetch HTML content');
                 }
             } catch (err) {
                 console.error('Error fetching featured post:', err);
@@ -46,6 +45,25 @@ export default function FeaturedPostDetailPage({ params }: { params: Promise<{ i
             fetchPost();
         }
     }, [id]);
+
+    useEffect(() => {
+        // dangerouslySetInnerHTML won't execute <script> tags automatically
+        // We find and re-append them to the DOM
+        if (htmlContent && contentRef.current) {
+            const scripts = contentRef.current.querySelectorAll('script');
+            scripts.forEach((script) => {
+                const newScript = document.createElement('script');
+                if (script.src) {
+                    newScript.src = script.src;
+                } else {
+                    newScript.textContent = script.textContent;
+                }
+                newScript.async = false;
+                document.body.appendChild(newScript);
+                script.parentNode?.removeChild(script); // Xóa script cũ đi cho sạch DOM
+            });
+        }
+    }, [htmlContent]);
 
     const formatDate = (dateString: string) => {
         const date = new Date(dateString);
@@ -94,15 +112,10 @@ export default function FeaturedPostDetailPage({ params }: { params: Promise<{ i
                     </div>
                 </div>
 
-                {post.thumbnail && !htmlContent.includes('<img') && (
-                    <div className={styles.featuredImage}>
-                        <img src={getImageUrl(post.thumbnail)} alt={post.title} />
-                    </div>
-                )}
-
                 <div className={styles.content}>
                     {htmlContent ? (
                         <div 
+                            ref={contentRef}
                             dangerouslySetInnerHTML={{ __html: htmlContent }} 
                             className={styles.htmlContainer}
                         />
@@ -110,7 +123,7 @@ export default function FeaturedPostDetailPage({ params }: { params: Promise<{ i
                         <div className={styles.description}>
                             {post.description}
                             <p style={{ marginTop: '2rem', fontStyle: 'italic', color: '#666' }}>
-                                Nội dung chi tiết bài viết đang được cập nhật...
+                                Nội dung chi tiết bài viết đang được tải...
                             </p>
                         </div>
                     )}
