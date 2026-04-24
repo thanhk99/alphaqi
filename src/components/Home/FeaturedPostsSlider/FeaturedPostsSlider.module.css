@@ -3,12 +3,19 @@
     background-color: #f8fafc;
 }
 
+.sectionHeader {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 48px;
+    padding: 0 10px;
+}
+
 .sectionTitle {
     font-size: 32px;
     font-weight: 700;
     color: #1e293b;
-    text-align: center;
-    margin-bottom: 48px;
+    margin-bottom: 0;
     position: relative;
 }
 
@@ -16,12 +23,34 @@
     content: '';
     position: absolute;
     bottom: -12px;
-    left: 50%;
-    transform: translateX(-50%);
+    left: 0;
     width: 60px;
     height: 4px;
     background: linear-gradient(90deg, #3b82f6, #8b5cf6);
     border-radius: 2px;
+}
+
+.seeAllLink {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 16px;
+    font-weight: 600;
+    color: #3b82f6;
+    text-decoration: none;
+    transition: all 0.3s ease;
+    padding: 8px 16px;
+    border-radius: 50px;
+    background: rgba(59, 130, 246, 0.05);
+}
+
+.seeAllLink:hover {
+    background: rgba(59, 130, 246, 0.1);
+    gap: 12px;
+}
+
+.seeAllArrow {
+    transition: transform 0.3s ease;
 }
 
 .sliderContainer {
@@ -31,6 +60,11 @@
 
 .swiper {
     padding-bottom: 50px !important;
+}
+
+.swiper :global(.swiper-slide) {
+    height: auto;
+    display: flex;
 }
 
 .card {
@@ -91,6 +125,7 @@
     -webkit-line-clamp: 2;
     -webkit-box-orient: vertical;
     overflow: hidden;
+    min-height: 50.4px; /* Ensure 2 lines height even if 1 line */
 }
 
 .description {
@@ -102,6 +137,7 @@
     -webkit-line-clamp: 3;
     -webkit-box-orient: vertical;
     overflow: hidden;
+    min-height: 67.2px; /* Ensure 3 lines height even if less */
 }
 
 .footer {
@@ -166,6 +202,17 @@
 }
 
 @media (max-width: 640px) {
+    .sectionHeader {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 20px;
+        margin-bottom: 30px;
+    }
+    
+    .sectionTitle {
+        font-size: 24px;
+    }
+
     .sliderContainer {
         padding: 0 10px;
     }
