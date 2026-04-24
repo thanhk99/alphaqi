@@ -23,7 +23,7 @@ export default function ServicesNavSection() {
                 </Link>
 
                 {/* Quản lý tài sản */}
-                <Link href="/wealth-management" className={styles.navItem}>
+                <Link href="/wealth/asset-manage" className={styles.navItem}>
                     <div className={styles.iconWrapper}>
                         <SafetyCertificateOutlined />
                     </div>
