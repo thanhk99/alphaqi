@@ -1,5 +1,5 @@
 .hero {
-    background: white;
+    background: var(--bg-card);
     color: var(--text-primary);
     padding: 4rem 0;
     position: relative;
@@ -184,7 +184,7 @@
 }
 
 .heroCard {
-    background: white;
+    background: var(--bg-card);
     border-radius: var(--radius-xl);
     overflow: hidden;
     box-shadow: var(--shadow-2xl);

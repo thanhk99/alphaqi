@@ -1,5 +1,5 @@
 .coursesSection {
-    background-color: #f8f9fa;
+    background-color: transparent;
     padding: 100px 0;
 }
 
@@ -26,7 +26,7 @@
 }
 
 .courseCard {
-    background: white;
+    background: var(--bg-card);
     border-radius: 16px;
     overflow: hidden;
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);

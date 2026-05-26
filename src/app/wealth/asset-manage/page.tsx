@@ -41,7 +41,7 @@ export default function WealthManagementPage() {
                         <div className={styles.serviceGrid}>
                             <div className={styles.serviceCard}>
                                 <div className={styles.iconWrapper}><BankOutlined /></div>
-                                <h3 className={styles.cardTitle}>Family Office Advisor/CIO</h3>
+                                <h3 className={styles.cardTitle}>Cố vấn Quản lý gia sản </h3>
                                 <p className={styles.cardDesc}>
                                     Vai trò cố vấn độc lập bên ngoài, quản lý danh mục đầu tư phức tạp và phân bổ tài sản chiến lược dựa trên khẩu vị rủi ro đặc thù của gia tộc.
                                 </p>

@@ -85,7 +85,7 @@
   font-weight: 600;
   font-size: 1rem;
   color: #1f1f1f;
-  background-color: white;
+  background-color: var(--bg-card);
   border: 1px solid #d9d9d9;
   transition: all 0.3s ease;
   text-decoration: none;
@@ -98,7 +98,7 @@
 
 /* Stats Section */
 .statsSection {
-  background: white;
+  background: var(--bg-card);
   padding: 60px 0;
   border-bottom: 1px solid #f0f0f0;
 }
@@ -149,7 +149,7 @@
 
 /* Courses Section */
 .coursesSection {
-  background-color: #f8f9fa;
+  background-color: transparent;
 }
 
 .courseGrid {
@@ -159,7 +159,7 @@
 }
 
 .courseCard {
-  background: white;
+  background: var(--bg-card);
   border-radius: 16px;
   overflow: hidden;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
@@ -275,7 +275,7 @@
 /* Features Section */
 .featuresSection {
   padding: 100px 0;
-  background: white;
+  background: var(--bg-card);
 }
 
 .featureItem {
@@ -287,7 +287,7 @@
 .featureIcon {
   width: 60px;
   height: 60px;
-  background: #f0f5ff;
+  background: var(--blue-light);
   border-radius: 12px;
   display: flex;
   align-items: center;
@@ -428,7 +428,7 @@
   display: inline-flex;
   align-items: center;
   gap: 8px;
-  background-color: white;
+  background-color: var(--bg-card);
   color: var(--blue-primary);
   padding: 16px 48px;
   border-radius: 50px;

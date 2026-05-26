@@ -39,7 +39,7 @@
 }
 
 .reviewFormSection {
-    background: white;
+    background: var(--bg-card);
     padding: 2rem;
     border-radius: var(--radius-lg);
     border: 1px solid var(--border-gray);
@@ -113,7 +113,7 @@
 }
 
 .filterButton {
-    background: white;
+    background: var(--bg-card);
     border: 1px solid rgba(0, 0, 0, .09);
     padding: 0.5rem 1.25rem;
     border-radius: var(--radius-sm);
@@ -227,7 +227,7 @@
     text-align: center;
     padding: 3rem;
     color: var(--text-muted);
-    background: white;
+    background: var(--bg-card);
     border-radius: var(--radius-lg);
     border: 1px dashed var(--border-gray);
 }
@@ -248,7 +248,7 @@
 }
 
 .pageButton {
-    background: white;
+    background: var(--bg-card);
     border: 1px solid var(--border-gray);
     padding: 0.5rem 1rem;
     border-radius: var(--radius-md);
@@ -275,7 +275,7 @@
     justify-content: center;
     border-radius: var(--radius-md);
     border: 1px solid var(--border-gray);
-    background: white;
+    background: var(--bg-card);
     cursor: pointer;
     transition: all var(--transition-base);
 }

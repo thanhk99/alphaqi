@@ -25,7 +25,7 @@
 }
 
 .lessonsSection {
-    background: #fff;
+    background: var(--bg-card);
     border-radius: 12px;
     padding: 1.5rem;
     box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
@@ -58,7 +58,7 @@
 
 .lessonHeader {
     padding: 0.75rem 1rem;
-    background: #fafafa;
+    background: transparent;
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -91,5 +91,5 @@
     font-size: 0.9rem;
     line-height: 1.6;
     border-top: 1px solid #f0f0f0;
-    background: #fff;
+    background: var(--bg-card);
 }

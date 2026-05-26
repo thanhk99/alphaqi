@@ -81,8 +81,8 @@ export default function InvestmentConsultingPage() {
                                 <svg width="100%" height="100%" viewBox="0 0 800 300" preserveAspectRatio="none">
                                     <defs>
                                         <linearGradient id="chartGradient" x1="0" y1="0" x2="0" y2="1">
-                                            <stop offset="0%" stopColor="#1275bc" stopOpacity="0.4" />
-                                            <stop offset="100%" stopColor="#1275bc" stopOpacity="0" />
+                                            <stop offset="0%" stopColor="#8B5A2B" stopOpacity="0.4" />
+                                            <stop offset="100%" stopColor="#8B5A2B" stopOpacity="0" />
                                         </linearGradient>
                                     </defs>
                                     {/* Grid Lines */}
@@ -101,7 +101,7 @@ export default function InvestmentConsultingPage() {
                                     <path
                                         d="M0,250 C100,220 200,100 300,150 C400,200 500,100 600,120 C700,140 800,90 800,90"
                                         fill="none"
-                                        stroke="#1275bc"
+                                        stroke="#8B5A2B"
                                         strokeWidth="3"
                                         strokeLinecap="round"
                                         className={styles.chartPath}

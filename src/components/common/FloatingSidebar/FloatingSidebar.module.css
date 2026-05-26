@@ -5,7 +5,7 @@
     transform: translateY(-50%);
     z-index: 1000;
     /* Glassmorphism & Gradient */
-    background: rgba(18, 117, 188, 0.7);
+    background: rgba(var(--blue-primary-rgb), 0.7);
     backdrop-filter: blur(12px);
     -webkit-backdrop-filter: blur(12px);
     border: 1px solid rgba(255, 255, 255, 0.2);
@@ -24,7 +24,7 @@
 .sidebar:hover,
 .mobileOpen {
     width: 90px;
-    background: rgba(18, 117, 188, 0.85);
+    background: rgba(var(--blue-primary-rgb), 0.85);
 }
 
 .links {

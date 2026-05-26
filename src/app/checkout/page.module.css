@@ -17,7 +17,7 @@
 }
 
 .section {
-    background: white;
+    background: var(--bg-card);
     padding: 2rem;
     border-radius: var(--radius-xl);
     margin-bottom: 2rem;
@@ -66,7 +66,7 @@
 .methodIcon {
     font-size: 1.5rem;
     color: var(--blue-primary);
-    background: white;
+    background: var(--bg-card);
     padding: 0.75rem;
     border-radius: var(--radius-md);
     box-shadow: var(--shadow-sm);
@@ -113,7 +113,7 @@
 }
 
 .orderSummary {
-    background: white;
+    background: var(--bg-card);
     padding: 2rem;
     border-radius: var(--radius-xl);
     box-shadow: var(--shadow-md);
@@ -217,7 +217,7 @@
 }
 
 .successCard {
-    background: white;
+    background: var(--bg-card);
     padding: 3rem;
     border-radius: var(--radius-2xl);
     text-align: center;

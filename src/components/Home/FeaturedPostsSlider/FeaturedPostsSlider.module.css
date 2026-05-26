@@ -1,6 +1,6 @@
 .sectionWrapper {
     padding: 80px 0;
-    background-color: #f8fafc;
+    background-color: transparent;
 }
 
 .sectionTitle {
@@ -20,7 +20,7 @@
     transform: translateX(-50%);
     width: 60px;
     height: 4px;
-    background: linear-gradient(90deg, #3b82f6, #8b5cf6);
+    background: linear-gradient(90deg, var(--blue-primary), #8b5cf6);
     border-radius: 2px;
 }
 
@@ -37,7 +37,7 @@
     display: flex;
     flex-direction: column;
     height: 100%;
-    background: white;
+    background: var(--bg-card);
     border-radius: 16px;
     overflow: hidden;
     box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
@@ -50,7 +50,7 @@
 .card:hover {
     transform: translateY(-8px);
     box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
-    border-color: #3b82f6;
+    border-color: var(--blue-primary);
 }
 
 .imageWrapper {
@@ -111,7 +111,7 @@
     gap: 8px;
     font-size: 14px;
     font-weight: 600;
-    color: #3b82f6;
+    color: var(--blue-primary);
 }
 
 .arrow {
@@ -128,7 +128,7 @@
     width: 40px;
     height: 40px;
     border-radius: 50%;
-    background: white;
+    background: var(--bg-card);
     border: 1px solid #e2e8f0;
     display: flex;
     align-items: center;
@@ -141,9 +141,9 @@
 }
 
 .navBtn:hover {
-    background: #3b82f6;
+    background: var(--blue-primary);
     color: white;
-    border-color: #3b82f6;
+    border-color: var(--blue-primary);
 }
 
 .navPrev {
@@ -161,7 +161,7 @@
 }
 
 .bulletActive {
-    background: #3b82f6 !important;
+    background: var(--blue-primary) !important;
     opacity: 1 !important;
 }
 

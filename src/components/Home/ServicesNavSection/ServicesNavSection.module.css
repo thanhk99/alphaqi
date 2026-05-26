@@ -12,7 +12,7 @@
     max-width: 800px;
     /* Adjust as needed */
     width: 100%;
-    background: linear-gradient(135deg, #1275bc 0%, #3ba0e9 100%);
+    background: var(--gradient-blue);
     /* Blue gradient */
     /* Purple gradient */
     border-radius: 24px;
@@ -93,8 +93,8 @@
 }
 
 .navItem:hover .iconWrapper {
-    background: #ffffff;
-    color: #1275bc;
+    background: var(--bg-card);
+    color: var(--blue-primary);
     transform: scale(1.1);
     border-color: #ffffff;
 }

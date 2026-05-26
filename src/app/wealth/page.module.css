@@ -8,7 +8,7 @@
     margin-bottom: 80px;
     position: relative;
     overflow: hidden;
-    box-shadow: 0 10px 30px rgba(18, 117, 188, 0.15);
+    box-shadow: 0 10px 30px rgba(var(--blue-primary-rgb), 0.15);
 }
 
 .heroContent {
@@ -185,7 +185,7 @@
 .stepNumber {
     width: 60px;
     height: 60px;
-    background: white;
+    background: var(--bg-card);
     color: var(--blue-primary);
     border: 2px solid var(--blue-primary);
     border-radius: 50%;
@@ -265,7 +265,7 @@
     display: inline-flex;
     align-items: center;
     gap: 10px;
-    background: #fff;
+    background: var(--bg-card);
     color: var(--blue-primary);
 
     padding: 15px 40px;

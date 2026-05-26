@@ -17,25 +17,21 @@ body {
   font-family: 'Be Vietnam Pro', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  color: #1a1a1a;
-  background: #ffffff;
+  color: #3e2723;
+  background: var(--bg-body);
   line-height: 1.6;
-  /* Grid Pattern Background */
-  background-image:
-    linear-gradient(rgba(224, 224, 224, 0.3) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(224, 224, 224, 0.3) 1px, transparent 1px);
-  background-size: 40px 40px;
-  background-attachment: fixed;
+
 }
 
 /* CSS Variables - New Color Scheme */
 :root {
-  /* Primary Colors (Blue) */
-  --blue-primary: #1275bc;
-  --blue-hover: #0e5a96;
-  --blue-light: #e6f7ff;
-  --blue-border: #1275bc;
-  --blue-100: #bae7ff;
+  /* Primary Colors (Brown - Variables kept as 'blue' to maintain compatibility) */
+  --blue-primary: #D4904A;
+  --blue-primary-rgb: 212, 144, 74;
+  --blue-hover: #B87834;
+  --blue-light: #F1E5D5;
+  --blue-border: #D4904A;
+  --blue-100: #EBD3B9;
 
   /* Success Colors (Green) */
   --green-primary: #22c55e;
@@ -54,18 +50,20 @@ body {
   --red-text: #991b1b;
 
   /* Background Colors */
-  --bg-white: #ffffff;
+  --bg-body: #EDE8DC;    /* Nền tổng thể - be nhạt */
+  --bg-card: #FFFCF2;    /* Nền card/component - kem nhạt */
+  --bg-white: #FFFCF2;   /* Thay thế trắng thuần */
   --bg-backdrop: rgba(0, 0, 0, 0.5);
   --bg-semi-transparent: rgba(255, 255, 255, 0.9);
   --bg-zinc-50: #fafafa;
   --bg-zinc-100: #f4f4f5;
 
   /* Linear Gradient Backgrounds */
-  --gradient-blue: linear-gradient(90deg, #1275bc 0%, #3ba0e9 100%);
+  --gradient-blue: linear-gradient(90deg, #D4904A 0%, #E6A763 100%);
   --gradient-yellow-orange: linear-gradient(to bottom right, #fbbf24 0%, #f97316 50%, #ec4899 100%);
-  --gradient-blue-indigo: linear-gradient(to bottom right, #1275bc 0%, #3ba0e9 100%);
-  --gradient-blue-indigo-light: linear-gradient(to bottom right, #e6f7ff 0%, #f0f5ff 100%);
-  --gradient-blue-indigo-dark: linear-gradient(to bottom right, #0e5a96 0%, #104c8a 100%);
+  --gradient-blue-indigo: linear-gradient(to bottom right, #D4904A 0%, #E6A763 100%);
+  --gradient-blue-indigo-light: linear-gradient(to bottom right, #F1E5D5 0%, #FAEBD7 100%);
+  --gradient-blue-indigo-dark: linear-gradient(to bottom right, #B87834 0%, #8A5520 100%);
 
   /* Text Colors */
   --text-primary: #231F20;
@@ -75,7 +73,7 @@ body {
 
   /* Border Colors */
   --border-gray: #e5e5e5;
-  --border-blue: #3b82f6;
+  --border-blue: #D4904A;
 
   /* Spacing */
   --spacing-xs: 0.25rem;
@@ -99,7 +97,7 @@ body {
   --shadow-md: 0 4px 6px rgba(0, 0, 0, 0.07);
   --shadow-lg: 0 10px 15px rgba(0, 0, 0, 0.1);
   --shadow-xl: 0 20px 25px rgba(0, 0, 0, 0.15);
-  --shadow-blue: 0 8px 16px rgba(59, 130, 246, 0.2);
+  --shadow-blue: 0 8px 16px rgba(212, 144, 74, 0.2);
   --shadow-green: 0 8px 16px rgba(34, 197, 94, 0.2);
   --shadow-red: 0 8px 16px rgba(239, 68, 68, 0.2);
 

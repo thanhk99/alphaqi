@@ -51,7 +51,7 @@
 }
 
 .serviceCard {
-    background: #fff;
+    background: var(--bg-card);
     padding: var(--spacing-xl);
     border-radius: var(--radius-xl);
     border: 1px solid #f0f0f0;
@@ -99,7 +99,7 @@
 
 /* Chart Section */
 .chartCard {
-    background: #fff;
+    background: var(--bg-card);
     padding: var(--spacing-xl);
     border-radius: var(--radius-xl);
     border: 1px solid #f0f0f0;
@@ -187,7 +187,7 @@
 
 /* Connection Card */
 .connectionCard {
-    background: #fff;
+    background: var(--bg-card);
     padding: var(--spacing-2xl);
     border-radius: var(--radius-xl);
     border: 1px solid #f0f0f0;

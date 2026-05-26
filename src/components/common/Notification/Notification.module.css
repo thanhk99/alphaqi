@@ -16,7 +16,7 @@
     align-items: center;
     justify-content: space-between;
     padding: 16px;
-    background: #ffffff;
+    background: var(--bg-card);
     border-radius: 8px;
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
     overflow: hidden;
@@ -59,7 +59,7 @@
 }
 
 .info .icon {
-    color: #1890ff;
+    color: var(--blue-primary);
 }
 
 .message {
@@ -110,7 +110,7 @@
 }
 
 .info .progressBar {
-    background: #1890ff;
+    background: var(--blue-primary);
 }
 
 @keyframes progress {

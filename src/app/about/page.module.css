@@ -1,5 +1,5 @@
 .aboutPage {
-    background-color: #fff;
+    background-color: var(--bg-card);
 }
 
 .hero {
@@ -71,7 +71,7 @@
 }
 
 .valuesSection {
-    background-color: #f8f9fa;
+    background-color: transparent;
 }
 
 .valuesGrid {
@@ -81,7 +81,7 @@
 }
 
 .valueCard {
-    background: white;
+    background: var(--bg-card);
     padding: 40px 30px;
     border-radius: 16px;
     text-align: center;
@@ -96,7 +96,7 @@
 
 .valueIcon {
     font-size: 2.5rem;
-    color: #1890ff;
+    color: var(--blue-primary);
     margin-bottom: 24px;
 }
 
@@ -112,7 +112,7 @@
 }
 
 .leaderSection {
-    background-color: #fff;
+    background-color: var(--bg-card);
 }
 
 .leaderCard {
@@ -145,7 +145,7 @@
 .leaderRole {
     display: block;
     font-size: 1.1rem;
-    color: #1890ff;
+    color: var(--blue-primary);
     font-weight: 600;
     margin-bottom: 24px;
 }

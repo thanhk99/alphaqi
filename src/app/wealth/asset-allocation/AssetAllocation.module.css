@@ -1,11 +1,11 @@
 .pageContainer {
-    background-color: #f8f9fa;
+    background-color: transparent;
     min-height: 100vh;
     padding-bottom: var(--spacing-3xl);
 }
 
 .hero {
-    background: white;
+    background: var(--bg-card);
     padding: var(--spacing-3xl) 0 var(--spacing-xl);
     border-bottom: 1px solid var(--border-gray);
     margin-bottom: var(--spacing-2xl);
@@ -19,7 +19,7 @@
 }
 
 .allocationCard {
-    background: white;
+    background: var(--bg-card);
     border-radius: var(--radius-xl);
     box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
     display: flex;
@@ -41,8 +41,8 @@
     display: inline-flex;
     align-items: center;
     gap: 6px;
-    background: #e6f7ff;
-    color: #1890ff;
+    background: var(--blue-light);
+    color: var(--blue-primary);
     font-size: 0.75rem;
     font-weight: 700;
     padding: 6px 16px;
@@ -61,7 +61,7 @@
 }
 
 .titleStrong {
-    color: #1890ff;
+    color: var(--blue-primary);
     display: block;
 }
 
@@ -74,8 +74,8 @@
 }
 
 .cioViewButton {
-    background: #1890ff;
-    background: linear-gradient(135deg, #1890ff 0%, #096dd9 100%);
+    background: var(--blue-primary);
+    background: linear-gradient(135deg, var(--blue-primary) 0%, var(--blue-primary) 100%);
     color: white;
     border: none;
     padding: 16px 32px;
@@ -89,12 +89,12 @@
     transition: all 0.3s;
     width: fit-content;
     text-decoration: none;
-    box-shadow: 0 4px 12px rgba(24, 144, 255, 0.3);
+    box-shadow: 0 4px 12px rgba(var(--blue-primary-rgb), 0.3);
 }
 
 .cioViewButton:hover {
     transform: translateY(-2px);
-    box-shadow: 0 6px 20px rgba(24, 144, 255, 0.4);
+    box-shadow: 0 6px 20px rgba(var(--blue-primary-rgb), 0.4);
 }
 
 .note {
@@ -111,7 +111,7 @@
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    background: #fafafa;
+    background: transparent;
 }
 
 .chartHeader {
@@ -132,7 +132,7 @@
 .chartTitle {
     width: 60px;
     height: 3px;
-    background: #1890ff;
+    background: var(--blue-primary);
     margin: 0 auto;
 }
 

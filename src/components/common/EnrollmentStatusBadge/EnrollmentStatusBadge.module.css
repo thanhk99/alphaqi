@@ -15,8 +15,8 @@
 }
 
 .active {
-    background-color: #e6f7ff;
-    color: #1890ff;
+    background-color: var(--blue-light);
+    color: var(--blue-primary);
 }
 
 .completed {

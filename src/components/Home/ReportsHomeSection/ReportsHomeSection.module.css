@@ -1,6 +1,6 @@
 .reportsSection {
     padding: 80px 0;
-    background-color: #ffffff;
+    background-color: transparent;
 }
 
 .header {
@@ -25,7 +25,7 @@
     left: 0;
     width: 50px;
     height: 4px;
-    background: #3b82f6;
+    background: var(--blue-primary);
     border-radius: 2px;
 }
 
@@ -33,7 +33,7 @@
     display: flex;
     align-items: center;
     gap: 8px;
-    color: #3b82f6;
+    color: var(--blue-primary);
     text-decoration: none;
     font-weight: 600;
     transition: gap 0.2s;
@@ -62,8 +62,8 @@
 }
 
 .reportCard:hover {
-    background: white;
-    border-color: #3b82f6;
+    background: var(--bg-card);
+    border-color: var(--blue-primary);
     transform: translateY(-5px);
     box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
 }
@@ -71,8 +71,8 @@
 .iconWrapper {
     width: 48px;
     height: 48px;
-    background: #dbeafe;
-    color: #3b82f6;
+    background: var(--blue-light);
+    color: var(--blue-primary);
     border-radius: 12px;
     display: flex;
     align-items: center;

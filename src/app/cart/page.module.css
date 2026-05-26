@@ -22,7 +22,7 @@
 }
 
 .cartItem {
-    background: white;
+    background: var(--bg-card);
     border-radius: var(--radius-xl);
     padding: 1.5rem;
     display: flex;
@@ -113,7 +113,7 @@
 }
 
 .summaryCard {
-    background: white;
+    background: var(--bg-card);
     border-radius: var(--radius-xl);
     padding: 2rem;
     box-shadow: var(--shadow-md);

@@ -1,7 +1,7 @@
 .sliderWrapper {
     padding: 3rem 0;
     overflow: hidden;
-    background: white;
+    background: transparent;
     border-bottom: 1px solid #f0f0f0;
     position: relative;
 }

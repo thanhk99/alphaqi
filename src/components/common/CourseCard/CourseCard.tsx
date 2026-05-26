@@ -20,7 +20,7 @@ export default function CourseCard({ course, gradient }: CourseCardProps) {
 
         const categoryKey = course.categoryName || course.category;
         const gradients: { [key: string]: string } = {
-            'Cá nhân': 'linear-gradient(45deg, #4481eb, #04befe)',
+            'Cá nhân': 'var(--gradient-blue)',
             'Doanh nghiệp': 'linear-gradient(45deg, #89f7fe, #66a6ff)',
             'Đầu tư': 'linear-gradient(45deg, #f093fb, #f5576c)',
         };

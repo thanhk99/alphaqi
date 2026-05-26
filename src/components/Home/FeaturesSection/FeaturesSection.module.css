@@ -1,6 +1,6 @@
 .featuresSection {
     padding: 100px 0;
-    background: white;
+    background: transparent;
 }
 
 .sectionTitle {
@@ -20,7 +20,7 @@
 .featureIcon {
     width: 60px;
     height: 60px;
-    background: #f0f5ff;
+    background: var(--blue-light);
     border-radius: 12px;
     display: flex;
     align-items: center;

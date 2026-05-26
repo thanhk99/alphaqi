@@ -114,7 +114,7 @@
 }
 
 .dot.active {
-    background-color: white;
+    background-color: var(--bg-card);
     transform: scale(1.2);
 }
 

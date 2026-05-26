@@ -1,5 +1,5 @@
 .sidebar {
-    background-color: #fff;
+    background-color: var(--bg-card);
     border-radius: 16px;
     padding: 24px;
     box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
@@ -23,7 +23,7 @@
     width: 80px;
     height: 80px;
     border-radius: 50%;
-    background: linear-gradient(135deg, #1890ff 0%, #096dd9 100%);
+    background: linear-gradient(135deg, var(--blue-primary) 0%, var(--blue-primary) 100%);
     color: #fff;
     display: flex;
     align-items: center;
@@ -31,7 +31,7 @@
     font-size: 32px;
     font-weight: 600;
     margin-bottom: 16px;
-    box-shadow: 0 4px 12px rgba(24, 144, 255, 0.3);
+    box-shadow: 0 4px 12px rgba(var(--blue-primary-rgb), 0.3);
     overflow: hidden;
 }
 
@@ -88,14 +88,14 @@
 }
 
 .active {
-    background-color: #e6f7ff;
-    color: #1890ff;
+    background-color: var(--blue-light);
+    color: var(--blue-primary);
     font-weight: 600;
 }
 
 .active:hover {
-    background-color: #e6f7ff;
-    color: #1890ff;
+    background-color: var(--blue-light);
+    color: var(--blue-primary);
     transform: none;
 }
 
@@ -107,7 +107,7 @@
     transform: translateY(-50%);
     height: 60%;
     width: 4px;
-    background-color: #1890ff;
+    background-color: var(--blue-primary);
     border-radius: 0 4px 4px 0;
 }
 

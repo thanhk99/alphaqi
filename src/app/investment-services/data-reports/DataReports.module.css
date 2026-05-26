@@ -106,7 +106,7 @@
 /* Specs Section */
 .specsSection {
     padding: var(--spacing-3xl) 0;
-    background: #fff;
+    background: var(--bg-card);
 }
 
 .sectionDivider {
@@ -140,7 +140,7 @@
     padding: var(--spacing-xl);
     border: 1px solid var(--border-gray);
     border-radius: var(--radius-lg);
-    background: #fff;
+    background: var(--bg-card);
 }
 
 .specIcon {

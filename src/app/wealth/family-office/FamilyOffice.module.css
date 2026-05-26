@@ -1,5 +1,5 @@
 .pageContainer {
-    background-color: #ffffff;
+    background-color: var(--bg-card);
     color: var(--text-primary);
     font-family: 'Inter', sans-serif;
     padding-bottom: var(--spacing-3xl);
@@ -88,7 +88,7 @@
 
 /* Core Values Section */
 .valuesSection {
-    background-color: #fafafa;
+    background-color: transparent;
     padding: var(--spacing-3xl) 0;
     text-align: center;
 }
@@ -114,7 +114,7 @@
 }
 
 .valueCard {
-    background: white;
+    background: var(--bg-card);
     padding: var(--spacing-2xl) var(--spacing-xl);
     border-radius: var(--radius-lg);
     box-shadow: 0 4px 20px rgba(0, 0, 0, 0.03);
@@ -188,7 +188,7 @@
 }
 
 .secondaryBtn {
-    background: white;
+    background: var(--bg-card);
     color: var(--text-primary);
     padding: var(--spacing-md) var(--spacing-2xl);
     border-radius: var(--radius-md);

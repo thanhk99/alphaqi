@@ -1,5 +1,5 @@
 .hero {
-    background-color: #f8f9fa;
+    background-color: transparent;
     padding: 80px 0;
     position: relative;
     overflow: hidden;
@@ -20,7 +20,7 @@
 }
 
 .highlightText {
-    color: #1890ff;
+    color: var(--blue-primary);
 }
 
 .heroSubtitle {
@@ -48,7 +48,7 @@
     justify-content: center;
     height: 48px;
     padding: 0 32px;
-    background-color: #1890ff;
+    background-color: var(--blue-primary);
     color: #fff;
     font-size: 16px;
     font-weight: 600;
@@ -58,9 +58,9 @@
 }
 
 .advisorButton:hover {
-    background-color: #40a9ff;
+    background-color: var(--blue-hover);
     transform: translateY(-2px);
-    box-shadow: 0 4px 12px rgba(24, 144, 255, 0.3);
+    box-shadow: 0 4px 12px rgba(var(--blue-primary-rgb), 0.3);
 }
 
 .container {
@@ -83,8 +83,8 @@
 .tag {
     display: inline-block;
     padding: 6px 16px;
-    background-color: #e6f7ff;
-    color: #1890ff;
+    background-color: var(--blue-light);
+    color: var(--blue-primary);
     border-radius: 4px;
     font-size: 14px;
     font-weight: 600;
@@ -100,7 +100,7 @@
 }
 
 .serviceCard {
-    background: #fff;
+    background: var(--bg-card);
     border: 1px solid #ebeef5;
     border-radius: 12px;
     padding: 24px;
@@ -119,8 +119,8 @@
     width: 48px;
     height: 48px;
     border-radius: 8px;
-    background-color: #e6f7ff;
-    color: #1890ff;
+    background-color: var(--blue-light);
+    color: var(--blue-primary);
     display: flex;
     align-items: center;
     justify-content: center;
@@ -148,18 +148,18 @@
 }
 
 .ctaSection {
-    background-color: #f8f9fa;
+    background-color: transparent;
     padding: 60px 0 100px;
 }
 
 .ctaBox {
-    background-color: #e6f7ff;
+    background-color: var(--blue-light);
     border-radius: 16px;
     padding: 48px;
     display: flex;
     align-items: center;
     justify-content: space-between;
-    border: 1px solid #bae7ff;
+    border: 1px solid var(--blue-100);
 }
 
 .ctaText h2 {
@@ -176,7 +176,7 @@
 }
 
 .ctaButton {
-    background-color: #1890ff;
+    background-color: var(--blue-primary);
     color: white;
     padding: 12px 24px;
     border-radius: 6px;
@@ -188,8 +188,8 @@
 }
 
 .ctaButton:hover {
-    background-color: #40a9ff;
-    box-shadow: 0 4px 12px rgba(24, 144, 255, 0.3);
+    background-color: var(--blue-hover);
+    box-shadow: 0 4px 12px rgba(var(--blue-primary-rgb), 0.3);
 }
 
 @media (max-width: 992px) {

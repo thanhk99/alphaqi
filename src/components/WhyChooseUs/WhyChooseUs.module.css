@@ -1,6 +1,6 @@
 .whyChooseUsContainer {
     padding: 80px 0;
-    background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+    background: transparent;
     position: relative;
     overflow: hidden;
 }
@@ -12,7 +12,7 @@
     right: -10%;
     width: 500px;
     height: 500px;
-    background: radial-gradient(circle, rgba(68, 129, 235, 0.1) 0%, transparent 70%);
+    background: radial-gradient(circle, rgba(139, 90, 43, 0.1) 0%, transparent 70%);
     border-radius: 50%;
     pointer-events: none;
 }
@@ -31,7 +31,7 @@
     display: block;
     width: 80px;
     height: 4px;
-    background: linear-gradient(90deg, #4481eb, #04befe);
+    background: var(--gradient-blue);
     margin: 15px auto 0;
     border-radius: 2px;
 }
@@ -52,7 +52,7 @@
 }
 
 .serviceCard {
-    background: #ffffff;
+    background: var(--bg-card);
     border-radius: 20px;
     overflow: hidden;
     box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
@@ -93,7 +93,7 @@
     display: flex;
     flex-direction: column;
     justify-content: flex-start;
-    background: linear-gradient(135deg, #4481eb 0%, #04befe 100%);
+    background: var(--gradient-blue);
 }
 
 .serviceTitle {
@@ -135,8 +135,8 @@
 }
 
 .cardLink:hover .learnMoreLink {
-    background: #ffffff;
-    color: #4481eb;
+    background: var(--bg-card);
+    color: var(--blue-primary);
     transform: translateX(5px);
     box-shadow: 0 4px 15px rgba(255, 255, 255, 0.3);
 }

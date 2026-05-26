@@ -1,7 +1,7 @@
 .sliderWrapper {
     padding: 3rem 0;
     overflow: hidden;
-    background: #fafafa;
+    background: transparent;
     border-top: 1px solid #f0f0f0;
     border-bottom: 1px solid #f0f0f0;
     position: relative;
@@ -50,7 +50,7 @@
 .reviewCard {
     flex-shrink: 0;
     width: 350px;
-    background: white;
+    background: var(--bg-card);
     padding: 1.5rem;
     border-radius: 12px;
     border: 1px solid #e5e7eb;

@@ -12,7 +12,7 @@
     display: inline-flex;
     align-items: center;
     gap: 8px;
-    color: #3b82f6;
+    color: var(--blue-primary);
     text-decoration: none;
     font-weight: 500;
     margin-bottom: 24px;

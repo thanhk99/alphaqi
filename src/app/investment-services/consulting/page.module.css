@@ -1,6 +1,6 @@
 .hero {
     padding: 80px 0 60px;
-    background: #fff;
+    background: var(--bg-card);
 }
 
 .heroContent {
@@ -16,7 +16,7 @@
 }
 
 .highlightText {
-    color: #1890ff;
+    color: var(--blue-primary);
 }
 
 .heroDesc {
@@ -33,7 +33,7 @@
     justify-content: center;
     height: 48px;
     padding: 0 32px;
-    background-color: #1890ff;
+    background-color: var(--blue-primary);
     color: #fff;
     font-size: 16px;
     font-weight: 600;
@@ -45,9 +45,9 @@
 }
 
 .primaryBtn:hover {
-    background-color: #40a9ff;
+    background-color: var(--blue-hover);
     transform: translateY(-2px);
-    box-shadow: 0 4px 12px rgba(24, 144, 255, 0.3);
+    box-shadow: 0 4px 12px rgba(var(--blue-primary-rgb), 0.3);
 }
 
 .section {
@@ -68,7 +68,7 @@
 }
 
 .serviceCard {
-    background: #fff;
+    background: var(--bg-card);
     border: 1px solid #ebeef5;
     border-radius: 12px;
     overflow: hidden;
@@ -108,7 +108,7 @@
 
 .cardIcon {
     font-size: 24px;
-    color: #1890ff;
+    color: var(--blue-primary);
     margin-right: 12px;
 }
 
@@ -139,7 +139,7 @@
 }
 
 .featureCard {
-    background: #fff;
+    background: var(--bg-card);
     border: 1px solid #ebeef5;
     border-radius: 12px;
     padding: 32px;
@@ -147,7 +147,7 @@
 }
 
 .featureCard:hover {
-    border-color: #1890ff;
+    border-color: var(--blue-primary);
     box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
 }
 
@@ -155,8 +155,8 @@
     width: 48px;
     height: 48px;
     border-radius: 50%;
-    background-color: #e6f7ff;
-    color: #1890ff;
+    background-color: var(--blue-light);
+    color: var(--blue-primary);
     display: flex;
     align-items: center;
     justify-content: center;
@@ -184,7 +184,7 @@
 }
 
 .ctaBox {
-    background-color: #f0f5ff;
+    background-color: var(--blue-light);
     border-radius: 20px;
     padding: 60px;
     text-align: center;
@@ -220,7 +220,7 @@
     justify-content: center;
     height: 48px;
     padding: 0 32px;
-    background-color: #fff;
+    background-color: var(--bg-card);
     color: #1f1f1f;
     font-size: 16px;
     font-weight: 600;
@@ -231,8 +231,8 @@
 }
 
 .secondaryBtn:hover {
-    border-color: #1890ff;
-    color: #1890ff;
+    border-color: var(--blue-primary);
+    color: var(--blue-primary);
 }
 
 @media (max-width: 992px) {
