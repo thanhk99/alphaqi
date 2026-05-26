@@ -48,7 +48,12 @@ const FeaturedPostsSlider = () => {
     return (
         <section className={styles.sectionWrapper}>
             <div className="container">
-                <h2 className={styles.sectionTitle}>Bài viết nổi bật</h2>
+                <div className={styles.sectionHeader}>
+                    <h2 className={styles.sectionTitle}>Bài viết nổi bật</h2>
+                    <Link href="/featured-posts" className={styles.seeAllLink}>
+                        Xem tất cả <span className={styles.seeAllArrow}>→</span>
+                    </Link>
+                </div>
                 {loading ? (
                     <div className={styles.loading}>Đang tải...</div>
                 ) : posts.length === 0 ? (
