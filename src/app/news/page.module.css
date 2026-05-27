@@ -121,3 +121,47 @@
         grid-template-columns: 1fr;
     }
 }
+
+/* Pagination */
+.pagination {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    margin-top: 40px;
+    margin-bottom: 60px;
+}
+
+.pageButton {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    border: 1px solid var(--border-gray);
+    background: var(--bg-card);
+    color: var(--text-primary);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    font-weight: 600;
+    transition: all 0.2s ease;
+}
+
+.pageButton:hover {
+    border-color: var(--blue-primary);
+    color: var(--blue-primary);
+}
+
+.pageButton.active {
+    background: var(--blue-primary);
+    color: white;
+    border-color: var(--blue-primary);
+}
+
+.pageButton:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+    background: #f5f5f5;
+    border-color: var(--border-gray);
+    color: #999;
+}

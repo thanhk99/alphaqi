@@ -14,11 +14,10 @@
     min-width: 40px;
     height: 40px;
     padding: 0;
-    border: 1px solid transparent;
+    border: 1px solid var(--border-gray, #e2e8f0);
     background-color: var(--bg-card);
-    color: #64748b;
-    border-radius: 12px;
-    /* Soft rounded corners */
+    color: var(--text-primary, #334155);
+    border-radius: 50%;
     font-size: 14px;
     font-weight: 600;
     line-height: 1;

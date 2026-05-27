@@ -8,6 +8,7 @@ import styles from './page.module.css';
 import { blogService } from '@/services/blog.service';
 import { Article } from '@/types/article.types';
 import RichText from '@/components/common/RichText/RichText';
+import Pagination from '@/components/common/Pagination/Pagination';
 import { getImageUrl, getPlaceholderImage } from '@/utils/imageUtils';
 
 export default function BlogPage() {
@@ -166,33 +167,11 @@ export default function BlogPage() {
 
                                 {/* Pagination Controls */}
                                 {totalPages > 1 && (
-                                    <div className={styles.pagination}>
-                                        <button
-                                            className={styles.pageButton}
-                                            onClick={() => handlePageChange(currentPage - 1)}
-                                            disabled={currentPage === 1}
-                                        >
-                                            <LeftOutlined />
-                                        </button>
-
-                                        {Array.from({ length: totalPages }, (_, i) => i + 1).map((page) => (
-                                            <button
-                                                key={page}
-                                                className={`${styles.pageButton} ${currentPage === page ? styles.active : ''}`}
-                                                onClick={() => handlePageChange(page)}
-                                            >
-                                                {page}
-                                            </button>
-                                        ))}
-
-                                        <button
-                                            className={styles.pageButton}
-                                            onClick={() => handlePageChange(currentPage + 1)}
-                                            disabled={currentPage === totalPages}
-                                        >
-                                            <RightOutlined />
-                                        </button>
-                                    </div>
+                                    <Pagination
+                                        currentPage={currentPage}
+                                        totalPages={totalPages}
+                                        onPageChange={handlePageChange}
+                                    />
                                 )}
                             </>
                         )}
