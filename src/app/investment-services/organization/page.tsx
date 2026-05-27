@@ -17,11 +17,6 @@ import Image from 'next/image';
 export default function OrganizationPage() {
     const services = [
         {
-            icon: <BankOutlined />,
-            title: 'Tư vấn phát hành & niêm yết',
-            description: 'Tư vấn phát hành trái phiếu, cổ phiếu và các công cụ tài chính giúp doanh nghiệp huy động vốn hiệu quả.'
-        },
-        {
             icon: <GlobalOutlined />,
             title: 'Tư vấn đầu tư cho khách hàng tổ chức',
             description: 'Xây dựng kế hoạch phân bổ tổng thể định kỳ hàng năm, hàng quý, kế hoạch phân bổ hàng tháng, các buổi thuyết trình chiến lược đầu tư định kỳ hàng tháng, các báo cáo chuyên sâu theo yêu cầu của khách hàng về vĩ mô, thị trường, ngành, doanh nghiệp, các buổi thuyết trình cơ hội đầu tư định kỳ hoặc bất thường theo yêu cầu của khách hàng.'

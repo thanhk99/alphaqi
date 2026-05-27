@@ -23,7 +23,7 @@ export default function InvestmentServicesPage() {
         {
             icon: <DollarOutlined />,
             title: 'Tư vấn đầu tư tổ chức',
-            description: 'Cung cấp các giải pháp tài chính chuyên biệt cho tổ chức, bao gồm tư vấn phát hành trái phiếu, tư vấn niêm yết và các dịch vụ tài chính khác.',
+            description: 'Tư vấn tái cấu trúc, tư vấn quản lý, tư vấn vận hành, Tư vấn chiến lược, Tư vấn chiến lược đầu tư,...',
             link: '/investment-services/organization'
         },
         {
@@ -48,7 +48,7 @@ export default function InvestmentServicesPage() {
         {
             number: '03',
             title: 'Triển khai & Quản lý',
-            description: 'Thực hiện đầu tư và giám sát danh mục liên tục bởi chuyên gia 6P Capital.'
+            description: 'Nhận báo cáo danh mục định kỳ của khách hàng tự thực hiện và gửi lại. Phân tích danh mục và đưa ra đề xuất.'
         },
         {
             number: '04',

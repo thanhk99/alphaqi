@@ -36,12 +36,6 @@ export default function WealthPage() {
             description: 'Hoạch định tài chính toàn diện, bảo toàn và phát triển tài sản bền vững cho cá nhân và gia đình.',
             link: '/wealth/asset-manage'
         },
-        {
-            icon: <DollarOutlined />,
-            title: 'Dịch vụ Family Office',
-            description: 'Dịch vụ setup thành lập family office, vận hành hoạt động đầu tư cho family office với vai trò CIO của Family Office, các hoạt động tư vấn về kinh doanh, vận hành, tài chính, đầu tư,... hàng ngày.',
-            link: '/wealth/family-office'
-        },
 
     ];
 
