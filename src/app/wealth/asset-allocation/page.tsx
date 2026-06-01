@@ -85,7 +85,7 @@ export default function AssetAllocationPage() {
                             </p>
                         </div>
 
-                        <div className={styles.chartSection}>
+                        {/* <div className={styles.chartSection}>
                             <div className={styles.chartHeader}>
                                 <span className={styles.chartSubtitle}>Minh họa phân bổ</span>
                                 <div className={styles.chartTitle}></div>
@@ -135,7 +135,7 @@ export default function AssetAllocationPage() {
                                     );
                                 })}
                             </div>
-                        </div>
+                        </div> */}
                     </div>
                 </div>
             </div>
