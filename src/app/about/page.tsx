@@ -32,7 +32,7 @@ export default function AboutPage() {
                             <div className={styles.storyContent}>
                                 <h3>Câu chuyện của chúng tôi</h3>
                                 <p>
-                                    Thành lập từ năm 2021, AlphaQi được xây dựng trên nền tảng chuyên môn và kỷ luật đầu tư đã được kiểm chứng từ 6P Capital Management – một định chế quản lý tài sản uy tín theo triết lý tăng trưởng giá trị bền vững. Người sáng lập, ông Nguyễn Minh Hạnh, có hơn 20 năm kinh nghiệm trong phân tích và đầu tư chứng khoán, trực tiếp quản lý danh mục cho các quỹ chuyên nghiệp hàng đầu Việt Nam, đồng thời đồng hành cùng hàng ngàn khách hàng giàu và siêu giàu trong hành trình xây dựng – bảo toàn – gia tăng tài sản qua nhiều chu kỳ thị trường.
+                                    Thành lập từ năm 2021, AlphaQi được xây dựng trên nền tảng chuyên môn và kỷ luật đầu tư đã được kiểm chứng từ 6P Capital Management – một định chế quản lý tài sản uy tín theo triết lý tăng trưởng giá trị bền vững. Những cổ đông sáng lập là những chuyên gia trong nghành có hơn 20 năm kinh nghiệm trong phân tích và đầu tư chứng khoán, trực tiếp quản lý danh mục cho các quỹ chuyên nghiệp hàng đầu Việt Nam, đồng thời đồng hành cùng hàng ngàn khách hàng giàu và siêu giàu trong hành trình xây dựng – bảo toàn – gia tăng tài sản qua nhiều chu kỳ thị trường.
                                 </p>
                                 <p>
                                     Việt Nam đang bước vào giai đoạn tăng tốc tích lũy của cải, và cùng lúc đó là nhu cầu ngày một rõ nét về quản trị gia sản và chuyển giao thế hệ giữa người sáng lập doanh nghiệp và các thế hệ kế thừa. AlphaQi lựa chọn vai trò đơn vị tiên phong mở lối, đồng hành cùng các nhà sáng lập gia tộc và người kế thừa, để di sản không chỉ được bảo toàn mà còn thịnh vượng hơn theo thời gian.
@@ -61,9 +61,9 @@ export default function AboutPage() {
                                     Hãy bắt đầu bằng một buổi trao đổi định hướng, để chúng tôi hiểu mục tiêu của bạn và đề xuất lộ trình phù hợp: tư vấn đầu tư – quản lý gia sản – đào tạo tài chính & đầu tư, được thiết kế riêng cho từng giai đoạn và từng ưu tiên của bạn.
                                 </p>
                             </div>
-                            <div className={styles.storyImage}>
+                            {/* <div className={styles.storyImage}>
                                 <img src="imgs/avt_about.jpg" alt="Our Story" />
-                            </div>
+                            </div> */}
                         </div>
                     </div>
                 </section>
@@ -114,7 +114,7 @@ export default function AboutPage() {
                 </section>
 
                 {/* Leadership */}
-                <section className={`${styles.section} ${styles.leaderSection}`}>
+                {/* <section className={`${styles.section} ${styles.leaderSection}`}>
                     <div className="container">
                         <h2 className={styles.sectionTitle}>Ban Lãnh Đạo</h2>
                         <div className={styles.leaderCard}>
@@ -144,7 +144,7 @@ export default function AboutPage() {
                             </div>
                         </div>
                     </div>
-                </section>
+                </section> */}
 
                 {/* Contact */}
                 <section className={styles.contactSection}>
