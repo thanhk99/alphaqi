@@ -27,11 +27,11 @@ export default function InvestmentBankPage() {
             title: 'Tư vấn M&A',
             description: 'Hỗ trợ các thương vụ mua bán và sáp nhập doanh nghiệp xuyên biên giới và nội địa.'
         },
-        {
-            icon: <NodeIndexOutlined />,
-            title: 'Tư vấn tái cấu trúc',
-            description: 'Giải pháp tối ưu hóa cấu trúc vốn và vận hành doanh nghiệp trong điều kiện thị trường biến động.'
-        },
+        // {
+        //     icon: <NodeIndexOutlined />,
+        //     title: 'Tư vấn tái cấu trúc',
+        //     description: 'Giải pháp tối ưu hóa cấu trúc vốn và vận hành doanh nghiệp trong điều kiện thị trường biến động.'
+        // },
         {
             icon: <SafetyCertificateOutlined />,
             title: 'Private Credit & Alternative',
@@ -50,7 +50,7 @@ export default function InvestmentBankPage() {
                 {/* Hero Section */}
                 <section className={styles.hero}>
                     <div className="container">
-                        <h1 className={styles.heroTitle}>Investment Bank</h1>
+                        <h1 className={styles.heroTitle}>Tư vấn quản lý</h1>
                         <p className={styles.heroSubtitle}>
                             Bên cạnh hoạt động đầu tư truyền thống, quản lý tài sản, phân bổ tài sản,... chúng tôi cũng bao gồm các chuyên gia hàng đầu trong lĩnh vực ngân hàng đầu tư với các thương vụ rất lớn trên thị trường và rất đa dạng ngành nghề.
                         </p>

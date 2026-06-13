@@ -19,7 +19,7 @@ export default function ServicesNavSection() {
                     <div className={styles.iconWrapper}>
                         <LineChartOutlined />
                     </div>
-                    <span className={styles.title}>Tư vấn đầu tư</span>
+                    <span className={styles.title}>Tư vấn Tái cấu trúc</span>
                 </Link>
 
                 {/* Quản lý tài sản */}
@@ -27,7 +27,7 @@ export default function ServicesNavSection() {
                     <div className={styles.iconWrapper}>
                         <SafetyCertificateOutlined />
                     </div>
-                    <span className={styles.title}>Quản lý tài sản</span>
+                    <span className={styles.title}>Quản lý gia sản</span>
                 </Link>
 
                 {/* Ngân hàng đầu tư */}
@@ -35,7 +35,7 @@ export default function ServicesNavSection() {
                     <div className={styles.iconWrapper}>
                         <BankOutlined />
                     </div>
-                    <span className={styles.title}>Ngân hàng đầu tư</span>
+                    <span className={styles.title}>Tư vấn quản lý </span>
                 </Link>
 
                 {/* Đào tạo */}
