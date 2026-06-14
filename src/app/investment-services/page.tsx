@@ -3,34 +3,36 @@
 import React from 'react';
 import MainLayout from '@/components/layouts/MainLayout/MainLayout';
 import {
-    RiseOutlined,
-    BankOutlined,
-    DollarOutlined,
     ArrowRightOutlined,
-    DatabaseOutlined
+    NodeIndexOutlined
 } from '@ant-design/icons';
 import styles from './page.module.css';
 
 export default function InvestmentServicesPage() {
 
     const services = [
+        // {
+        //     icon: <RiseOutlined />,
+        //     title: 'Tư vấn đầu tư cá nhân',
+        //     description: 'Chiến lược đầu tư chuyên sâu, phân tích định lượng và cơ bản giúp tối ưu hóa lợi nhuận danh mục.',
+        //     link: '/wealth/consulting'
+        // },
+        // {
+        //     icon: <DollarOutlined />,
+        //     title: 'Tư vấn đầu tư tổ chức',
+        //     description: 'Tư vấn tái cấu trúc, tư vấn quản lý, tư vấn vận hành, Tư vấn chiến lược, Tư vấn chiến lược đầu tư,...',
+        //     link: '/investment-services/organization'
+        // },
+        // {
+        //     icon: <DatabaseOutlined />,
+        //     title: 'Dịch vụ dữ liệu & báo cáo',
+        //     description: 'Báo cáo phân tích vĩ mô, ngành và doanh nghiệp định kỳ hỗ trợ ra quyết định đầu tư chính xác.',
+        //     link: '/investment-services/data-reports'
+        // },
         {
-            icon: <RiseOutlined />,
-            title: 'Tư vấn đầu tư cá nhân',
-            description: 'Chiến lược đầu tư chuyên sâu, phân tích định lượng và cơ bản giúp tối ưu hóa lợi nhuận danh mục.',
-            link: '/wealth/consulting'
-        },
-        {
-            icon: <DollarOutlined />,
-            title: 'Tư vấn đầu tư tổ chức',
-            description: 'Tư vấn tái cấu trúc, tư vấn quản lý, tư vấn vận hành, Tư vấn chiến lược, Tư vấn chiến lược đầu tư,...',
-            link: '/investment-services/organization'
-        },
-        {
-            icon: <DatabaseOutlined />,
-            title: 'Dịch vụ dữ liệu & báo cáo',
-            description: 'Báo cáo phân tích vĩ mô, ngành và doanh nghiệp định kỳ hỗ trợ ra quyết định đầu tư chính xác.',
-            link: '/investment-services/data-reports'
+            icon: <NodeIndexOutlined />,
+            title: 'Tư vấn tái cấu trúc',
+            description: 'Giải pháp tối ưu hóa cấu trúc vốn và vận hành doanh nghiệp trong điều kiện thị trường biến động.'
         },
     ];
 
@@ -90,9 +92,9 @@ export default function InvestmentServicesPage() {
                                 </div>
                                 <h3 className={styles.serviceTitle}>{service.title}</h3>
                                 <p className={styles.serviceDesc}>{service.description}</p>
-                                <a href={service.link || '/contact'} className={styles.serviceLink}>
+                                {/* <a href={service.link || '/contact'} className={styles.serviceLink}>
                                     Tìm hiểu thêm <ArrowRightOutlined />
-                                </a>
+                                </a> */}
                             </div>
                         ))}
                     </div>
