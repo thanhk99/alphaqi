@@ -39,23 +39,23 @@ export default function InvestmentServicesPage() {
     const steps = [
         {
             number: '01',
-            title: 'Khảo sát Vị thế',
-            description: 'Đánh giá hiện trạng tài chính và khẩu vị rủi ro của khách hàng.'
+            title: 'Khảo sát thực tế',
+            description: 'Đánh giá hiện trạng'
         },
         {
             number: '02',
-            title: 'Xây dựng Chiến lược',
-            description: 'Thiết kế danh mục đầu tư và kế hoạch tài chính phù hợp mục tiêu.'
+            title: 'Xây dựng bản tư vấn',
+            description: 'Xây dựng bản tư vấn chi tiết theo mục tiêu khách hàng'
         },
         {
             number: '03',
-            title: 'Triển khai & Quản lý',
-            description: 'Nhận báo cáo danh mục định kỳ của khách hàng tự thực hiện và gửi lại. Phân tích danh mục và đưa ra đề xuất.'
+            title: 'Triển khai & Theo dõi',
+            description: 'Triển khai kế hoạch tái cấu trúc thực tế'
         },
         {
             number: '04',
-            title: 'Tối ưu & Tái cân bằng',
-            description: 'Định kỳ đánh giá hiệu quả và điều chỉnh chiến lược theo thị trường.'
+            title: 'Giám sát & điều chỉnh',
+            description: 'Giám sát thực hiện, điều chỉnh kế hoạch theo thực tế triển khai'
         }
     ];
 
@@ -77,8 +77,8 @@ export default function InvestmentServicesPage() {
             <section className={styles.servicesSection}>
                 <div className="container">
                     <div className={styles.sectionTitle}>
-                        <span>Dịch vụ Đầu tư</span>
-                        <h2>Chuyên sâu - Hiệu quả - Bền vững</h2>
+                        <span>Dịch vụ Tư vấn tái cấu trúc </span>
+                        <h2>Chuyên sâu - Hiệu quả - Bền vững </h2>
                     </div>
 
                     <div className={styles.servicesGrid}>
